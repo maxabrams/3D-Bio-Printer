@@ -23,7 +23,7 @@ public class HomePanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("Checking system status!"); //Example action
+				System.out.println("Checking system status!");//Example of action
 				
 			}
 			
@@ -33,7 +33,7 @@ public class HomePanel {
 
 			@Override
 			public void actionPerformed(ActionEvent e) { //Add Action listener to respond to button
-				System.out.println("Starting new experiment!"); //Example action
+				System.out.println("Starting new experiment!");//Example of action
 				
 			}
 			
