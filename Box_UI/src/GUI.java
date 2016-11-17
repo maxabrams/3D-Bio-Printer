@@ -1,11 +1,11 @@
-import java.awt.Component;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 
 public class GUI {
-
+	//Screen size
+	private final static int SCREEN_WIDTH = 600;
+	private final static int SCREEN_HEIGHT = 800;
+	
 	//Main runnable class to create GUI
 	public static void main(String[] args) {
 		JFrame frame = new JFrame("The Box"); //Make a frame tabbed pane
@@ -19,7 +19,7 @@ public class GUI {
 		mainPane.addTab(homePanel.getPanelName(), homePanel.getPanel());
 		
 		frame.add(mainPane);//Add the tabbed pane to the larger frame
-		frame.setSize(800, 600); //Set to screen resolution
+		frame.setSize(SCREEN_HEIGHT, SCREEN_WIDTH); //Set to screen resolution
 	    frame.setVisible(true); //Set the frame to be visible 
 	}
 
