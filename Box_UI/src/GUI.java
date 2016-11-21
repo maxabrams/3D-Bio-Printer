@@ -15,10 +15,10 @@ public class GUI {
 		 * Can use this to load an Icon
 		 * ImageIcon icon = createImageIcon("images/icon.gif");
 		 */
-		HomePanel homePanel = new HomePanel();//Create a new Home Panel
+		HomePanel homePanel = new HomePanel(); //Create a new Home Panel
 		mainPane.addTab(homePanel.getPanelName(), homePanel.getPanel());
 		
-		frame.add(mainPane);//Add the tabbed pane to the larger frame
+		frame.add(mainPane); //Add the tabbed pane to the larger frame
 		frame.setSize(SCREEN_HEIGHT, SCREEN_WIDTH); //Set to screen resolution
 	    frame.setVisible(true); //Set the frame to be visible 
 	}
