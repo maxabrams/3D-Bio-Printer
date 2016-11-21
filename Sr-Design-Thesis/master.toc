@@ -1,0 +1,22 @@
+\contentsline {chapter}{\numberline {1}Introduction}{1}
+\contentsline {section}{\numberline {1.1}Motivation}{1}
+\contentsline {section}{\numberline {1.2}Solution}{1}
+\contentsline {chapter}{\numberline {2}The Box}{2}
+\contentsline {section}{\numberline {2.1}Incubating Box}{2}
+\contentsline {section}{\numberline {2.2}User Interface}{2}
+\contentsline {section}{\numberline {2.3}Environment Control}{2}
+\contentsline {chapter}{\numberline {3}Societal Issues}{3}
+\contentsline {section}{\numberline {3.1}Ethical}{3}
+\contentsline {section}{\numberline {3.2}Social}{3}
+\contentsline {section}{\numberline {3.3}Political}{3}
+\contentsline {section}{\numberline {3.4}Health and Safety}{3}
+\contentsline {section}{\numberline {3.5}Economic}{3}
+\contentsline {section}{\numberline {3.6}Manufacturability}{3}
+\contentsline {section}{\numberline {3.7}Sustainability}{3}
+\contentsline {section}{\numberline {3.8}Environmental Impact}{3}
+\contentsline {section}{\numberline {3.9}Usability}{3}
+\contentsline {section}{\numberline {3.10}Lifelong Learning}{3}
+\contentsline {section}{\numberline {3.11}Compassion}{3}
+\contentsline {chapter}{\numberline {4}Conclusion}{4}
+\contentsline {chapter}{\numberline {5}References}{5}
+\contentsline {chapter}{\numberline {6}Appendices}{6}
