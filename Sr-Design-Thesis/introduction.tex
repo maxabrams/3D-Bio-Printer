@@ -1,8 +1,132 @@
 \chapter{Introduction}
 
-\section{Motivation}
+\section{Problem Statement}
 
-This is the introduction to your thesis and should be page number one.
-The main body of your thesis should be double spaced.
+ STEM (science, technology, engineering, and math) fields are a primary focus in education, because there is increasing need for students who have the technical skills to solve real-world problems. A major challenge that many STEM educators face is engaging students in the classroom. The education technology (ed-tech) startup, SE3D, hopes to solve this challenge by bringing 3D bioprinting technology to high school classrooms. Although SE3D has already produced a working prototype, the printer only has basic capabilities and requires further development.  
 
-\section{Solution}
+The 3D bioprinter senior design team aims to create a 3D bioprinter that can improve the capabilities of high school teachers to engage students in STEM education. Implementing 3D bioprinters into high schools will generate increased understanding and interest in biology, research, and technology for the students who will soon be America’s doctors, technicians, and scientific pioneers. 
+
+In order to accomplish this goal, the team is expanding SE3D’s product line to improve student and teacher user experiences and to expand the possibilities for biological experiments. Table \ref{table:problem-solution} shows how SE3D’s current printer can be improved to meet these goals. 
+
+\begin{table}[H]
+\caption{\label{table:problem-solution} Current Bioprinter Problems and Senior Design Project Solutions}
+
+\begin{tabularx}{\textwidth}{ |X|X| }
+  \hline
+  \textbf{Problem }& \textbf{Solution }\\
+
+  \hline 
+Printer lacks advanced features: automated camera, temperature control and humidity regulation
+
+- Limits capability of experimentation
+
+&  
+
+Develop a separate, modular incubation unit (The Box) with an automated camera and humidity and temperature controls
+
+- Analysis and printing can occur in parallel since functions are not in same physical space
+
+- Automatic image capture to analyze experiment over time
+
+- Simple user interface to configure and run experiments
+ \\
+
+
+    \hline 
+ Printer only prints with one material
+
+- Limits print designs
+  & 
+  Design and implement low cost dual extruder
+   \\
+  \hline
+  Motion control system relies on specialized 3D printer software and feature-limited hardware
+
+- Duet Control Board only supports basic 3D printing operations
+
+- External computer necessary for control
+&
+Create custom software environment
+- Distributed control board system to accommodate extra control features
+Run on built-in computer 
+
+- Keep low-cost with Raspberry Pi 
+
+\\
+  \hline
+  Operator must manually calibrate syringe extruder
+
+- Room for human error
+&
+Implement auto-calibration software of the syringe extruder
+\\
+  \hline
+\end{tabularx}
+
+\end{table}
+
+
+The goals in Table \ref{table:problem-solution} are subject to the following criteria:
+\begin{enumerate}
+	\item Usable in a high school lab environment by both students and teachers
+	\item Safe for all users
+	\item Low cost
+\end{enumerate}
+
+% =======================================================================
+
+% =======================================================================
+\section{Background and Related Work}
+
+The current bioprinter produced by SE3D, the r3bEL, is marketed towards high school science classes. It prints using a single 5 mL syringe that has to be manually loaded by the user, put into the head of the bioprinter, and calibrated by hand to begin printing. It currently has the capability to print enzyme, alga, and bacterium 2D arrays, chocolate, and cells and scaffolds for 3D tissue engineering. The r3bEL printer can print four 3x3 array tray experiments in about 3 minutes. After it is finished, the experiment must remain on the bed of the bioprinter until it finishes culturing. The user gathers data form the experiment by constantly taking pictures of the experiment as it cultures. To capture more consistent and higher quality images, an SE3D employee created a separate box that block out external light and has its own light source. This small box has a removable ceiling, lined with LEDs, and holds a single Petri dish. A small hole in the ceiling allows a mobile phone camera to be placed over it to capture images of the experiment as it cultures, though it still requires an individual to operate the camera and capture each image.
+
+
+\begin{table}[H]
+\caption{\label{table:printer-comparison} Comparison of Existing 3D Bioprinters}
+\includegraphics{printer-comparison-table}
+\end{table}
+Although the team is enhancing the functionality of SE3D’s 3D Bioprinter, there are currently many similar products that are already available for purchase. Below are the bioprinters shown in Table 2 with an explanation of their key features and price ranges.
+
+
+
+\textit{RegenHu: 3D Discovery Printer} \\
+RegenHu produces a professional printer priced at 250,000+ USD. It supports a wide range of funcationalities and applications. It is primarily used for optimal processing of a broad biomaterial/bioactives portfolio. The device prints using cell-friendly Ink-jet and thermopolymer extrusion using a 2-component printhead. In addition, it has a high precision temperature controller for biomaterial culturing.
+
+\textit{Bio3D Technologies: Bio3D Explorer series}\\
+Three-dimensional bioprinters have also been developed internationally. Bio3D Technologies in Singapore has a series of printers in their Explorer product line. Designed for educational purposes, the Bio3D has 1 to 4 printing heads available and is lightweight and foldable with a full metal frame. The device is suitable for a wide range of applications and materials. The price was not listed online.
+
+\textit{Aether 1 3D Bioprinter} \\
+Aether has a 3D bioprinter that begins with a base unit cost of 9,000 USD. The product includes 8 syringes, 2 hot ends, and 10 extruder print heads. It has the widest range of usable materials for printing, from oils to plastics. The device has many useful attachments, like a UV curing light for biomaterial prints. Its extruders are pneumatic-driven.
+
+\textit{CellInk: Inkredible Printer} \\
+In Palo Alto, California, CellInk manufactures a research grade bioprinter, Inkredible. Inkredible is priced at 10,000 USD for the base version of the printer. It focuses on assisting tissue engineers who use their custom bioink line to create hydrogel structures that allow for efficient mammalian cell culturing. It has been optimized to print skin and cartilage tissue and uses UV lighting to cure the biomaterial. The printer has a clean chamber and heated cartridges.
+
+\textit{BioBots 3D printer} \\
+BioBots has a desktop 3D printer capable of printing tissues out of living cells. The base model price of BioBots’ 3D printer is 10,000 USD. It is small and portable to allow for ease of use. In addition, the device has a dual heated, pneumatic driven extruder system for precise printing and uses replaceable syringes for easy material changing. Blue light technology is used to safely cure the biomaterial. BioBots is based in Philadelphia; however, they ship internationally.
+
+After reviewing these printers, it is clear that they are all capable of completing the biological experiments that SE3D desires. The one aspect that they all do not meet, however, is that they are priced much higher than the average high school laboratory budget. Furthermore, these printers require high levels of knowledge in order to operate, which is not a reasonable expectation of high school students. To improve this aspect, the UI must be simplified and easy to use for people with less than a high school education. The closest competitors are Inkredible and BioBots, which are low cost and have simple user interfaces. The 3D Bioprinter that the team is working on improves on this problem by providing the necessary functionality at a more reasonable price closer to 3,000 USD. 
+
+
+% =======================================================================
+
+% =======================================================================
+
+\section{Objectives}
+
+The 3D bioprinting team consists of mechanical engineers, computer engineers, and bioengineers. To accomplish the project goals, the team has split the project into three parts: The Box, 3D Printing Feasability Study, and a bioengineering experiment. The bulk of this document will focus on the softwware components for The Box and 3d Printing feasability study, as that will be where the computer engineering work is applied.
+\begin{itemize}
+	\item  The Box:\\
+	\begin{enumerate}
+		\item Meet with Maya, SE3D CEO to define requirements for the incubating box
+		\item Make design decisions for functionality included in the box and physical and structural designs
+		\item Develop prototypes of box, user interface, and controls, allowing users to customize the box environment, begin and end experiments, and automatically capture a series of photos
+		\item At every stage of development, run tests for proper software and hardware compatibility
+		\item Share prototype with users in a classroom setting for feedback
+	\end{enumerate}
+	\item 3D Printing Feasability Study
+	\begin{itemize}
+		\item Auto-Homing of Extruder 
+		
+		\item Multi-Material Extrusion
+	\end{itemize}
+\end{itemize}

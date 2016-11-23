@@ -1,22 +1,40 @@
 \contentsline {chapter}{\numberline {1}Introduction}{1}
-\contentsline {section}{\numberline {1.1}Motivation}{1}
-\contentsline {section}{\numberline {1.2}Solution}{1}
-\contentsline {chapter}{\numberline {2}The Box}{2}
-\contentsline {section}{\numberline {2.1}Incubating Box}{2}
-\contentsline {section}{\numberline {2.2}User Interface}{2}
-\contentsline {section}{\numberline {2.3}Environment Control}{2}
-\contentsline {chapter}{\numberline {3}Societal Issues}{3}
-\contentsline {section}{\numberline {3.1}Ethical}{3}
-\contentsline {section}{\numberline {3.2}Social}{3}
-\contentsline {section}{\numberline {3.3}Political}{3}
-\contentsline {section}{\numberline {3.4}Health and Safety}{3}
-\contentsline {section}{\numberline {3.5}Economic}{3}
-\contentsline {section}{\numberline {3.6}Manufacturability}{3}
-\contentsline {section}{\numberline {3.7}Sustainability}{3}
-\contentsline {section}{\numberline {3.8}Environmental Impact}{3}
-\contentsline {section}{\numberline {3.9}Usability}{3}
-\contentsline {section}{\numberline {3.10}Lifelong Learning}{3}
-\contentsline {section}{\numberline {3.11}Compassion}{3}
-\contentsline {chapter}{\numberline {4}Conclusion}{4}
-\contentsline {chapter}{\numberline {5}References}{5}
-\contentsline {chapter}{\numberline {6}Appendices}{6}
+\contentsline {section}{\numberline {1.1}Problem Statement}{1}
+\contentsline {section}{\numberline {1.2}Background and Related Work}{2}
+\contentsline {section}{\numberline {1.3}Objectives}{4}
+\contentsline {chapter}{\numberline {2}Requirements}{6}
+\contentsline {section}{\numberline {2.1}Functional Requirements}{6}
+\contentsline {section}{\numberline {2.2}Non-Functional Requirements}{6}
+\contentsline {section}{\numberline {2.3}NDesign Constraints}{6}
+\contentsline {chapter}{\numberline {3}Use Cases}{7}
+\contentsline {section}{\numberline {3.1}The Box}{7}
+\contentsline {section}{\numberline {3.2}Feasability Study}{7}
+\contentsline {chapter}{\numberline {4}System Sequence Diagrams}{8}
+\contentsline {section}{\numberline {4.1}The Box}{8}
+\contentsline {section}{\numberline {4.2}Feasability Study}{8}
+\contentsline {chapter}{\numberline {5}System Design- The Box}{9}
+\contentsline {section}{\numberline {5.1}Architectural Design}{9}
+\contentsline {section}{\numberline {5.2}Conceptual Model}{9}
+\contentsline {section}{\numberline {5.3}Design Rationale}{9}
+\contentsline {section}{\numberline {5.4}Technologies Used}{9}
+\contentsline {chapter}{\numberline {6}System Design- Feasabiltiy Study}{10}
+\contentsline {section}{\numberline {6.1}Architectural Design}{10}
+\contentsline {section}{\numberline {6.2}Conceptual Model}{10}
+\contentsline {section}{\numberline {6.3}Design Rationale}{10}
+\contentsline {section}{\numberline {6.4}Technologies Used}{10}
+\contentsline {chapter}{\numberline {7}Testing Plan}{11}
+\contentsline {chapter}{\numberline {8}Societal Issues}{12}
+\contentsline {section}{\numberline {8.1}Ethical}{12}
+\contentsline {section}{\numberline {8.2}Social}{12}
+\contentsline {section}{\numberline {8.3}Political}{12}
+\contentsline {section}{\numberline {8.4}Health and Safety}{12}
+\contentsline {section}{\numberline {8.5}Economic}{12}
+\contentsline {section}{\numberline {8.6}Manufacturability}{12}
+\contentsline {section}{\numberline {8.7}Sustainability}{12}
+\contentsline {section}{\numberline {8.8}Environmental Impact}{12}
+\contentsline {section}{\numberline {8.9}Usability}{12}
+\contentsline {section}{\numberline {8.10}Lifelong Learning}{12}
+\contentsline {section}{\numberline {8.11}Compassion}{12}
+\contentsline {chapter}{\numberline {9}Conclusion}{13}
+\contentsline {chapter}{\numberline {10}References}{14}
+\contentsline {chapter}{\numberline {11}Appendices}{15}
