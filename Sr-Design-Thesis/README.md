@@ -14,4 +14,5 @@ sudo apt-get install texlive-latex-extra
 
 To convert from .tex to pdf:
 Pdflatex  whatever the .tex file is but without the .tex  (do this a few times)
+pdflatex master
 
