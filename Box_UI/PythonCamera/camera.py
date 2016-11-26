@@ -5,7 +5,7 @@ camera = picamera.PiCamera() #New Camera Obj
 
 camera.start_preview() #Fill screen with camera preview for demo
 
-sleep(15) #Wait 5 seconds
+sleep(5) #Wait 5 seconds
 
 camera.stop_preview() #End preview
 
