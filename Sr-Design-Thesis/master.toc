@@ -8,37 +8,38 @@
 \contentsline {section}{\numberline {2.3}Design Constraints}{7}
 \contentsline {chapter}{\numberline {3}Use Cases}{8}
 \contentsline {section}{\numberline {3.1}The Box}{8}
-\contentsline {section}{\numberline {3.2}Feasability Study}{10}
-\contentsline {chapter}{\numberline {4}System Sequence Diagrams}{11}
-\contentsline {section}{\numberline {4.1}The Box}{11}
-\contentsline {section}{\numberline {4.2}Feasability Study}{11}
-\contentsline {chapter}{\numberline {5}System Design- The Box}{12}
-\contentsline {section}{\numberline {5.1}Architectural Design}{13}
-\contentsline {section}{\numberline {5.2}Conceptual Model}{13}
-\contentsline {section}{\numberline {5.3}Technologies Used}{17}
-\contentsline {section}{\numberline {5.4}Design Rationale}{17}
-\contentsline {subsection}{\numberline {5.4.1}Justification of User Experience}{17}
-\contentsline {subsection}{\numberline {5.4.2}Justification of Technologies Used}{18}
-\contentsline {chapter}{\numberline {6}System Design- Feasabiltiy Study}{19}
-\contentsline {section}{\numberline {6.1}Architectural Design}{19}
-\contentsline {section}{\numberline {6.2}Conceptual Model}{19}
-\contentsline {section}{\numberline {6.3}Design Rationale}{19}
-\contentsline {subsection}{\numberline {6.3.1}Justification of User Experience}{19}
-\contentsline {subsection}{\numberline {6.3.2}Justification of Technologies Used}{19}
-\contentsline {section}{\numberline {6.4}Technologies Used}{19}
-\contentsline {chapter}{\numberline {7}Testing Plan}{20}
-\contentsline {chapter}{\numberline {8}Societal Issues}{21}
-\contentsline {section}{\numberline {8.1}Ethical}{21}
-\contentsline {section}{\numberline {8.2}Social}{21}
-\contentsline {section}{\numberline {8.3}Political}{21}
-\contentsline {section}{\numberline {8.4}Health and Safety}{21}
-\contentsline {section}{\numberline {8.5}Economic}{21}
-\contentsline {section}{\numberline {8.6}Manufacturability}{21}
-\contentsline {section}{\numberline {8.7}Sustainability}{21}
-\contentsline {section}{\numberline {8.8}Environmental Impact}{21}
-\contentsline {section}{\numberline {8.9}Usability}{21}
-\contentsline {section}{\numberline {8.10}Lifelong Learning}{21}
-\contentsline {section}{\numberline {8.11}Compassion}{21}
-\contentsline {chapter}{\numberline {9}Conclusion}{22}
-\contentsline {chapter}{\numberline {10}References}{23}
-\contentsline {chapter}{\numberline {11}Appendices}{24}
+\contentsline {section}{\numberline {3.2}Feasability Study}{11}
+\contentsline {chapter}{\numberline {4}System Sequence Diagrams}{14}
+\contentsline {section}{\numberline {4.1}The Box}{14}
+\contentsline {section}{\numberline {4.2}Feasability Study}{15}
+\contentsline {chapter}{\numberline {5}System Design- The Box}{17}
+\contentsline {section}{\numberline {5.1}Architectural Design}{18}
+\contentsline {section}{\numberline {5.2}Conceptual Model}{18}
+\contentsline {section}{\numberline {5.3}Technologies Used}{22}
+\contentsline {section}{\numberline {5.4}Design Rationale}{22}
+\contentsline {subsection}{\numberline {5.4.1}Justification of User Experience}{22}
+\contentsline {subsection}{\numberline {5.4.2}Justification of Technologies Used}{23}
+\contentsline {chapter}{\numberline {6}System Design- Feasabilitiy Study}{25}
+\contentsline {section}{\numberline {6.1}Architectural Design}{25}
+\contentsline {section}{\numberline {6.2}Conceptual Model}{25}
+\contentsline {section}{\numberline {6.3}Technologies Used}{27}
+\contentsline {section}{\numberline {6.4}Design Rationale}{27}
+\contentsline {subsection}{\numberline {6.4.1}Justification for PLA Extruder}{27}
+\contentsline {subsection}{\numberline {6.4.2}Justification for Auto-calibration of Extruder }{27}
+\contentsline {subsection}{\numberline {6.4.3}Justification of Technologies Used}{27}
+\contentsline {chapter}{\numberline {7}Testing Plan}{29}
+\contentsline {chapter}{\numberline {8}Societal Issues}{30}
+\contentsline {section}{\numberline {8.1}Ethical}{30}
+\contentsline {section}{\numberline {8.2}Social}{30}
+\contentsline {section}{\numberline {8.3}Political}{30}
+\contentsline {section}{\numberline {8.4}Health and Safety}{30}
+\contentsline {section}{\numberline {8.5}Economic}{30}
+\contentsline {section}{\numberline {8.6}Manufacturability}{30}
+\contentsline {section}{\numberline {8.7}Sustainability}{30}
+\contentsline {section}{\numberline {8.8}Environmental Impact}{30}
+\contentsline {section}{\numberline {8.9}Usability}{30}
+\contentsline {section}{\numberline {8.10}Lifelong Learning}{30}
+\contentsline {section}{\numberline {8.11}Compassion}{30}
+\contentsline {chapter}{\numberline {9}Conclusion}{31}
+\contentsline {chapter}{\numberline {10}References}{32}
+\contentsline {chapter}{\numberline {11}Appendices}{33}
