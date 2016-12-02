@@ -5,8 +5,8 @@ Use Case diagrams deﬁne tasks that users will perform to achieve a certain goa
 \section{The Box}
 
 \begin{figure}[H]
+\includegraphics[scale=0.5]{box-use-case}
 \caption{\label{figure:box-use-case} Use Case Diagram for The Box}
-\includegraphics{box-use-case}
 \end{figure}
 
 \begin{enumerate}
@@ -61,4 +61,86 @@ Use Case diagrams deﬁne tasks that users will perform to achieve a certain goa
 		\item Exceptions
 	\end{itemize}
 \end{enumerate}
+
 \section{Feasability Study}
+
+\begin{figure}[H]
+\caption{\label{figure:3D_Printer_UCD} Use Case Diagram for The Printer Compontents Affected by The Feasability Study}
+\includegraphics{3D_Printer_UCD}
+\end{figure}
+
+\begin{enumerate}
+	\item 
+	\begin{itemize}
+	\item Name: Load GCODE
+	\item Goal: Load GCODE files into printer memory for printing
+	\item Actors: User
+	\item Pre-conditions: User already has GCODE from converted 3D model
+	\item Steps: Load media into printer controller
+	\item Post-conditions: Printer has access to GCODE files for printing
+	\item Exceptions: No valid GCODE file found
+	\end{itemize}
+	\item 
+	\begin{itemize}
+	\item Name: Load Filament
+	\item Goal: Load printer filament into extruder
+	\item Actors: User
+	\item Pre-conditions: User has printing materials ready to load
+	\item Steps For Biomaterials: Remove extruder syringe for biomaterial and insert new biomaterial 
+	\item Steps For PLA Material: Remove old plastic filament spool,
+	run script to remove old filament and prepare for new filament, then
+	insert new filament into extruder module
+	\item Post-conditions: Printer has filament loaded and is ready for calibration
+	\item Exceptions: n/a
+	\end{itemize}
+	\item 
+	\begin{itemize}
+	\item Name: Preheat Bed
+	\item Goal: Heat print bed for printing 
+	\item Actors: User
+	\item Pre-conditions: n/a
+	\item Steps: Select option for preheating the bed
+	\item Post-conditions: Bed is at optimal printing temperature
+	\item Exceptions: n/a
+	\end{itemize}
+	\item 
+	\begin{itemize}
+	\item Name: Start Print
+	\item Goal: Begin printing the 3D structure 
+	\item Actors: User
+	\item Pre-conditions: GCODE is loaded into printer memory, extruder is calibrated, and filament is loaded
+	\item Steps: Select 3D object to print
+	\item Post-conditions: Printer begins printing
+	\item Exceptions: User stops print
+	\end{itemize}
+	\item 
+	\begin{itemize}
+	\item Name: View Print Status
+	\item Goal: View information about current print job
+	\item Actors: User
+	\item Pre-conditions: The printer is printing
+	\item Steps: Select option for viewing print status
+	\item Post-conditions: Print status information is shown
+	\item Exceptions: n/a
+	\end{itemize}
+	\item 
+	\begin{itemize}
+	\item Name: Stop Print
+	\item Goal: Stop all printer activity
+	\item Actors: User
+	\item Pre-conditions: The printer is printing
+	\item Steps: Select stop option
+	\item Post-conditions: Printer stops all print activity
+	\item Exceptions: n/a
+	\end{itemize}
+	\item 
+	\begin{itemize}
+	\item Name: Calibrate Extruder
+	\item Goal: Have extruder be automatically calibrated for printing
+	\item Actors: User
+	\item Pre-conditions: The filament is loaded
+	\item Steps: Select option for extuder calibration, select the extruder to calibrate
+	\item Post-conditions: Printer extruder is calibrated
+	\item Exceptions: Filament is empty
+	\end{itemize}
+\end{enumerate}

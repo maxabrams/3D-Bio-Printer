@@ -102,7 +102,11 @@ After an experiment is finished, users will export the images captured by USB. A
 
 % =======================================================================
 \section{Technologies Used}
-
+	\begin{itemize}
+	\item Git: A commonly used version control system. Git allows distributed workflow with high data integrity.
+	\item Raspberry PI: A small, commonly used open-source computer with large community support. The Raspberry PI has General Purpose Input/Output (GPIO) pins for interfacing with other devices as well as built in WIFI, Bluetooth, GPU with HDMI output, and USB support.
+	\item Java - A class based, object oriented computer programming language that is used for general purpose computing. Java is commonly found in projects around the world.
+	\end{itemize}
 
 % =======================================================================
 
@@ -114,9 +118,16 @@ We decided a touch screen interface was the most effective solution for the most
 
 The user interface is optimized for a touch screen experience. Since users will be using fingertips to navigate the interface, instead of a mouse cursor or stylus, all functions are tied to simple and prominent buttons. We kept the interface as simple as possible, only showing options and information that are necessary. Since we anticipate that we will have about a 5 in. screen, a simpler interface allows users to more easily navigate the system. In addition, since our users will be high school students, limiting the options they have on each screen reduces confusion on what to do next and lowers the chance of error due to unintentional clicks of other buttons.
 
- There is minimal direct user input of values to reduce the need for on-screen keyboards that can be hard to navigate on a small screen. Instead, numbers are increased or decreased with up and down arrows, images, text, and color highlighting are used for signaling if certain dishes are selected or in use, and sliders are used in configuration. Reducing direct user input reduces  the likelihood of human error.
+There is minimal direct user input of values to reduce the need for on-screen keyboards that can be hard to navigate on a small screen. Instead, numbers are increased or decreased with up and down arrows, images, text, and color highlighting are used for signaling if certain dishes are selected or in use, and sliders are used in configuration. Reducing direct user input reduces  the likelihood of human error.
 
 We chose not to include preloaded experiment settings that users can choose from after speaking with Maya from SE3D. Allowing users to input their own settings provides more flexibility for the user to customize experiments and create their own experiments. Since there are only a few criteria to set- light, temperature, image capture, and duration of experiment- it does not add too much overhead in set-up time. Users will have the option to save a certain combination of environment settings to use in the future. Thus, the `preloaded experiment' feature is emulated here- an instructor could set up a desired environment before class begins and save it to the system. Students can then load the environment that was set up by their instructor. 
 
 
 \subsection{Justification of Technologies Used}
+\begin{itemize}
+	\item Git: Git was chosen because of its ability to store nearly any type of electronic materials such as images, source code, and documentation. It is commonly used in industry and is well supported. It allows the developers to work concurrently on various parts of the project which results in much faster completion times. Finally, because it is a version control system we can easily reference old code and track changes.
+
+	\item Raspberry Pi: The Pi was chosen for the box because it incorporates sensor control and built in compatibility for cameras at an extremely low price point of \$35. It has a large community of developers that allow for support of external devices Because it is a full computer with a dedicated Graphical Processing Unit (GPU) it has integrated support for high resolution monitors with touch screens. It also has a filesystem for saving photos and onboard USB interfaces to exporting.
+
+	\item Java - Java was used because it is natively supported on the Raspberry Pi and has built in library support for filesystem manipulation, camera use, and GPIO. In addition, Java has many integrated graphical libraries which is necessary for GUI design.
+\end{itemize}
