@@ -19,7 +19,7 @@
 \contentsline {section}{\numberline {5.4}Design Rationale}{23}
 \contentsline {subsection}{\numberline {5.4.1}Justification of User Experience}{23}
 \contentsline {subsection}{\numberline {5.4.2}Justification of Technologies Used}{24}
-\contentsline {chapter}{\numberline {6}System Design- Feasabilitiy Study}{26}
+\contentsline {chapter}{\numberline {6}System Design- Feasibility Study}{26}
 \contentsline {section}{\numberline {6.1}Architectural Design}{26}
 \contentsline {section}{\numberline {6.2}Conceptual Model}{26}
 \contentsline {section}{\numberline {6.3}Technologies Used}{28}

@@ -17,9 +17,9 @@ Use Case diagrams deﬁne tasks that users will perform to achieve a certain goa
 		\item Actors: Student, Instructor
 		\item Pre-conditions: No other experiment is currently running
 		\item Steps: Either load settings that have been previously saved, or enter custom light, temperature, and image capture settings. 
-		\item Post-conditions: The Box is at currect environment settings for the experiment.
+		\item Post-conditions: The Box is at correct environment settings for the experiment.
 		\item Exceptions
-	\end{itemize}
+	\end{itemize}: n/a
 	\item 
 	\begin{itemize}
 		\item Name: Save environment settings
@@ -48,7 +48,7 @@ Use Case diagrams deﬁne tasks that users will perform to achieve a certain goa
 		\item Pre-conditions: An experiment must be running in The Box
 		\item Steps: User places dish in the box. Clicks on the appropriate petri dish to begin timer and image capture of new dish
 		\item Post-conditions: New petri dish is added into the experiment and final end time is extended to accommodate 
-		\item Exceptions
+		\item Exceptions: Incubator box is full
 	\end{itemize}
 	\item 
 	\begin{itemize}
@@ -58,14 +58,14 @@ Use Case diagrams deﬁne tasks that users will perform to achieve a certain goa
 		\item Pre-conditions: A USB drive has been inserted and detected
 		\item Steps: Click `download images' button, Select the relevant dish, click `download'
 		\item Post-conditions: Images transferred onto the USB drive
-		\item Exceptions
+		\item Exceptions: No images to export
 	\end{itemize}
 \end{enumerate}
 
 \section{Feasability Study}
 
 \begin{figure}[H]
-\caption{\label{figure:3D_Printer_UCD} Use Case Diagram for The Printer Compontents Affected by The Feasability Study}
+\caption{\label{figure:3D_Printer_UCD} Use Case Diagram for The Printer Components Affected by The Feasibility Study}
 \includegraphics{3D_Printer_UCD}
 \end{figure}
 
@@ -139,7 +139,7 @@ Use Case diagrams deﬁne tasks that users will perform to achieve a certain goa
 	\item Goal: Have extruder be automatically calibrated for printing
 	\item Actors: User
 	\item Pre-conditions: The filament is loaded
-	\item Steps: Select option for extuder calibration, select the extruder to calibrate
+	\item Steps: Select option for extruder calibration, select the extruder to calibrate
 	\item Post-conditions: Printer extruder is calibrated
 	\item Exceptions: Filament is empty
 	\end{itemize}
