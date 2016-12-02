@@ -27,20 +27,5 @@
 \contentsline {subsection}{\numberline {6.4.1}Justification for PLA Extruder}{28}
 \contentsline {subsection}{\numberline {6.4.2}Justification for Auto-calibration of Extruder }{28}
 \contentsline {subsection}{\numberline {6.4.3}Justification of Technologies Used}{28}
-\contentsline {chapter}{\numberline {7}Testing Plan}{30}
-\contentsline {chapter}{\numberline {8}Societal Issues}{31}
-\contentsline {section}{\numberline {8.1}Ethical}{31}
-\contentsline {section}{\numberline {8.2}Social}{31}
-\contentsline {section}{\numberline {8.3}Political}{31}
-\contentsline {section}{\numberline {8.4}Health and Safety}{31}
-\contentsline {section}{\numberline {8.5}Economic}{31}
-\contentsline {section}{\numberline {8.6}Manufacturability}{31}
-\contentsline {section}{\numberline {8.7}Sustainability}{31}
-\contentsline {section}{\numberline {8.8}Environmental Impact}{31}
-\contentsline {section}{\numberline {8.9}Usability}{31}
-\contentsline {section}{\numberline {8.10}Lifelong Learning}{31}
-\contentsline {section}{\numberline {8.11}Compassion}{31}
-\contentsline {section}{\numberline {8.12}Development Timeline}{32}
-\contentsline {chapter}{\numberline {9}Conclusion}{33}
-\contentsline {chapter}{\numberline {10}References}{34}
-\contentsline {chapter}{\numberline {11}Appendices}{35}
+\contentsline {section}{\numberline {6.5}Development Timeline}{30}
+\contentsline {chapter}{\numberline {7}References}{31}
