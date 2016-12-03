@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2016.11.20)  2 DEC 2016 15:11
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2016.11.20)  2 DEC 2016 16:46
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -110,8 +110,8 @@ Package: hanging 2009/09/02 v1.2b hanging paragraphs and punctuation
 \h@ngscolonwd=\skip57
 ) (./master.aux
 (./abstract.aux) (./introduction.aux) (./requirements.aux) (./usecase.aux)
-(./activitydiagrams.aux) (./boxsystem.aux) (./printersystem.aux)
-(./timeline.aux) (./references.aux))
+(./activitydiagrams.aux) (./architectural.aux) (./boxsystem.aux)
+(./printersystem.aux) (./timeline.aux) (./references.aux))
 \openout1 = `master.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 39.
@@ -264,217 +264,239 @@ Missing character: There is no ô in font cmr10!
 Missing character: There is no ‚ in font cmr10!
 Missing character: There is no Ä in font cmr10!
 Missing character: There is no ô in font cmr10!
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 118.
+Missing character: There is no ‚ in font cmr10!
+Missing character: There is no Ä in font cmr10!
+Missing character: There is no ô in font cmr10!
+Missing character: There is no ‚ in font cmti10!
+Missing character: There is no Ä in font cmti10!
+Missing character: There is no ô in font cmti10!
+Missing character: There is no ‚ in font cmr10!
+Missing character: There is no Ä in font cmr10!
+Missing character: There is no ô in font cmr10!
+Missing character: There is no ‚ in font cmti10!
+Missing character: There is no Ä in font cmti10!
+Missing character: There is no ô in font cmti10!
+Missing character: There is no ‚ in font cmr10!
+Missing character: There is no Ä in font cmr10!
+Missing character: There is no ô in font cmr10!
+Missing character: There is no ‚ in font cmr10!
+Missing character: There is no Ä in font cmr10!
+Missing character: There is no ô in font cmr10!
+Missing character: There is no ‚ in font cmr10!
+Missing character: There is no Ä in font cmr10!
+Missing character: There is no ô in font cmr10!
+Missing character: There is no ‚ in font cmr10!
+Missing character: There is no Ä in font cmr10!
+Missing character: There is no ô in font cmr10!
+Missing character: There is no ‚ in font cmti10!
+Missing character: There is no Ä in font cmti10!
+Missing character: There is no ô in font cmti10!
+Missing character: There is no ‚ in font cmr10!
+Missing character: There is no Ä in font cmr10!
+Missing character: There is no ô in font cmr10!
+Missing character: There is no ‚ in font cmr10!
+Missing character: There is no Ä in font cmr10!
+Missing character: There is no ô in font cmr10!
+ [4] [5]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 148.
 
 
 (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 118.
-
-Underfull \hbox (badness 10000) in paragraph at lines 118--119
-
- []
-
-[4]
-Underfull \hbox (badness 10000) in paragraph at lines 126--127
-
- []
-
-) [5]
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 148.
+ [6]) [7]
 \openout2 = `requirements.aux'.
 
- (./requirements.tex
+
+(./requirements.tex
 Chapter 2.
-[6
+[8
 
 
 
-]) [7]
+]) [9]
 \openout2 = `usecase.aux'.
 
  (./usecase.tex
 Chapter 3.
-<images/box-use-case.PNG, id=52, 585.68813pt x 393.72093pt>
+<images/box-use-case.PNG, id=58, 585.68813pt x 393.72093pt>
 File: images/box-use-case.PNG Graphic file (type png)
 
 <use images/box-use-case.PNG>
 Package pdftex.def Info: images/box-use-case.PNG used on input line 8.
 (pdftex.def)             Requested size: 409.97888pt x 275.60277pt.
- [8
+ [10
 
 
 
- <./images/box-use-case.PNG>] [9]
-<images/3D_Printer_UCD.png, id=60, 344.28625pt x 585.18625pt>
+ <./images/box-use-case.PNG>] [11]
+<images/3D_Printer_UCD.png, id=66, 344.28625pt x 585.18625pt>
 File: images/3D_Printer_UCD.png Graphic file (type png)
 
 <use images/3D_Printer_UCD.png>
 Package pdftex.def Info: images/3D_Printer_UCD.png used on input line 69.
 (pdftex.def)             Requested size: 344.2854pt x 585.18481pt.
- [10] [11 <./images/3D_Printer_UCD.png>]
-[12]) [13]
+ [12] [13 <./images/3D_Printer_UCD.png>]
+[14]) [15]
 \openout2 = `activitydiagrams.aux'.
 
  (./activitydiagrams.tex
 Chapter 4.
-<images/box-Activity.PNG, id=75, 342.15327pt x 365.11406pt>
+<images/box-Activity.PNG, id=81, 342.15327pt x 365.11406pt>
 File: images/box-Activity.PNG Graphic file (type png)
 
 <use images/box-Activity.PNG>
 Package pdftex.def Info: images/box-Activity.PNG used on input line 6.
 (pdftex.def)             Requested size: 376.36977pt x 401.6267pt.
 
-<images/3D_Printer_Activity_Diagram1.png, id=76, 379.4175pt x 1014.79124pt>
+<images/3D_Printer_Activity_Diagram1.png, id=82, 379.4175pt x 1014.79124pt>
 File: images/3D_Printer_Activity_Diagram1.png Graphic file (type png)
 
 <use images/3D_Printer_Activity_Diagram1.png>
 Package pdftex.def Info: images/3D_Printer_Activity_Diagram1.png used on input 
 line 14.
 (pdftex.def)             Requested size: 189.70828pt x 507.39438pt.
- [14
+ [16
 
 
 
  <./images/box-Activity.PNG>]
-<images/3D_Printer_Activity_Diagram2.png, id=81, 123.46124pt x 296.10625pt>
+<images/3D_Printer_Activity_Diagram2.png, id=87, 123.46124pt x 296.10625pt>
 File: images/3D_Printer_Activity_Diagram2.png Graphic file (type png)
 
 <use images/3D_Printer_Activity_Diagram2.png>
 Package pdftex.def Info: images/3D_Printer_Activity_Diagram2.png used on input 
 line 19.
 (pdftex.def)             Requested size: 61.73045pt x 148.05275pt.
-) [15 <./images/3D_Printer_Activity_Diagram1.png>] [16 <./images/3D_Printer_Act
+) [17 <./images/3D_Printer_Activity_Diagram1.png>] [18 <./images/3D_Printer_Act
 ivity_Diagram2.png>]
+\openout2 = `architectural.aux'.
+
+
+(./architectural.tex
+Chapter 5.
+
+<images/3D_Printer_Architecture_Diagram_E.png, id=96, 545.03625pt x 165.61874pt
+>
+File: images/3D_Printer_Architecture_Diagram_E.png Graphic file (type png)
+ <use images/3D_Printer_Architecture_Diagram_E.png>
+Package pdftex.def Info: images/3D_Printer_Architecture_Diagram_E.png used on i
+nput line 6.
+(pdftex.def)             Requested size: 381.52278pt x 115.93231pt.
+) [19
+
+
+
+ <./images/3D_Printer_Architecture_Diagram_E.png>]
 \openout2 = `boxsystem.aux'.
 
-
-(./boxsystem.tex
-Chapter 5.
-<images/box.png, id=90, 587.19376pt x 502.87875pt>
+ (./boxsystem.tex
+Chapter 6.
+<images/box.png, id=102, 587.19376pt x 502.87875pt>
 File: images/box.png Graphic file (type png)
  <use images/box.png>
 Package pdftex.def Info: images/box.png used on input line 6.
 (pdftex.def)             Requested size: 293.59616pt x 251.43875pt.
-
-<images/box-arch-diagram.PNG, id=91, 563.48016pt x 302.63063pt>
-File: images/box-arch-diagram.PNG Graphic file (type png)
-
-<use images/box-arch-diagram.PNG>
-Package pdftex.def Info: images/box-arch-diagram.PNG used on input line 20.
-(pdftex.def)             Requested size: 450.78474pt x 242.10483pt.
-
-Overfull \hbox (17.16472pt too wide) in paragraph at lines 20--21
- [][] 
- []
-
-[17
-
-
-
- <./images/box.png>]
 Missing character: There is no ‚ in font cmr10!
 Missing character: There is no Ä in font cmr10!
 Missing character: There is no ô in font cmr10!
 
-<images/ui-home-screen.PNG, id=96, 508.52484pt x 350.43422pt>
+[20
+
+
+
+ <./images/box.png>]
+<images/ui-home-screen.PNG, id=107, 508.52484pt x 350.43422pt>
 File: images/ui-home-screen.PNG Graphic file (type png)
 
 <use images/ui-home-screen.PNG>
-Package pdftex.def Info: images/ui-home-screen.PNG used on input line 44.
+Package pdftex.def Info: images/ui-home-screen.PNG used on input line 34.
 (pdftex.def)             Requested size: 254.2618pt x 175.21667pt.
- [18 <./images/box-arch-diagram.PNG>]
-<images/ui-temp.PNG, id=101, 507.39563pt x 350.43422pt>
+
+<images/ui-temp.PNG, id=108, 507.39563pt x 350.43422pt>
 File: images/ui-temp.PNG Graphic file (type png)
 
 <use images/ui-temp.PNG>
-Package pdftex.def Info: images/ui-temp.PNG used on input line 51.
+Package pdftex.def Info: images/ui-temp.PNG used on input line 41.
 (pdftex.def)             Requested size: 253.69719pt x 175.21667pt.
-
-<images/ui-light.PNG, id=102, 508.52484pt x 349.68141pt>
+ [21 <./images/ui-home-screen.PNG>]
+<images/ui-light.PNG, id=113, 508.52484pt x 349.68141pt>
 File: images/ui-light.PNG Graphic file (type png)
 
 <use images/ui-light.PNG>
-Package pdftex.def Info: images/ui-light.PNG used on input line 57.
+Package pdftex.def Info: images/ui-light.PNG used on input line 47.
 (pdftex.def)             Requested size: 254.2618pt x 174.84027pt.
- [19 <./images/ui-home-screen.PNG> <./images/ui-temp.PNG>] <images/ui-image.PNG
-, id=109, 506.6428pt x 349.305pt>
+
+<images/ui-image.PNG, id=114, 506.6428pt x 349.305pt>
 File: images/ui-image.PNG Graphic file (type png)
 
 <use images/ui-image.PNG>
-Package pdftex.def Info: images/ui-image.PNG used on input line 62.
+Package pdftex.def Info: images/ui-image.PNG used on input line 52.
 (pdftex.def)             Requested size: 253.32079pt x 174.65207pt.
-
-<images/ui-begin.PNG, id=110, 506.6428pt x 350.81062pt>
+ [22 <./images/ui-temp.PNG> <./images/ui-light.PNG> <./images/ui-image.PNG>] <i
+mages/ui-begin.PNG, id=121, 506.6428pt x 350.81062pt>
 File: images/ui-begin.PNG Graphic file (type png)
 
 <use images/ui-begin.PNG>
-Package pdftex.def Info: images/ui-begin.PNG used on input line 70.
+Package pdftex.def Info: images/ui-begin.PNG used on input line 60.
 (pdftex.def)             Requested size: 253.32079pt x 175.40488pt.
- [20 <./images/ui-light.PNG> <./images/ui-image.PNG>]
-<images/ui-status-1.PNG, id=116, 506.2664pt x 348.55219pt>
+
+<images/ui-status-1.PNG, id=122, 506.2664pt x 348.55219pt>
 File: images/ui-status-1.PNG Graphic file (type png)
 
 <use images/ui-status-1.PNG>
-Package pdftex.def Info: images/ui-status-1.PNG used on input line 79.
+Package pdftex.def Info: images/ui-status-1.PNG used on input line 69.
 (pdftex.def)             Requested size: 253.13257pt x 174.27565pt.
 
-<images/ui-add-dish.PNG, id=117, 508.52484pt x 350.43422pt>
+<images/ui-add-dish.PNG, id=123, 508.52484pt x 350.43422pt>
 File: images/ui-add-dish.PNG Graphic file (type png)
 
 <use images/ui-add-dish.PNG>
-Package pdftex.def Info: images/ui-add-dish.PNG used on input line 84.
+Package pdftex.def Info: images/ui-add-dish.PNG used on input line 74.
 (pdftex.def)             Requested size: 254.2618pt x 175.21667pt.
- [21 <./images/ui-begin.PNG> <./images/ui-status-1.PNG>] <images/ui-after-add.P
-NG, id=123, 595.47469pt x 412.16484pt>
+ [23 <./images/ui-begin.PNG> <./images/ui-status-1.PNG>] <images/ui-after-add.P
+NG, id=129, 595.47469pt x 412.16484pt>
 File: images/ui-after-add.PNG Graphic file (type png)
 
 <use images/ui-after-add.PNG>
-Package pdftex.def Info: images/ui-after-add.PNG used on input line 89.
+Package pdftex.def Info: images/ui-after-add.PNG used on input line 79.
 (pdftex.def)             Requested size: 297.7366pt x 206.08191pt.
 
-<images/ui-export.PNG, id=124, 509.27765pt x 351.56343pt>
+<images/ui-export.PNG, id=130, 509.27765pt x 351.56343pt>
 File: images/ui-export.PNG Graphic file (type png)
 
 <use images/ui-export.PNG>
-Package pdftex.def Info: images/ui-export.PNG used on input line 97.
+Package pdftex.def Info: images/ui-export.PNG used on input line 87.
 (pdftex.def)             Requested size: 254.6382pt x 175.78128pt.
- [22 <./images/ui-add-dish.PNG> <./images/ui-after-add.PNG>] [23 <./images/ui-e
-xport.PNG>] [24]) [25]
+ [24 <./images/ui-add-dish.PNG> <./images/ui-after-add.PNG>] [25 <./images/ui-e
+xport.PNG>] [26]) [27]
 \openout2 = `printersystem.aux'.
 
  (./printersystem.tex
-Chapter 6.
-<images/3D_Printer_AD.png, id=141, 598.235pt x 329.23pt>
-File: images/3D_Printer_AD.png Graphic file (type png)
-
-<use images/3D_Printer_AD.png>
-Package pdftex.def Info: images/3D_Printer_AD.png used on input line 5.
-(pdftex.def)             Requested size: 299.11676pt x 164.6146pt.
-
-<images/extruder.PNG, id=142, 411.5375pt x 405.515pt>
+Chapter 7.
+<images/extruder.PNG, id=147, 411.5375pt x 405.515pt>
 File: images/extruder.PNG Graphic file (type png)
 
 <use images/extruder.PNG>
-Package pdftex.def Info: images/extruder.PNG used on input line 16.
+Package pdftex.def Info: images/extruder.PNG used on input line 9.
 (pdftex.def)             Requested size: 205.76825pt x 202.75699pt.
- [26
-
-
-
- <./images/3D_Printer_AD.png>]
-<images/plunger.PNG, id=147, 429.605pt x 487.8225pt>
+ <images/plunger.PNG, id=148, 429.605pt x 487.8225pt>
 File: images/plunger.PNG Graphic file (type png)
- <use images/plunger.PNG>
-Package pdftex.def Info: images/plunger.PNG used on input line 23.
-(pdftex.def)             Requested size: 214.80197pt x 243.91064pt.
 
-[27 <./images/extruder.PNG> <./images/plunger.PNG>] [28]) [29]
+<use images/plunger.PNG>
+Package pdftex.def Info: images/plunger.PNG used on input line 16.
+(pdftex.def)             Requested size: 214.80197pt x 243.91064pt.
+ [28
+
+
+
+ <./images/extruder.PNG>] [29 <./images/plunger.PNG>]) [30]
 \openout2 = `timeline.aux'.
 
  (./timeline.tex
-<images/gantt-fall.PNG, id=159, 1005.00468pt x 449.80547pt>
+<images/gantt-fall.PNG, id=160, 1005.00468pt x 449.80547pt>
 File: images/gantt-fall.PNG Graphic file (type png)
 
 <use images/gantt-fall.PNG>
@@ -485,7 +507,7 @@ Overfull \hbox (18.6279pt too wide) in paragraph at lines 6--7
  [][] 
  []
 
-<images/gantt-winter.PNG, id=160, 1018.55531pt x 246.1697pt>
+<images/gantt-winter.PNG, id=161, 1018.55531pt x 246.1697pt>
 File: images/gantt-winter.PNG Graphic file (type png)
 
 <use images/gantt-winter.PNG>
@@ -496,7 +518,7 @@ Overfull \hbox (24.72563pt too wide) in paragraph at lines 11--12
  [][] 
  []
 
-<images/gantt-spring.PNG, id=161, 1137.4997pt x 231.11343pt>
+<images/gantt-spring.PNG, id=162, 1137.4997pt x 231.11343pt>
 File: images/gantt-spring.PNG Graphic file (type png)
 
 <use images/gantt-spring.PNG>
@@ -507,7 +529,7 @@ Overfull \hbox (44.12659pt too wide) in paragraph at lines 17--18
  [][] 
  []
 
-) [30
+) [31
 
 
  <./images/gantt-fall.PNG> <./images/gantt-winter.PNG> <./images/gantt-spring.P
@@ -515,7 +537,7 @@ NG>]
 \openout2 = `references.aux'.
 
  (./references.tex
-Chapter 7.
+Chapter 8.
 Missing character: There is no ‚ in font cmr10!
 Missing character: There is no Ä in font cmr10!
 Missing character: There is no ì in font cmr10!
@@ -524,35 +546,50 @@ Missing character: There is no Ä in font cmr10!
 Missing character: There is no ì in font cmr10!
 Missing character: There is no ‚ in font cmr10!
 Missing character: There is no Ä in font cmr10!
+Missing character: There is no ú in font cmr10!
+Missing character: There is no ‚ in font cmr10!
+Missing character: There is no Ä in font cmr10!
+Missing character: There is no ù in font cmr10!
+Missing character: There is no ‚ in font cmr10!
+Missing character: There is no Ä in font cmr10!
+Missing character: There is no ì in font cmr10!
+Missing character: There is no ‚ in font cmr10!
+Missing character: There is no Ä in font cmr10!
+Missing character: There is no ò in font cmr10!
+Missing character: There is no ‚ in font cmr10!
+Missing character: There is no Ä in font cmr10!
+Missing character: There is no ô in font cmr10!
+Missing character: There is no ‚ in font cmr10!
+Missing character: There is no Ä in font cmr10!
 Missing character: There is no ì in font cmr10!
 Missing character: There is no ‚ in font cmr10!
 Missing character: There is no Ä in font cmr10!
 Missing character: There is no ì in font cmr10!
-) [31
+) [32
 
 
 
 ] (./master.aux (./abstract.aux) (./introduction.aux) (./requirements.aux) (./u
-secase.aux) (./activitydiagrams.aux) (./boxsystem.aux)
-(./printersystem.aux) (./timeline.aux) (./references.aux)) ) 
+secase.aux) (./activitydiagrams.aux) (./architectural.aux)
+(./boxsystem.aux) (./printersystem.aux) (./timeline.aux) (./references.aux)) ) 
 Here is how much of TeX's memory you used:
- 2041 strings out of 495028
- 30145 string characters out of 6181496
- 88959 words of memory out of 5000000
- 5143 multiletter control sequences out of 15000+600000
+ 2049 strings out of 495028
+ 30286 string characters out of 6181496
+ 93294 words of memory out of 5000000
+ 5145 multiletter control sequences out of 15000+600000
  6716 words of font info for 24 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  37i,9n,26p,1190b,269s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texlive
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/share/texlive/texmf
--dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/
-fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/t
-ype1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
-ublic/amsfonts/cm/cmti10.pfb>
-Output written on master.pdf (37 pages, 2443042 bytes).
+<
+/usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/s
+hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/t
+exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-
+dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
+Output written on master.pdf (38 pages, 2374756 bytes).
 PDF statistics:
- 193 PDF objects out of 1000 (max. 8388607)
- 101 compressed objects within 2 object streams
+ 194 PDF objects out of 1000 (max. 8388607)
+ 103 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 116 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 111 words of extra memory for PDF output out of 10000 (max. 10000000)
 

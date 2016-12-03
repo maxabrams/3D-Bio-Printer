@@ -1,29 +1,29 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Use Case Diagram for The Box}}{8}
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Use Case Diagram for The Printer Components Affected by The Feasibility Study}}{11}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Use Case Diagram for The Box}}{10}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Use Case Diagram for The Printer Components Affected by The Feasibility Study}}{13}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Activity diagram for user completing an experiment using the box}}{14}
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Activity diagram for user starting a print on the 3D printer}}{15}
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Activity diagram for user stopping a print on the 3D printer}}{16}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Activity diagram for user completing an experiment using the box}}{16}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Activity diagram for user starting a print on the 3D printer}}{17}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Activity diagram for user stopping a print on the 3D printer}}{18}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Initial Incubator Prototype}}{17}
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Architectural design of event based incubator box system}}{18}
-\contentsline {figure}{\numberline {5.3}{\ignorespaces Mock up of home screen}}{19}
-\contentsline {figure}{\numberline {5.4}{\ignorespaces Mock up of temperature setting}}{19}
-\contentsline {figure}{\numberline {5.5}{\ignorespaces Mock up of light intensity setting}}{20}
-\contentsline {figure}{\numberline {5.6}{\ignorespaces Mock up of image capture setting}}{20}
-\contentsline {figure}{\numberline {5.7}{\ignorespaces Mock up confirming experiment begin }}{21}
-\contentsline {figure}{\numberline {5.8}{\ignorespaces Mock up of status screen during an experiment}}{21}
-\contentsline {figure}{\numberline {5.9}{\ignorespaces Mock up of how a dish is added in the middle of an experiment}}{22}
-\contentsline {figure}{\numberline {5.10}{\ignorespaces Mock up of how current status screen reflects addition of a dish}}{22}
-\contentsline {figure}{\numberline {5.11}{\ignorespaces Mock up of export images to a USB drive}}{23}
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Architectural diagram for The Box and the 3D printer}}{19}
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {6.1}{\ignorespaces Architectural design of event based 3D printer system}}{26}
-\contentsline {figure}{\numberline {6.2}{\ignorespaces Rendering of additional PLA extruder module}}{27}
-\contentsline {figure}{\numberline {6.3}{\ignorespaces Rendering of auto-calibration plunger}}{27}
-\contentsline {figure}{\numberline {6.4}{\ignorespaces Fall Gantt Chart}}{30}
-\contentsline {figure}{\numberline {6.5}{\ignorespaces Winter Gantt Chart}}{30}
-\contentsline {figure}{\numberline {6.6}{\ignorespaces Spring Gantt Chart}}{30}
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Initial Incubator Prototype}}{20}
+\contentsline {figure}{\numberline {6.2}{\ignorespaces Mock up of home screen}}{21}
+\contentsline {figure}{\numberline {6.3}{\ignorespaces Mock up of temperature setting}}{22}
+\contentsline {figure}{\numberline {6.4}{\ignorespaces Mock up of light intensity setting}}{22}
+\contentsline {figure}{\numberline {6.5}{\ignorespaces Mock up of image capture setting}}{22}
+\contentsline {figure}{\numberline {6.6}{\ignorespaces Mock up confirming experiment begin }}{23}
+\contentsline {figure}{\numberline {6.7}{\ignorespaces Mock up of status screen during an experiment}}{23}
+\contentsline {figure}{\numberline {6.8}{\ignorespaces Mock up of how a dish is added in the middle of an experiment}}{24}
+\contentsline {figure}{\numberline {6.9}{\ignorespaces Mock up of how current status screen reflects addition of a dish}}{24}
+\contentsline {figure}{\numberline {6.10}{\ignorespaces Mock up of export images to a USB drive}}{25}
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {7.1}{\ignorespaces Rendering of additional PLA extruder module}}{28}
+\contentsline {figure}{\numberline {7.2}{\ignorespaces Rendering of auto-calibration plunger}}{29}
+\contentsline {figure}{\numberline {7.3}{\ignorespaces Fall Gantt Chart}}{31}
+\contentsline {figure}{\numberline {7.4}{\ignorespaces Winter Gantt Chart}}{31}
+\contentsline {figure}{\numberline {7.5}{\ignorespaces Spring Gantt Chart}}{31}
 \addvspace {10\p@ }
