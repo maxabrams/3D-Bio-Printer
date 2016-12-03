@@ -106,8 +106,38 @@ BioBots has a desktop 3D printer capable of printing tissues out of living cells
 
 After reviewing these printers, it is clear that they are all capable of completing the biological experiments that SE3D desires. The one aspect that they all do not meet, however, is that they are priced much higher than the average high school laboratory budget. Furthermore, these printers require high levels of knowledge in order to operate, which is not a reasonable expectation of high school students. To improve this aspect, the UI must be simplified and easy to use for people with less than a high school education. The closest competitors are Inkredible and BioBots, which are low cost and have simple user interfaces. The 3D Bioprinter that the team is working on improves on this problem by providing the necessary functionality at a more reasonable price closer to 3,000 USD. 
 
-
 % =======================================================================
+\section{Literature Review}
+
+The 3D Bioprinter project hopes to assist SE3D, a stem education and 3D Bioprinting company, in the development of their newest 3D bioprinter model. This project has been ongoing for several years, with the intention of improving upon the existing prototype, based on the company’s needs. 
+\\
+\textbf{Incubation Methods}
+\\
+When dealing with biological matter, the environment in which the material is placed must be carefully controlled. For this reason, part of the project objective is to explore possible mechanisms for monitoring temperature, humidity, and lighting during an experiment. Time is an important element for running lessons, and the printer may need to be used multiple times. In order to accommodate this, this project hopes to design an external incubator. The incubation system will be controlled using a microcontroller and must be low cost; these criteria drove primary research for the incubator.
+\\
+\textit{Ibrahim’s Low Cost Temperature Controllers}
+\\
+Ibrahim used micro-controllers to develop a low cost temperature control unit. His research illustrates how the temperature in a heat exchanger can be controlled with a micro-controller that controls the amount of radiation given off by the unit.  Since our projects focuses on the affordability of the Bioprinter for high schools, this method for temperature control demonstrates a way to keep the price low while still completing the temperature control criteria. This experimental procedure will be followed and further tested to determine how best to control the air surrounding the heat source, such that the entire incubation chamber temperature can be within a few degrees.
+\\
+\textbf{Z-axis and Multiple Material Printing}
+\\
+One focus of this project is to improve the system’s ability to print biomaterials in the third dimension. Currently, the printer is primarily used for 2D science experiments and utilizes a single extruder syringe to print experiments. This single syringe needs to be manually replaced if it runs out or if a new material is being printed. This project aims to implement a dual extruder to streamline the printing process and to enhance the structural capabilities of the printed materials, such that printing in the z-axis direction is less restricted. Research gathered on printers with multiple extruders will assist in understanding the ideal methods for efficiently printing multiple materials and printing in the z-axis direction.
+\\
+\textit{Ozbolat’s Multi-arm Bioprinter}
+\\
+The multi-arm bioprinter developed in 2014 created a method for printing two biological materials without manually replacing or exchanging the extruder source. Two fully independent robotic arms controlled the position, ejection speed, and temperature of the nozzle of each material. The single-arm multi-material test that was run by Ozbolat’s team required that the flow of the biological material was controlled externally from the robotic arm. Ozbolat’s lab ran tests using sodium alginate and calcium chloride, the same substances used for one of SE3D’s experiments; however, SE3D’s bioprinter has only one robotic arm to eject the biomaterial. The single-arm extruder method provides a base understanding of how to eject both materials from a single arm while still taking into account varying viscosity and temperature needs. 
+\\
+\textit{Gao’s Coaxial Nozzle Method}
+\\
+The 3D printer developed by Gao experimented with different flow rates and material concentrations to determine the optimum high strength printable biological material. The printer used an interchangeable coaxial nozzle to print the hollow cavity of the filament. This allowed the experimenters to control the inside diameter without significantly altering the outside diameter. SE3D’s bioprinter uses a single nozzle in the form of a syringe, which has made it difficult to print complex physical structures. Gao’s research differs from the mission of the project in that method for printing multiple materials is not restricted to a coaxial nozzle. However, the experimentation and successful creation of complex 3D structures using multiple materials is vital to the understanding of how to successfully implement true 3D printing. 
+\\
+\textbf{Software Redesign}
+\\
+The final design requirement requested by SE3D is improving the 3D printer control software system. The open source software that the system currently uses will be replaced by a new custom software environment that will create a simple GUI for the average high school student user. However, it will also be extensible to control all of the supplementary features that will be added in the redesign. This software environment will run on a built-in computer, making the printer a stand alone device. In order to develop this system, research must be conducted to understand the general software structure of a 3D printer.
+\\
+\textit{Rankin and OctoPrint}
+\\
+Previous processes for printing a 3D object involved generating a 3D model in STL format, converting the STL file to GCODE using a slicing software, then using a communication software, such as Pronterface, to load the GCODE and send it to the printer. What is problematic with using software like Pronterface is it needs to be run from an external computer that needs to be connected to the 3D printer at all times, which is the design SE3D currently uses. Rankin recommends a software called OctoPrint that runs the 3D printer control software on a web interface, so printing is controlled and monitored over the network and can be run off of a Raspberry Pi. Operating over the network allows for the potential to connect more control boards to the main interface, which allows more room to control the additional features planned for the printer.
 
 % =======================================================================
 
