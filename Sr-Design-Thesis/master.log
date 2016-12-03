@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2016.11.20)  2 DEC 2016 16:46
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2016.11.20)  2 DEC 2016 18:24
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -108,37 +108,42 @@ Package: hanging 2009/09/02 v1.2b hanging paragraphs and punctuation
 \h@ngexclwd=\skip55
 \h@ngcolonwd=\skip56
 \h@ngscolonwd=\skip57
-) (./master.aux
-(./abstract.aux) (./introduction.aux) (./requirements.aux) (./usecase.aux)
-(./activitydiagrams.aux) (./architectural.aux) (./boxsystem.aux)
-(./printersystem.aux) (./timeline.aux) (./references.aux))
+)
+(/usr/share/texlive/texmf-dist/tex/latex/changepage/changepage.sty
+Package: changepage 2009/10/20 v1.0c check page and change page layout
+\c@cp@cntr=\count95
+\cp@tempcnt=\count96
+)
+(./master.aux (./abstract.aux) (./introduction.aux) (./requirements.aux)
+(./usecase.aux) (./activitydiagrams.aux) (./architectural.aux) (./boxsystem.aux
+) (./printersystem.aux) (./timeline.aux) (./references.aux))
 \openout1 = `master.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 40.
+LaTeX Font Info:    ... okay on input line 40.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count95
+\scratchcounter=\count97
 \scratchdimen=\dimen112
 \scratchbox=\box28
-\nofMPsegments=\count96
-\nofMParguments=\count97
+\nofMPsegments=\count98
+\nofMParguments=\count99
 \everyMPshowfont=\toks19
-\MPscratchCnt=\count98
+\MPscratchCnt=\count100
 \MPscratchDim=\dimen113
-\MPnumerator=\count99
-\makeMPintoPDFobject=\count100
+\MPnumerator=\count101
+\makeMPintoPDFobject=\count102
 \everyMPtoPDFconversion=\toks20
 ) (/usr/share/texlive/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
 Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
@@ -189,9 +194,9 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 40.
+(Font)              <7> on input line 41.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <5> on input line 40.
+(Font)              <5> on input line 41.
 
 [1
 
@@ -267,46 +272,71 @@ Missing character: There is no ™ in font cmr10!
 Missing character: There is no â in font cmr10!
 Missing character: There is no € in font cmr10!
 Missing character: There is no ™ in font cmr10!
-Missing character: There is no â in font cmti10!
-Missing character: There is no € in font cmti10!
-Missing character: There is no ™ in font cmti10!
-Missing character: There is no â in font cmr10!
-Missing character: There is no € in font cmr10!
-Missing character: There is no ™ in font cmr10!
-Missing character: There is no â in font cmti10!
-Missing character: There is no € in font cmti10!
-Missing character: There is no ™ in font cmti10!
-Missing character: There is no â in font cmr10!
-Missing character: There is no € in font cmr10!
-Missing character: There is no ™ in font cmr10!
-Missing character: There is no â in font cmr10!
-Missing character: There is no € in font cmr10!
-Missing character: There is no ™ in font cmr10!
-Missing character: There is no â in font cmr10!
-Missing character: There is no € in font cmr10!
-Missing character: There is no ™ in font cmr10!
-Missing character: There is no â in font cmr10!
-Missing character: There is no € in font cmr10!
-Missing character: There is no ™ in font cmr10!
-Missing character: There is no â in font cmti10!
-Missing character: There is no € in font cmti10!
-Missing character: There is no ™ in font cmti10!
-Missing character: There is no â in font cmr10!
-Missing character: There is no € in font cmr10!
-Missing character: There is no ™ in font cmr10!
-Missing character: There is no â in font cmr10!
-Missing character: There is no € in font cmr10!
-Missing character: There is no ™ in font cmr10!
- [4] [5]
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 148.
 
+Underfull \hbox (badness 10000) in paragraph at lines 112--118
 
-(/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
+ []
+
+[4]
+Missing character: There is no â in font cmti10!
+Missing character: There is no € in font cmti10!
+Missing character: There is no ™ in font cmti10!
+
+Underfull \hbox (badness 10000) in paragraph at lines 120--124
+
+ []
+
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ™ in font cmr10!
+
+Underfull \hbox (badness 10000) in paragraph at lines 125--129
+
+ []
+
+Missing character: There is no â in font cmti10!
+Missing character: There is no € in font cmti10!
+Missing character: There is no ™ in font cmti10!
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ™ in font cmr10!
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ™ in font cmr10!
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ™ in font cmr10!
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ™ in font cmr10!
+Missing character: There is no â in font cmti10!
+Missing character: There is no € in font cmti10!
+Missing character: There is no ™ in font cmti10!
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ™ in font cmr10!
+Missing character: There is no â in font cmr10!
+Missing character: There is no € in font cmr10!
+Missing character: There is no ™ in font cmr10!
+
+Underfull \hbox (badness 10000) in paragraph at lines 131--139
+
+ []
+
+[5]
+Underfull \hbox (badness 10000) in paragraph at lines 140--144
+
+ []
+
+[6]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 156.
+
+ (/usr/share/texlive/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 148.
- [6]) [7]
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 156.
+) [7]
 \openout2 = `requirements.aux'.
 
 
@@ -336,7 +366,7 @@ Package pdftex.def Info: images/box-use-case.PNG used on input line 8.
 File: images/3D_Printer_UCD.png Graphic file (type png)
 
 <use images/3D_Printer_UCD.png>
-Package pdftex.def Info: images/3D_Printer_UCD.png used on input line 69.
+Package pdftex.def Info: images/3D_Printer_UCD.png used on input line 68.
 (pdftex.def)             Requested size: 344.2854pt x 585.18481pt.
  [12] [13 <./images/3D_Printer_UCD.png>]
 [14]) [15]
@@ -573,10 +603,10 @@ Missing character: There is no “ in font cmr10!
 secase.aux) (./activitydiagrams.aux) (./architectural.aux)
 (./boxsystem.aux) (./printersystem.aux) (./timeline.aux) (./references.aux)) ) 
 Here is how much of TeX's memory you used:
- 2049 strings out of 495028
- 30286 string characters out of 6181496
- 93294 words of memory out of 5000000
- 5145 multiletter control sequences out of 15000+600000
+ 2092 strings out of 495028
+ 30969 string characters out of 6181496
+ 90197 words of memory out of 5000000
+ 5184 multiletter control sequences out of 15000+600000
  6716 words of font info for 24 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  37i,9n,26p,1190b,269s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -586,7 +616,7 @@ hare/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/t
 exlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-
 dist/fonts/type1/public/amsfonts/cm/cmti10.pfb>
-Output written on master.pdf (38 pages, 2374756 bytes).
+Output written on master.pdf (38 pages, 2374579 bytes).
 PDF statistics:
  194 PDF objects out of 1000 (max. 8388607)
  103 compressed objects within 2 object streams
