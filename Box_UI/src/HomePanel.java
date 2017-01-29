@@ -9,7 +9,7 @@ public class HomePanel {
 	private String panelName; //Name for panel 
 	private JButton statusButton;
 	private JButton newExperimentButton;
-	private final String STATUS_BUTTON_TEXT = "Current System Status";
+	private final String STATUS_BUTTON_TEXT = "<html><u>Current System Status</u></html>";
 	private final String NEW_EXPERIMENT_BUTTON_TEXT = "Begin New Experiment";
 	
 	public HomePanel(){
@@ -21,7 +21,6 @@ public class HomePanel {
 		statusButton = new JButton(STATUS_BUTTON_TEXT);
 		statusButton.addActionListener(new ActionListener(){ //Add action listener to respond to button
 
-			@Override
 			public void actionPerformed(ActionEvent e) {
 				System.out.println("Checking system status!"); //Example action
 				
@@ -31,7 +30,6 @@ public class HomePanel {
 		newExperimentButton = new JButton(NEW_EXPERIMENT_BUTTON_TEXT);
 		newExperimentButton.addActionListener(new ActionListener(){
 
-			@Override
 			public void actionPerformed(ActionEvent e) { //Add Action listener to respond to button
 				System.out.println("Starting new experiment!"); //Example action
 				

@@ -20,6 +20,9 @@ public class GUI {
 		
 		ImagePanel imagePanel=new ImagePanel(); //Create a new Image Panel
 		mainPane.addTab(imagePanel.getPanelName(), imagePanel.getPanel());
+		
+		StatusPanel statusPanel = new StatusPanel();
+		mainPane.addTab(statusPanel.getPanelName(), statusPanel.getPanel());
 
 		
 		frame.add(mainPane); //Add the tabbed pane to the larger frame
