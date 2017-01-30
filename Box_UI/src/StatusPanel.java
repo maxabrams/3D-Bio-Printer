@@ -1,30 +1,21 @@
 
-import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
-import java.awt.event.KeyEvent;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import javax.swing.GroupLayout;
-import javax.swing.JButton;
 import javax.swing.JCheckBox;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JSpinner;
-import javax.swing.LayoutStyle;
-import javax.swing.SpinnerModel;
-import javax.swing.SpinnerNumberModel;
+
 
 public class StatusPanel implements ItemListener {
 	private JPanel statusPanel; //Panel to make modifications to 
 	private String panelName; //Name for panel 
-	private JButton statusButton;
-	private JButton newExperimentButton;
-	private final String STATUS_BUTTON_TEXT = "Images1";
-	private final String NEW_EXPERIMENT_BUTTON_TEXT = "Imgaes2";
+	private Font checkboxFont= new Font("Arial", Font.BOLD, 20);
+	private String timeStamp= new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
+
 	
 	private JCheckBox dish_1, dish_2, dish_3, dish_4, dish_5, dish_6, dish_7, dish_8, dish_9; 
 	
@@ -54,8 +45,6 @@ public class StatusPanel implements ItemListener {
 		dish_8 = new JCheckBox("Dish 8");
 		dish_9 = new JCheckBox("Dish 9");
 
-
-		
 		dish_1.addItemListener(this);
 		dish_2.addItemListener(this);
 		dish_3.addItemListener(this);
@@ -65,51 +54,59 @@ public class StatusPanel implements ItemListener {
 		dish_7.addItemListener(this);
 		dish_8.addItemListener(this);
 		dish_9.addItemListener(this);
-
+		
+		dish_1.setFont(checkboxFont);
+		dish_2.setFont(checkboxFont);
+		dish_3.setFont(checkboxFont);
+		dish_4.setFont(checkboxFont);
+		dish_5.setFont(checkboxFont);
+		dish_6.setFont(checkboxFont);
+		dish_7.setFont(checkboxFont);
+		dish_8.setFont(checkboxFont);
+		dish_9.setFont(checkboxFont);
+		
 		//Add components
 		//3x3 matrix
 		layout.setHorizontalGroup(
 				layout.createSequentialGroup()
 				.addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-						.addComponent(dish_1)
-						.addComponent(dish_2)
-						.addComponent(dish_3)
+						.addComponent(dish_1,100,100,100)
+						.addComponent(dish_2,100,100,100)
+						.addComponent(dish_3,100,100,100)
 						)
 				.addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-						.addComponent(dish_4)
-						.addComponent(dish_5)
-						.addComponent(dish_6)
+						.addComponent(dish_4,100,100,100)
+						.addComponent(dish_5,100,100,100)
+						.addComponent(dish_6,100,100,100)
 						
 						)
 				.addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-						.addComponent(dish_7)
-						.addComponent(dish_8)
-						.addComponent(dish_9)						)
+						.addComponent(dish_7,100,100,100)
+						.addComponent(dish_8,100,100,100)
+						.addComponent(dish_9,100,100,100)						)
 		
 		);
 		
 		layout.setVerticalGroup(
 				layout.createSequentialGroup()
 				.addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-						.addComponent(dish_1)
-						.addComponent(dish_4)
-						.addComponent(dish_7)
+						.addComponent(dish_1,100,100,100)
+						.addComponent(dish_4,100,100,100)
+						.addComponent(dish_7,100,100,100)
 						)
 				.addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-						.addComponent(dish_2)
-						.addComponent(dish_5)
-						.addComponent(dish_8)
+						.addComponent(dish_2,100,100,100)
+						.addComponent(dish_5,100,100,100)
+						.addComponent(dish_8,100,100,100)
 						
 						)
 				.addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-						.addComponent(dish_3)
-						.addComponent(dish_6)
-						.addComponent(dish_9))
+						.addComponent(dish_3,100,100,100)
+						.addComponent(dish_6,100,100,100)
+						.addComponent(dish_9,100,100,100)
+						)
 				);
 
-		
-//		imagePanel.add(statusButton);
-//		imagePanel.add(numSpinner);
 	}
 	
 
@@ -129,10 +126,19 @@ public class StatusPanel implements ItemListener {
 		return this.panelName;
 	}
 
+	// behavior when checkbox is clicked
 	public void itemStateChanged(ItemEvent e) {
 		// TODO Auto-generated method stub
 		
 		Object source= e.getItemSelectable();
+		if(e.getStateChange()==1){
+			timeStamp= new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
+			System.out.println("Selected"+" "+ timeStamp);
+			}
+		else{
+			timeStamp= new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
+			System.out.println("Deselected"+" "+ timeStamp);
+			}
 		
 		if (source==dish_1){
 			System.out.println("dish_1");

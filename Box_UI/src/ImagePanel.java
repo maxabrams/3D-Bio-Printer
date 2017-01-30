@@ -1,6 +1,4 @@
-import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -9,7 +7,6 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSpinner;
-import javax.swing.LayoutStyle;
 import javax.swing.SpinnerModel;
 import javax.swing.SpinnerNumberModel;
 
@@ -17,9 +14,7 @@ public class ImagePanel {
 	private JPanel imagePanel; //Panel to make modifications to 
 	private String panelName; //Name for panel 
 	private JButton statusButton;
-	private JButton newExperimentButton;
 	private final String STATUS_BUTTON_TEXT = "Images1";
-	private final String NEW_EXPERIMENT_BUTTON_TEXT = "Imgaes2";
 	
 	public ImagePanel(){
 		//Initialize components
