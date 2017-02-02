@@ -1,0 +1,64 @@
+
+public class TempControl implements Runnable {
+	private volatile boolean running = true;
+	private double threshold = 2;
+	private double target = 70;
+	private boolean isRelayOn = false;
+	private static int RELAY_PIN = 15;
+	@Override
+	public void run() {
+
+		while (running) {
+			double currTemp = getTemp();
+			
+			if(currTemp< target - threshold){
+				heaterOn();
+			}else if(currTemp >= target){
+				heaterOff();
+			}
+			
+			try {
+				Thread.sleep(1000);
+			} catch (InterruptedException e) {
+				System.out.println("Could not sleep!");
+			}
+			
+			System.out.println("still running");
+		}
+		
+		System.out.println("done");
+	}
+
+	public void shutdown() {
+		running = false;
+	}
+	
+	
+	private double getTemp(){
+		return -1;
+	}
+	
+	private void heaterOn(){
+		if(!isRelayOn){
+			//Turn relay on
+		}
+	}
+	
+	private void heaterOff(){
+		if(isRelayOn){
+			//turn Relay off
+		}
+		
+	}
+	
+	public void updateTarget(double newTarget){
+		target = newTarget;
+		System.out.println("new target:" + target);
+	}
+	
+	public void updateThreshold(double newThreshold){
+		threshold = newThreshold;
+		System.out.println("new threshold:" + threshold);
+	}
+	
+}
