@@ -16,7 +16,7 @@ public class StatusPanel implements ItemListener {
 	private Font checkboxFont= new Font("Arial", Font.BOLD, 20);
 	private String timeStamp= new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
 
-	
+	private int boxSize= 150;
 	private JCheckBox dish_1, dish_2, dish_3, dish_4, dish_5, dish_6, dish_7, dish_8, dish_9; 
 	
 	public StatusPanel(){
@@ -70,40 +70,40 @@ public class StatusPanel implements ItemListener {
 		layout.setHorizontalGroup(
 				layout.createSequentialGroup()
 				.addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-						.addComponent(dish_1,100,100,100)
-						.addComponent(dish_2,100,100,100)
-						.addComponent(dish_3,100,100,100)
+						.addComponent(dish_1,boxSize,boxSize,boxSize)
+						.addComponent(dish_2,boxSize,boxSize,boxSize)
+						.addComponent(dish_3,boxSize,boxSize,boxSize)
 						)
 				.addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-						.addComponent(dish_4,100,100,100)
-						.addComponent(dish_5,100,100,100)
-						.addComponent(dish_6,100,100,100)
+						.addComponent(dish_4,boxSize,boxSize,boxSize)
+						.addComponent(dish_5,boxSize,boxSize,boxSize)
+						.addComponent(dish_6,boxSize,boxSize,boxSize)
 						
 						)
 				.addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-						.addComponent(dish_7,100,100,100)
-						.addComponent(dish_8,100,100,100)
-						.addComponent(dish_9,100,100,100)						)
+						.addComponent(dish_7,boxSize,boxSize,boxSize)
+						.addComponent(dish_8,boxSize,boxSize,boxSize)
+						.addComponent(dish_9,boxSize,boxSize,boxSize)						)
 		
 		);
 		
 		layout.setVerticalGroup(
 				layout.createSequentialGroup()
 				.addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-						.addComponent(dish_1,100,100,100)
-						.addComponent(dish_4,100,100,100)
-						.addComponent(dish_7,100,100,100)
+						.addComponent(dish_1,boxSize,boxSize,boxSize)
+						.addComponent(dish_4,boxSize,boxSize,boxSize)
+						.addComponent(dish_7,boxSize,boxSize,boxSize)
 						)
 				.addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-						.addComponent(dish_2,100,100,100)
-						.addComponent(dish_5,100,100,100)
-						.addComponent(dish_8,100,100,100)
+						.addComponent(dish_2,boxSize,boxSize,boxSize)
+						.addComponent(dish_5,boxSize,boxSize,boxSize)
+						.addComponent(dish_8,boxSize,boxSize,boxSize)
 						
 						)
 				.addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-						.addComponent(dish_3,100,100,100)
-						.addComponent(dish_6,100,100,100)
-						.addComponent(dish_9,100,100,100)
+						.addComponent(dish_3,boxSize,boxSize,boxSize)
+						.addComponent(dish_6,boxSize,boxSize,boxSize)
+						.addComponent(dish_9,boxSize,boxSize,boxSize)
 						)
 				);
 
