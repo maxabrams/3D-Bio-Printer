@@ -1,11 +1,8 @@
-package src;
-
-
 /**
- * Write a description of class GPIO_PIN here.
+ * GPIO_CLASS
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author Max Abrams & Cynthia Le
+ * @version 1.0
  */
 import java.io.BufferedReader;
 import java.io.File;

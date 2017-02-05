@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename compilation unit &apos;Thermostat.java&apos; to &apos;TemperaturePanel.java&apos;&#x0A;- Original project: &apos;Box_UI&apos;&#x0A;- Original element: &apos;Thermostat.java&apos;&#x0A;- Renamed element: &apos;TemperaturePanel.java&apos;" description="Rename compilation unit &apos;Thermostat.java&apos;" flags="2" id="org.eclipse.jdt.ui.rename.compilationunit" input="/src&lt;{Thermostat.java" name="TemperaturePanel.java" references="false" stamp="1486254787031" version="1.0"/>
+</session>
