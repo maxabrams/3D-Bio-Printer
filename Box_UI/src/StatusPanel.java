@@ -1,5 +1,6 @@
 
 import java.awt.Font;
+import java.awt.Frame;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.text.SimpleDateFormat;
@@ -7,17 +8,22 @@ import java.util.Date;
 
 import javax.swing.GroupLayout;
 import javax.swing.JCheckBox;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+
 
 
 public class StatusPanel implements ItemListener {
 	private JPanel statusPanel; //Panel to make modifications to 
 	private String panelName; //Name for panel 
 	private Font checkboxFont= new Font("Arial", Font.BOLD, 20);
-	private String timeStamp= new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
-
-	private int boxSize= 150;
+	private String timeStampString= new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
+	private int timeStamp;
+	
 	private JCheckBox dish_1, dish_2, dish_3, dish_4, dish_5, dish_6, dish_7, dish_8, dish_9; 
+	private Dish exp1, exp2, exp3, exp4, exp5, exp6, exp7, exp8, exp9;
+	
+	private Frame frame=new Frame();
 	
 	public StatusPanel(){
 		//Initialize components
@@ -65,45 +71,56 @@ public class StatusPanel implements ItemListener {
 		dish_8.setFont(checkboxFont);
 		dish_9.setFont(checkboxFont);
 		
+		//create Dishes
+		exp1=new Dish();
+		exp2=new Dish();
+		exp3=new Dish();
+		exp4=new Dish();
+		exp5=new Dish();
+		exp6=new Dish();
+		exp7=new Dish();
+		exp8=new Dish();
+		exp9=new Dish();
+		
 		//Add components
 		//3x3 matrix
 		layout.setHorizontalGroup(
 				layout.createSequentialGroup()
 				.addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-						.addComponent(dish_1,boxSize,boxSize,boxSize)
-						.addComponent(dish_2,boxSize,boxSize,boxSize)
-						.addComponent(dish_3,boxSize,boxSize,boxSize)
+						.addComponent(dish_1,100,100,100)
+						.addComponent(dish_2,100,100,100)
+						.addComponent(dish_3,100,100,100)
 						)
 				.addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-						.addComponent(dish_4,boxSize,boxSize,boxSize)
-						.addComponent(dish_5,boxSize,boxSize,boxSize)
-						.addComponent(dish_6,boxSize,boxSize,boxSize)
+						.addComponent(dish_4,100,100,100)
+						.addComponent(dish_5,100,100,100)
+						.addComponent(dish_6,100,100,100)
 						
 						)
 				.addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-						.addComponent(dish_7,boxSize,boxSize,boxSize)
-						.addComponent(dish_8,boxSize,boxSize,boxSize)
-						.addComponent(dish_9,boxSize,boxSize,boxSize)						)
+						.addComponent(dish_7,100,100,100)
+						.addComponent(dish_8,100,100,100)
+						.addComponent(dish_9,100,100,100)						)
 		
 		);
 		
 		layout.setVerticalGroup(
 				layout.createSequentialGroup()
 				.addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-						.addComponent(dish_1,boxSize,boxSize,boxSize)
-						.addComponent(dish_4,boxSize,boxSize,boxSize)
-						.addComponent(dish_7,boxSize,boxSize,boxSize)
+						.addComponent(dish_1,100,100,100)
+						.addComponent(dish_4,100,100,100)
+						.addComponent(dish_7,100,100,100)
 						)
 				.addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-						.addComponent(dish_2,boxSize,boxSize,boxSize)
-						.addComponent(dish_5,boxSize,boxSize,boxSize)
-						.addComponent(dish_8,boxSize,boxSize,boxSize)
+						.addComponent(dish_2,100,100,100)
+						.addComponent(dish_5,100,100,100)
+						.addComponent(dish_8,100,100,100)
 						
 						)
 				.addGroup(layout.createParallelGroup(GroupLayout.Alignment.LEADING)
-						.addComponent(dish_3,boxSize,boxSize,boxSize)
-						.addComponent(dish_6,boxSize,boxSize,boxSize)
-						.addComponent(dish_9,boxSize,boxSize,boxSize)
+						.addComponent(dish_3,100,100,100)
+						.addComponent(dish_6,100,100,100)
+						.addComponent(dish_9,100,100,100)
 						)
 				);
 
@@ -129,19 +146,29 @@ public class StatusPanel implements ItemListener {
 	// behavior when checkbox is clicked
 	public void itemStateChanged(ItemEvent e) {
 		// TODO Auto-generated method stub
-		
+		System.out.println("top");
 		Object source= e.getItemSelectable();
+		timeStampString= new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
+
 		if(e.getStateChange()==1){
-			timeStamp= new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
-			System.out.println("Selected"+" "+ timeStamp);
+			System.out.println("Selected"+" "+ timeStampString);
 			}
 		else{
-			timeStamp= new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss").format(new Date());
-			System.out.println("Deselected"+" "+ timeStamp);
+			System.out.println("Deselected"+" "+ timeStampString);
 			}
 		
+		
+		//right now only save time- but probably need to save date too but it won't let me save it all in an Int
+		timeStamp= Integer.parseInt(new SimpleDateFormat("HHmmss").format(new Date()));
+
 		if (source==dish_1){
+			
+			exp1.setTimeStart(timeStamp);
+			System.out.println(exp1.getTimeStart());
 			System.out.println("dish_1");
+			getInformation(exp1);
+			//this causes state change, so calls this function again and deselects the dish
+			
 		}else if (source==dish_2){
 			System.out.println("dish_2");
 		}
@@ -166,5 +193,25 @@ public class StatusPanel implements ItemListener {
 			System.out.println("dish_9");
 		}
 	}
+	
+	public void getInformation(Dish dish){
+		String fileName = (String)JOptionPane.showInputDialog(
+		                    frame,
+		                    "Enter File Name:\n",
+		                    "Customized Dialog",
+		                    JOptionPane.PLAIN_MESSAGE
+		                   );
+			
+		//TODO: text validation for appropriate file names
+		if ((fileName != null) && (fileName.length() > 0)) {
+			dish.setFileName(fileName);
+			System.out.println(dish.getFileName());
+			return;
+		}
+
+		//If you're here, the return value was null/empty.
+		
+	}
+	
 	
 }

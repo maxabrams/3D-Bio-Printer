@@ -1,0 +1,51 @@
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+
+public class Thermostat {
+
+	private final static int SCREEN_WIDTH = 400;
+	private final static int SCREEN_HEIGHT = 400;
+	private final static String STOP_BUTTON_TEXT = "Stop"; 
+	private final static String START_BUTTON_TEXT = "Run"; 
+	private JButton startExperiment;
+	private JButton stoptExperiment;
+	
+	public Thermostat(){
+		JFrame frame = new JFrame("Thermostat"); //Make a frame tabbed pane
+	    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //Set exit by default when close 
+		JPanel mainPanel = new JPanel();
+		mainPanel.setLayout(new GridLayout(1,2)); //Add a layout manager to align buttons as we resize
+		
+		startExperiment = new JButton(START_BUTTON_TEXT);
+		startExperiment.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) { //Add Action listener to respond to button
+				System.out.println("Starting new experiment!"); //Example action
+				
+			}
+			
+		});
+		
+		stoptExperiment = new JButton(STOP_BUTTON_TEXT);
+		stopExperiment.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) { //Add Action listener to respond to button
+				System.out.println("Starting new experiment!"); //Example action
+				
+			}
+			
+		});
+		
+		frame.setSize(SCREEN_HEIGHT, SCREEN_WIDTH); //Set to screen resolution
+	    frame.setVisible(true);
+		
+	}
+	
+}

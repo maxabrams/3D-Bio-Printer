@@ -1,16 +1,2 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<qualifiedTypeNameHistroy>
-<fullyQualifiedTypeName name="javax.swing.JTabbedPane"/>
-<fullyQualifiedTypeName name="javax.swing.JComponent"/>
-<fullyQualifiedTypeName name="java.awt.Component"/>
-<fullyQualifiedTypeName name="javax.swing.JFrame"/>
-<fullyQualifiedTypeName name="javax.swing.JButton"/>
-<fullyQualifiedTypeName name="java.awt.GridLayout"/>
-<fullyQualifiedTypeName name="javax.swing.JPanel"/>
-<fullyQualifiedTypeName name="javax.swing.JSlider"/>
-<fullyQualifiedTypeName name="javax.swing.JLabel"/>
-<fullyQualifiedTypeName name="java.awt.FlowLayout"/>
-<fullyQualifiedTypeName name="javax.swing.SwingUtilities"/>
-<fullyQualifiedTypeName name="java.awt.EventQueue"/>
-<fullyQualifiedTypeName name="javax.swing.JTextField"/>
-</qualifiedTypeNameHistroy>
+<qualifiedTypeNameHistroy/>

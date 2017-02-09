@@ -1,0 +1,28 @@
+
+public class Dish {
+	private int picsPerMinute;
+	private String fileName;
+	private String timeStart;
+	
+	
+	
+	public int getPicsPerMinute() {
+		return picsPerMinute;
+	}
+	public void setPicsPerMinute(int picsPerMinute) {
+		this.picsPerMinute = picsPerMinute;
+	}
+	public String getFileName() {
+		return fileName;
+	}
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+	public String getTimeStart() {
+		return timeStart;
+	}
+	public void setTimeStart(String timeStart) {
+		this.timeStart = timeStart;
+	}
+	
+}

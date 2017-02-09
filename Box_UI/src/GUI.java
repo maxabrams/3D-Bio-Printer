@@ -3,7 +3,7 @@ import javax.swing.JTabbedPane;
 
 public class GUI {
 	//Screen size
-	private final static int SCREEN_WIDTH = 480;
+	private final static int SCREEN_WIDTH = 600;
 	private final static int SCREEN_HEIGHT = 800;
 	
 	//Main runnable class to create GUI
@@ -16,13 +16,13 @@ public class GUI {
 		 * ImageIcon icon = createImageIcon("images/icon.gif");
 		 */
 		HomePanel homePanel = new HomePanel(); //Create a new Home Panel
-		mainPane.addTab(homePanel.getPanelName(), homePanel.getPanel());
-		
 		CameraPanel cameraPanel = new CameraPanel();
+		CameraPanel cameraPanel1 = new CameraPanel();
+		LightingPanel cameraPanel2 = new LightingPanel();
+		mainPane.addTab(homePanel.getPanelName(), homePanel.getPanel());
 		mainPane.addTab(cameraPanel.getPanelName(),cameraPanel.getPanel());
-	
-		TemperaturePanel temperaturePanel = new TemperaturePanel();
-		mainPane.addTab(temperaturePanel.getPanelName(), temperaturePanel.getPanel());
+		mainPane.addTab("Experiment Settings",cameraPanel1.getPanel());
+		mainPane.addTab("Lighting Control",cameraPanel2.getPanel());
 		
 		ImagePanel imagePanel=new ImagePanel(); //Create a new Image Panel
 		mainPane.addTab(imagePanel.getPanelName(), imagePanel.getPanel());
