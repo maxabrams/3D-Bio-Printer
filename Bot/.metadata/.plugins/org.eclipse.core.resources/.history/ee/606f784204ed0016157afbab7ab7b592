@@ -1,0 +1,59 @@
+import java.awt.Color;
+import java.awt.Robot;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+
+import javax.swing.JFrame;
+
+public class ColorPicker extends JFrame {
+	private static Robot bot;
+	
+	public ColorPicker(){
+		super();
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	    setVisible(true);
+	    addMouseListener(new MouseListener(){
+	        @Override
+	        public void mouseClicked(MouseEvent e) {
+	            System.out.println("Pixel:"+e.getX()+","+e.getY());             
+	            try {
+	                System.out.println(getPixel(e.getX(),e.getY()));
+	            } catch (AWTException e1) {
+	                // TODO Auto-generated catch block
+	                e1.printStackTrace();
+	            }
+
+	        }
+
+	        @Override
+	        public void mouseEntered(MouseEvent e) {
+	            // TODO Auto-generated method stub
+
+	        }
+
+	        @Override
+	        public void mouseExited(MouseEvent e) {
+	            // TODO Auto-generated method stub
+
+	        }
+
+	        @Override
+	        public void mousePressed(MouseEvent e) {
+	            // TODO Auto-generated method stub
+
+	        }
+
+	        @Override
+	        public void mouseReleased(MouseEvent e) {
+	            // TODO Auto-generated method stub
+
+	        }
+
+	    });
+	}
+
+	public static Color getPixel(int x,int y) throws AWTException{
+	    Robot bot = new Robot();
+	    return bot.getPixelColor(x, y);
+	} 
+}
