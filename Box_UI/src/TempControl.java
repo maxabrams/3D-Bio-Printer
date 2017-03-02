@@ -1,9 +1,5 @@
-package src;
 
-<<<<<<< HEAD
 //import com.pi4j.io.gpio.*;
-=======
->>>>>>> 6a2fca55634cdbde1f9443f1b5cb6829e498272e
 import java.io.*;
 
 import javax.swing.JLabel;
@@ -14,13 +10,8 @@ public class TempControl implements Runnable {
     private double threshold = 2;
     private double target = 20;
     private boolean isRelayOn = false;
-<<<<<<< HEAD
     private static int RELAY_PIN = 26;
     private static int TEMP_PIN = 20;
-=======
-    private static int RELAY_PIN = 18;
-    private static int TEMP_PIN = 17;
->>>>>>> 6a2fca55634cdbde1f9443f1b5cb6829e498272e
   //  private GPIO_Pin relay;
    // private GpioController gpio;
    // private GpioPinDigitalOutput pin;
@@ -28,17 +19,11 @@ public class TempControl implements Runnable {
     private static final String PATH_TO_RELAY_OFF = "/home/pi/py/relay_off.py";
     private static final String PATH_TO_RELAY_ON = "/home/pi/py/relay_on.py";
     JLabel output;
-<<<<<<< HEAD
     JLabel status;
     
     public TempControl(JLabel status, JLabel label){
         this.status = status;
         output = label;
-=======
-    
-    public TempControl(JLabel label){
-    	output = label;
->>>>>>> 6a2fca55634cdbde1f9443f1b5cb6829e498272e
         //relay = new GPIO_Pin(RELAY_PIN);
        /* gpio = GpioFactory.getInstance();
         pin = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_18, "Relay", PinState.LOW);
@@ -53,16 +38,10 @@ public class TempControl implements Runnable {
             double currTemp = getTemp();
             System.out.println("curr Temp: "+ currTemp);
             
-<<<<<<< HEAD
             if(currTemp==Integer.MIN_VALUE){   
                 System.out.println("error temp sensor output!");
                 output.setText("Error");
                 status.setText("Status: Error! No temperature sensor!");
-=======
-            if(currTemp< target - threshold){
-                heaterOn();
-            }else{ //if(currTemp >= target)
->>>>>>> 6a2fca55634cdbde1f9443f1b5cb6829e498272e
                 heaterOff();
             }else{
                 status.setText("Status: Running");
@@ -79,17 +58,6 @@ public class TempControl implements Runnable {
                 }
                 output.setText("Current Temp: " + currTemp);
             }
-<<<<<<< HEAD
-=======
-            
-            try {
-                Thread.sleep(1000);
-            } catch (InterruptedException e) {
-                System.out.println("Could not sleep!");
-            }
-           
-            output.setText("Current Temp: " + currTemp);
->>>>>>> 6a2fca55634cdbde1f9443f1b5cb6829e498272e
         }
         heaterOff();
         System.out.println("done");
@@ -108,7 +76,6 @@ public class TempControl implements Runnable {
         String consoleOutput = stdInput.readLine();//For some reason only 15 works with library
         //System.out.println(consoleOutput);
         consoleOutput = consoleOutput.substring(5,9);
-<<<<<<< HEAD
         if (consoleOutput.matches("\\d*\\.?\\d*")){
             return Double.parseDouble(consoleOutput);
         }else{//if invalid input
@@ -119,12 +86,6 @@ public class TempControl implements Runnable {
     }catch(IOException e){
         System.out.println("Error could not read temp");
         return Integer.MIN_VALUE;
-=======
-        return Double.parseDouble(consoleOutput);
-    }catch(IOException e){
-        System.out.println("Error could not read temp");
-        return -1;
->>>>>>> 6a2fca55634cdbde1f9443f1b5cb6829e498272e
     }
     }
     
@@ -134,11 +95,7 @@ public class TempControl implements Runnable {
             System.out.println("Heater is on");
             //relay.setHIGH();
             //pin.high();
-<<<<<<< HEAD
         try{
-=======
-            try{
->>>>>>> 6a2fca55634cdbde1f9443f1b5cb6829e498272e
             Process pOn = Runtime.getRuntime().exec("sudo python " + PATH_TO_RELAY_ON + " " + RELAY_PIN);
         }catch(IOException e){
               System.out.println("Error could not turn on");
@@ -154,15 +111,9 @@ public class TempControl implements Runnable {
             //relay.setLOW();
             //pin.low();
             try{
-<<<<<<< HEAD
                 Process pOff = Runtime.getRuntime().exec("sudo python " + PATH_TO_RELAY_OFF + " " + RELAY_PIN);
              }catch(IOException e){
                  System.out.println("Error could not turn off");
-=======
-            	Process pOff = Runtime.getRuntime().exec("sudo python " + PATH_TO_RELAY_OFF + " " + RELAY_PIN);
-             }catch(IOException e){
-            	 System.out.println("Error could not turn off");
->>>>>>> 6a2fca55634cdbde1f9443f1b5cb6829e498272e
              }
             isRelayOn = false;
         }

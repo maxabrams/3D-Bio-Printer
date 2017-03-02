@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-package src;
-=======
->>>>>>> 6a2fca55634cdbde1f9443f1b5cb6829e498272e
 
 import javax.swing.JFrame;
 import javax.swing.JTabbedPane;

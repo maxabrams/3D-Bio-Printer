@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-package src;
-=======
->>>>>>> 6a2fca55634cdbde1f9443f1b5cb6829e498272e
 
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
@@ -40,11 +36,7 @@ public class TemperaturePanel {
 			public void actionPerformed(ActionEvent e) { //Add Action listener to respond to button
 				updateStatus("Running");
 				stop(); //Make sure no existing thread
-<<<<<<< HEAD
 				controlThread = new TempControl(statusLabel, output);
-=======
-				controlThread = new TempControl(output);
->>>>>>> 6a2fca55634cdbde1f9443f1b5cb6829e498272e
 				controlThread.updateThreshold(Double.parseDouble(thresholdField.getText()));
 				controlThread.updateTarget(Double.parseDouble(targetField.getText()));
 				new Thread(controlThread).start();

@@ -1,5 +1,3 @@
-package src;
-
 
 import java.awt.Font;
 import java.awt.Frame;
