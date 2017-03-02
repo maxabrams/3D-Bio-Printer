@@ -1,3 +1,5 @@
+package src;
+
 
 public class Dish {
 	private int picsPerMinute;

@@ -1,0 +1,20 @@
+#BlueJ class context
+comment0.params=
+comment0.target=TemperaturePanel()
+comment1.params=e
+comment1.target=void\ actionPerformed(java.awt.event.ActionEvent)
+comment2.params=e
+comment2.target=void\ actionPerformed(java.awt.event.ActionEvent)
+comment3.params=e
+comment3.target=void\ actionPerformed(java.awt.event.ActionEvent)
+comment4.params=e
+comment4.target=void\ actionPerformed(java.awt.event.ActionEvent)
+comment5.params=
+comment5.target=javax.swing.JPanel\ getPanel()
+comment6.params=
+comment6.target=java.lang.String\ getPanelName()
+comment7.params=newStatus
+comment7.target=void\ updateStatus(java.lang.String)
+comment8.params=
+comment8.target=void\ stop()
+numComments=9

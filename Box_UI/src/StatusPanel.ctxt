@@ -1,0 +1,18 @@
+#BlueJ class context
+comment0.params=
+comment0.target=StatusPanel()
+comment1.params=
+comment1.target=javax.swing.JPanel\ getPanel()
+comment1.text=\n\ Accessor\ for\ Status\ Panel's\ JPanel\n\ @returns\ JPanel\n
+comment2.params=
+comment2.target=java.lang.String\ getPanelName()
+comment2.text=\n\ Accessor\ for\ Status\ Panel's\ name\n\ @returns\ String\n
+comment3.params=dish
+comment3.target=void\ showDialogBox(Dish)
+comment4.params=dish
+comment4.target=void\ dishSelected(Dish)
+comment5.params=dish
+comment5.target=void\ dishDeSelected(Dish)
+comment6.params=e
+comment6.target=void\ actionPerformed(java.awt.event.ActionEvent)
+numComments=7

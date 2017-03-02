@@ -1,3 +1,5 @@
+package src;
+
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -47,9 +49,9 @@ public class ImagePanel {
 		JLabel duration= new JLabel("Total time of Experiment (hours |minutes)");
 		JLabel title = new JLabel("Image Capture");
 		
-		capture.setFont(new Font("Arial",Font.PLAIN, 24));
-		duration.setFont(new Font("Arial",Font.PLAIN, 24));
-		title.setFont(new Font("Arial",Font.PLAIN, 30));
+		capture.setFont(new Font("Arial",Font.PLAIN, 18));
+		duration.setFont(new Font("Arial",Font.PLAIN, 18));
+		title.setFont(new Font("Arial",Font.PLAIN, 20));
 		
 		//Setup number selectors
 		SpinnerModel captureModel= new SpinnerNumberModel(0,0,60,1);

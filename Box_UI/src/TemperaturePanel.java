@@ -1,3 +1,5 @@
+package src;
+
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -21,11 +23,12 @@ public class TemperaturePanel {
 	private int target = 20;
 	private int threshold = 2;
 	private JPanel mainPanel;
+	private JLabel output;
 	
 	public TemperaturePanel(){
 		mainPanel = new JPanel();
 		mainPanel.setLayout(new FlowLayout()); //Add a layout manager to align buttons as we resize
-		
+		output = new JLabel();
 		//Start button
 		startExperiment = new JButton(START_BUTTON_TEXT);
 		startExperiment.addActionListener(new ActionListener(){
@@ -34,7 +37,7 @@ public class TemperaturePanel {
 			public void actionPerformed(ActionEvent e) { //Add Action listener to respond to button
 				updateStatus("Running");
 				stop(); //Make sure no existing thread
-				controlThread = new TempControl();
+				controlThread = new TempControl(statusLabel, output);
 				controlThread.updateThreshold(Double.parseDouble(thresholdField.getText()));
 				controlThread.updateTarget(Double.parseDouble(targetField.getText()));
 				new Thread(controlThread).start();
@@ -85,6 +88,7 @@ public class TemperaturePanel {
 		mainPanel.add(stopExperiment);
 		mainPanel.add(targetField);
 		mainPanel.add(thresholdField);
+		mainPanel.add(output);
 	}
 	
 	public JPanel getPanel(){
@@ -105,5 +109,7 @@ public class TemperaturePanel {
 			controlThread = null;
 		}
 	}
+	
+	
 
 }
