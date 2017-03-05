@@ -196,9 +196,6 @@ public class StatusPanel implements ActionListener {
 		myPanel.add(Box.createHorizontalStrut(15)); // a spacer
 		// input second/minute/hour
 		myPanel.add(timeList);
-		
-		// add in another input line for total duration and time
-		// do math that shows how many photos will be atken
 
 		// Show Option Pop up
 		JOptionPane.showConfirmDialog(null, myPanel,
@@ -280,7 +277,7 @@ public class StatusPanel implements ActionListener {
 		captureMetric = (String) timeList.getSelectedItem();
 		dish.setCaptureRate(captureRate);
 		dish.setCaptureMetric(captureMetric);
-		whatCheckBox(dish.getDishString()).setSelected(true);
+		whatCheckBox(dish.getDishString()).setSelected(false);
 		
 	}
 

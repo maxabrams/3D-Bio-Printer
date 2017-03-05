@@ -2,19 +2,24 @@ import java.awt.Font;
 import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.text.SimpleDateFormat;
-import java.util.Arrays;
 import java.util.Date;
 
 import javax.swing.Box;
 import javax.swing.GroupLayout;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
+import javax.swing.JFormattedTextField;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSpinner;
+import javax.swing.JTextField;
+import javax.swing.SpinnerModel;
 import javax.swing.SpinnerNumberModel;
+import javax.swing.text.MaskFormatter;
 
 public class StatusPanel implements ActionListener {
 	private JPanel statusPanel; // Panel to make modifications to
@@ -81,15 +86,15 @@ public class StatusPanel implements ActionListener {
 		dish_9.setFont(checkboxFont);
 
 		// create Dishes
-		exp1 = new Dish("dish_1");
-		exp2 = new Dish("dish_2");
-		exp3 = new Dish("dish_3");
-		exp4 = new Dish("dish_4");
-		exp5 = new Dish("dish_5");
-		exp6 = new Dish("dish_6");
-		exp7 = new Dish("dish_7");
-		exp8 = new Dish("dish_8");
-		exp9 = new Dish("dish_9");
+		exp1 = new Dish();
+		exp2 = new Dish();
+		exp3 = new Dish();
+		exp4 = new Dish();
+		exp5 = new Dish();
+		exp6 = new Dish();
+		exp7 = new Dish();
+		exp8 = new Dish();
+		exp9 = new Dish();
 
 		// Add components
 		// 3x3 matrix
@@ -172,8 +177,29 @@ public class StatusPanel implements ActionListener {
 			// show image capture information
 			return fileName;
 		} else {
-			//don't select dish if they don't input a name
-			JCheckBox temp= whatCheckBox(dish);
+			JCheckBox temp;
+			if (dish == "dish_1") {
+				temp=dish_1;
+			} else if (dish == "dish_2") {
+				temp=dish_2;
+			} else if (dish == "dish_3") {
+				temp=dish_3;
+			} else if (dish == "dish_4") {
+				temp=dish_4;
+			} else if (dish == "dish_5") {
+				temp=dish_5;
+			} else if (dish == "dish_6") {
+				temp=dish_6;
+			} else if (dish == "dish_7") {
+				temp=dish_7;
+			} else if (dish == "dish_8") {
+				temp=dish_8;
+			} else if (dish == "dish_9") {
+				temp=dish_9;
+			} else {
+				System.out.println("Invalid Dish");
+				return "";
+			}
 			temp.setSelected(false);
 			return "";
 		}
@@ -196,9 +222,6 @@ public class StatusPanel implements ActionListener {
 		myPanel.add(Box.createHorizontalStrut(15)); // a spacer
 		// input second/minute/hour
 		myPanel.add(timeList);
-		
-		// add in another input line for total duration and time
-		// do math that shows how many photos will be atken
 
 		// Show Option Pop up
 		JOptionPane.showConfirmDialog(null, myPanel,
@@ -221,9 +244,31 @@ public class StatusPanel implements ActionListener {
 			System.out.println("exit before enter name");
 			return;
 		} else {
+			Dish dish;
 			//don't select the dish if they don't enter a name
-			Dish dish=whatDish(dishName);
-			
+			if (dishName == "dish_1") {
+				dish = exp1;
+			} else if (dishName == "dish_2") {
+				dish = exp2;
+			} else if (dishName == "dish_3") {
+				dish = exp3;
+			} else if (dishName == "dish_4") {
+				dish = exp4;
+			} else if (dishName == "dish_5") {
+				dish = exp5;
+			} else if (dishName == "dish_6") {
+				dish = exp6;
+			} else if (dishName == "dish_7") {
+				dish = exp7;
+			} else if (dishName == "dish_8") {
+				dish = exp8;
+			} else if (dishName == "dish_9") {
+				dish = exp9;
+			} else {
+				System.out.println("Invalid Dish");
+				return;
+
+			}
 			
 			// if don't enter a name, don't ask for capture rate
 			int captureRate = showImageDialogBox(dishName);
@@ -246,50 +291,8 @@ public class StatusPanel implements ActionListener {
 			System.out.println("Time Start: " + dish.getTimeStart());
 		}
 	}
-	
-	public void showDishMenu(Dish dish){
-		//Preset values with what is already there
-		SpinnerNumberModel captureModel = new SpinnerNumberModel(dish.getCaptureRate(), 0, 60, 1);
-		JSpinner captureSpinner = new JSpinner(captureModel);
-
-		JComboBox timeList = new JComboBox(times);
-		
-		timeList.setSelectedIndex(Arrays.asList(times).indexOf(dish.getCaptureMetric()));
-
-		JPanel myPanel = new JPanel();
-		//edit name
-		myPanel.add(new JLabel("Edit Dish Name:"));
-
-		
-		//edit image capture rate
-		myPanel.add(new JLabel("Edit image capture rate:"));
-		myPanel.add(new JLabel("1 panel every"));
-		// input number
-		myPanel.add(captureSpinner);
-		myPanel.add(Box.createHorizontalStrut(15)); // a spacer
-		// input second/minute/hour
-		myPanel.add(timeList);
-
-		// Show Option Pop up
-		JOptionPane.showConfirmDialog(null, myPanel,
-				"Dish Menu", JOptionPane.OK_CANCEL_OPTION);
-
-		frame.dispose();
-
-		int captureRate = Integer.parseInt(captureModel.getValue().toString());
-		captureMetric = (String) timeList.getSelectedItem();
-		dish.setCaptureRate(captureRate);
-		dish.setCaptureMetric(captureMetric);
-		whatCheckBox(dish.getDishString()).setSelected(true);
-		
-	}
 
 	public void dishDeSelected(Dish dish) {
-		//if dish is already selected, pull up an options menu- edit name, image capture, exit experiment, download photos
-		// don't uncheck the box unless they exit experiment
-		
-		showDishMenu(dish);
-		
 		timeStampString = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss")
 				.format(new Date());
 		timeStamp = new Date();
@@ -361,59 +364,4 @@ public class StatusPanel implements ActionListener {
 				dishDeSelected(exp9);
 		}
 	}
-	public JCheckBox whatCheckBox(String dish){
-		JCheckBox temp= new JCheckBox();
-		if (dish == "dish_1") {
-			temp=dish_1;
-		} else if (dish == "dish_2") {
-			temp=dish_2;
-		} else if (dish == "dish_3") {
-			temp=dish_3;
-		} else if (dish == "dish_4") {
-			temp=dish_4;
-		} else if (dish == "dish_5") {
-			temp=dish_5;
-		} else if (dish == "dish_6") {
-			temp=dish_6;
-		} else if (dish == "dish_7") {
-			temp=dish_7;
-		} else if (dish == "dish_8") {
-			temp=dish_8;
-		} else if (dish == "dish_9") {
-			temp=dish_9;
-		} else {
-			System.out.println("Invalid Dish");
-		}
-		return temp;
-	}
-
-	public Dish whatDish(String dishName){
-		Dish dish=new Dish();
-		//don't select the dish if they don't enter a name
-		if (dishName == "dish_1") {
-			dish = exp1;
-		} else if (dishName == "dish_2") {
-			dish = exp2;
-		} else if (dishName == "dish_3") {
-			dish = exp3;
-		} else if (dishName == "dish_4") {
-			dish = exp4;
-		} else if (dishName == "dish_5") {
-			dish = exp5;
-		} else if (dishName == "dish_6") {
-			dish = exp6;
-		} else if (dishName == "dish_7") {
-			dish = exp7;
-		} else if (dishName == "dish_8") {
-			dish = exp8;
-		} else if (dishName == "dish_9") {
-			dish = exp9;
-		} 
-		else {
-			System.out.println("Invalid Dish");
-		}
-		return dish;
-	}
-
-
 }

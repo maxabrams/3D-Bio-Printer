@@ -81,15 +81,15 @@ public class StatusPanel implements ActionListener {
 		dish_9.setFont(checkboxFont);
 
 		// create Dishes
-		exp1 = new Dish("dish_1");
-		exp2 = new Dish("dish_2");
-		exp3 = new Dish("dish_3");
-		exp4 = new Dish("dish_4");
-		exp5 = new Dish("dish_5");
-		exp6 = new Dish("dish_6");
-		exp7 = new Dish("dish_7");
-		exp8 = new Dish("dish_8");
-		exp9 = new Dish("dish_9");
+		exp1 = new Dish();
+		exp2 = new Dish();
+		exp3 = new Dish();
+		exp4 = new Dish();
+		exp5 = new Dish();
+		exp6 = new Dish();
+		exp7 = new Dish();
+		exp8 = new Dish();
+		exp9 = new Dish();
 
 		// Add components
 		// 3x3 matrix
@@ -196,9 +196,6 @@ public class StatusPanel implements ActionListener {
 		myPanel.add(Box.createHorizontalStrut(15)); // a spacer
 		// input second/minute/hour
 		myPanel.add(timeList);
-		
-		// add in another input line for total duration and time
-		// do math that shows how many photos will be atken
 
 		// Show Option Pop up
 		JOptionPane.showConfirmDialog(null, myPanel,
@@ -280,7 +277,6 @@ public class StatusPanel implements ActionListener {
 		captureMetric = (String) timeList.getSelectedItem();
 		dish.setCaptureRate(captureRate);
 		dish.setCaptureMetric(captureMetric);
-		whatCheckBox(dish.getDishString()).setSelected(true);
 		
 	}
 

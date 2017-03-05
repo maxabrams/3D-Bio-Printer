@@ -24,7 +24,7 @@ public class ExportImagesPanel implements ActionListener {
 	private Font checkboxFont = new Font("Arial", Font.BOLD, 20);
 	private String timeStampString = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss")
 			.format(new Date());
-	private Date timeStamp;
+	private int timeStamp;
 
 	private JButton dish_1, dish_2, dish_3, dish_4, dish_5, dish_6, dish_7,
 			dish_8, dish_9;
@@ -159,14 +159,44 @@ public class ExportImagesPanel implements ActionListener {
 		return this.panelName;
 	}
 
+	public void showNameDialogBox(Dish dish) {
+		String fileName = (String) JOptionPane.showInputDialog(frame,
+				"Enter File Name:\n", "Enter File Name",
+				JOptionPane.PLAIN_MESSAGE);
+
+		// TODO: text validation for appropriate file names
+		if ((fileName != null) && (fileName.length() > 0)) {
+			frame.dispose();
+			dish.setFileName(fileName);
+			System.out.println("Dish Name Input: " + dish.getFileName());
+			// show image capture information
+		}
+
+		// Get image capture rate information
+		SpinnerNumberModel captureModel = new SpinnerNumberModel(0, 0, 60, 1);
+		JSpinner captureSpinner = new JSpinner(captureModel);
+
+		JOptionPane.showMessageDialog(frame, captureSpinner,
+				"Enter Capture Rate", JOptionPane.PLAIN_MESSAGE);
+
+		frame.dispose();
+
+		dish.setCaptureRate(Integer
+				.parseInt(captureModel.getValue().toString()));
+		System.out.println("Capture Rate: " + dish.getCaptureRate());
+		return;
+	}
 
 	// TODO: only allow to click if already added
+
 	public void dishSelected(Dish dish) {
 		// end time after file name is input
 		timeStampString = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss")
 				.format(new Date());
-
-		timeStamp = new Date();
+		// right now only save time- but probably need to save date too but it
+		// won't let me save it all in an Int
+		timeStamp = Integer.parseInt(new SimpleDateFormat("HHmmss")
+				.format(new Date()));
 
 		System.out.println("Selected:" + " " + timeStampString);
 		System.out.println("Dish Name : " + dish.getFileName());
