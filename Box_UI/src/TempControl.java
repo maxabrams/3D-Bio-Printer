@@ -43,6 +43,7 @@ public class TempControl implements Runnable {
                 output.setText("Error");
                 status.setText("Status: Error! No temperature sensor!");
                 heaterOff();
+                running = false; //THIS WILL KILL THE THREAD
             }else{
                 status.setText("Status: Running");
                 if(currTemp< target - threshold){
@@ -75,14 +76,19 @@ public class TempControl implements Runnable {
         
         String consoleOutput = stdInput.readLine();//For some reason only 15 works with library
         //System.out.println(consoleOutput);
-        consoleOutput = consoleOutput.substring(5,9);
-        if (consoleOutput.matches("\\d*\\.?\\d*")){
-            return Double.parseDouble(consoleOutput);
-        }else{//if invalid input
-            System.out.println("Invalid input from temp sensor");
-            //heaterOff();
+        if(consoleOutput == null){
+        	System.out.println("Invalid input from temp sensor");
             return Integer.MIN_VALUE;
         }
+	    
+        consoleOutput = consoleOutput.substring(5,9);
+	    if (consoleOutput.matches("\\d*\\.?\\d*")){
+	        return Double.parseDouble(consoleOutput);
+	    }else{//if invalid input
+	        System.out.println("Invalid input from temp sensor");
+	        return Integer.MIN_VALUE;
+	    }
+       
     }catch(IOException e){
         System.out.println("Error could not read temp");
         return Integer.MIN_VALUE;

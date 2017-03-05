@@ -1,0 +1,16 @@
+import java.util.ArrayList;
+
+public class CameraThread implements Runnable {
+
+	
+	public CameraThread(ArrayList<Dish> dishes){
+		
+	}
+	
+	@Override
+	public void run() {
+		
+		
+	}
+
+}

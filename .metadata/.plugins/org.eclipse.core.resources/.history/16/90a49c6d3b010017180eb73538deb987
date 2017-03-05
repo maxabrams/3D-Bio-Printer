@@ -1,0 +1,90 @@
+import java.util.Date;
+
+public class Dish {
+	private int captureRate;
+	private String captureMetric;
+	private String fileName;
+	private Date timeStart;
+	private int lastPictureTaken;
+	private int picsTaken;
+	
+	private int experimentTime;
+	private String experimentMetric;
+
+	private String dishString;
+	// default picsPerMinute=1
+	public Dish() {
+		captureRate = 1;
+		fileName = "";
+		picsTaken = 0;
+		captureMetric= "mins";
+	}
+	public Dish(String string) {
+		dishString=string;
+		captureRate = 1;
+		fileName = "";
+		picsTaken = 0;
+		captureMetric= "mins";
+	}
+
+	protected String getDishString(){
+		return dishString;
+	}
+	// every time take a picture, increment picsTaken count by 1
+	protected void takePic() {
+		picsTaken += 1;
+	}
+
+	protected int getCaptureRate() {
+		return captureRate;
+	}
+
+	protected void setCaptureRate(int captureRate) {
+		this.captureRate = captureRate;
+	}
+
+	protected String getFileName() {
+		return fileName;
+	}
+
+	protected void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
+
+	protected String getCaptureMetric() {
+		return captureMetric;
+	}
+
+	protected void setCaptureMetric(String captureMetric) {
+		this.captureMetric= captureMetric;
+	}
+
+	protected Date getTimeStart() {
+		return timeStart;
+	}
+
+	protected void setTimeStart(java.util.Date timeStamp) {
+		this.timeStart = timeStamp;
+	}
+
+	protected int getPicsTaken() {
+		return picsTaken;
+	}
+
+	protected void setPicsTaken(int picsTaken) {
+		this.picsTaken = picsTaken;
+	}
+	protected int getExperimentTime() {
+		return experimentTime;
+	}
+	protected void setExperimentTime(int experimentTime) {
+		this.experimentTime = experimentTime;
+	}
+	protected String getExperimentMetric() {
+		return experimentMetric;
+	}
+	protected void setExperimentMetric(String experimentMetric) {
+		this.experimentMetric = experimentMetric;
+	}
+
+}

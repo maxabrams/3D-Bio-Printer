@@ -29,9 +29,10 @@ public class StatusPanel implements ActionListener {
 	private Dish exp1, exp2, exp3, exp4, exp5, exp6, exp7, exp8, exp9;
 
 	private Frame frame = new Frame();
-	private String[] times = { "secs", "mins", "hours", "days" };
+	private static String[] times = { "secs", "mins", "hours", "days" };
 	
 	private String captureMetric= "mins";
+	private CameraThread cameraThread; //Save as global for now in case we need to interact with it later
 
 
 	public StatusPanel() {
@@ -91,6 +92,12 @@ public class StatusPanel implements ActionListener {
 		exp8 = new Dish("dish_8");
 		exp9 = new Dish("dish_9");
 
+		//Add dishes to an array for camera thread processing
+		Dish[] dishes = {exp1, exp2, exp3, exp4, exp5, exp6, exp7, exp8, exp9};
+		cameraThread = new CameraThread(dishes);
+		new Thread(cameraThread).start();
+		
+		
 		// Add components
 		// 3x3 matrix
 		layout.setHorizontalGroup(layout
@@ -227,7 +234,9 @@ public class StatusPanel implements ActionListener {
 			
 			// if don't enter a name, don't ask for capture rate
 			int captureRate = showImageDialogBox(dishName);
-			
+			if (captureRate < 1){
+				captureRate = 1;
+			}
 			dish.setFileName(fileName);
 			System.out.println("Dish Name Input: " + dish.getFileName());
 
@@ -242,7 +251,9 @@ public class StatusPanel implements ActionListener {
 			timeStamp = new Date();
 
 			System.out.println("Selected:" + " " + timeStampString);
-			dish.setTimeStart(timeStamp);
+			dish.setTimeStart(timeStamp); //TODO: might want to move this into constructure to avoid NULL errors later. Fine for now.
+			dish.setTimeOfLastPic(timeStamp);
+			dish.setEnabled(true);//last thing to set to start taking photos
 			System.out.println("Time Start: " + dish.getTimeStart());
 		}
 	}
@@ -277,6 +288,9 @@ public class StatusPanel implements ActionListener {
 		frame.dispose();
 
 		int captureRate = Integer.parseInt(captureModel.getValue().toString());
+		if (captureRate < 1){
+			captureRate = 1;
+		}
 		captureMetric = (String) timeList.getSelectedItem();
 		dish.setCaptureRate(captureRate);
 		dish.setCaptureMetric(captureMetric);
@@ -296,6 +310,11 @@ public class StatusPanel implements ActionListener {
 
 		System.out.println("Deselected" + " " + timeStampString);
 		System.out.println("Dish Deselected: " + dish.getFileName());
+		
+		/*
+		 * TODO:
+		 * once "deslect" bug is fixed, just use: dish.isEnabled(false) to stop photos from being taken
+		 */
 	}
 
 	@Override

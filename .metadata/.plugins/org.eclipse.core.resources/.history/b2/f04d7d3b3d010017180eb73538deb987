@@ -1,0 +1,14 @@
+public class CameraThread implements Runnable {
+
+	
+	public CameraThread(Dish[] dishes){
+		
+	}
+	
+	@Override
+	public void run() {
+		
+		
+	}
+
+}

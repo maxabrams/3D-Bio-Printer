@@ -5,12 +5,12 @@ public class Dish {
 	private String captureMetric;
 	private String fileName;
 	private Date timeStart;
-	private int lastPictureTaken;
+	private Date lastPictureTaken;
 	private int picsTaken;
-	
+	private boolean isEnabled;
 	private int experimentTime;
 	private String experimentMetric;
-
+	
 	private String dishString;
 	// default picsPerMinute=1
 	public Dish() {
@@ -18,6 +18,7 @@ public class Dish {
 		fileName = "";
 		picsTaken = 0;
 		captureMetric= "mins";
+		isEnabled = false;
 	}
 	public Dish(String string) {
 		dishString=string;
@@ -25,8 +26,17 @@ public class Dish {
 		fileName = "";
 		picsTaken = 0;
 		captureMetric= "mins";
+		isEnabled = false;
 	}
 
+	public Date timeOfLastPic(){
+		return lastPictureTaken;
+	}
+	
+	public void setTimeOfLastPic(Date newDate){
+		this.lastPictureTaken = newDate;
+	}
+	
 	public String getDishString(){
 		return dishString;
 	}
@@ -35,6 +45,14 @@ public class Dish {
 		picsTaken += 1;
 	}
 
+	public boolean isEnabled(){
+		return isEnabled;
+	}
+	
+	public void setEnabled(boolean enabled){
+		isEnabled = enabled;
+	}
+	
 	public int getCaptureRate() {
 		return captureRate;
 	}
@@ -71,6 +89,10 @@ public class Dish {
 		return picsTaken;
 	}
 
+	public void incrPicsTaken(){
+		this.picsTaken++;
+	}
+	
 	public void setPicsTaken(int picsTaken) {
 		this.picsTaken = picsTaken;
 	}
