@@ -30,10 +30,17 @@ public class StatusPanel implements ActionListener {
 
 	private Frame frame = new Frame();
 	private static String[] times = { "secs", "mins", "hours", "days" };
-	
-	private String captureMetric= "mins";
-	private CameraThread cameraThread; //Save as global for now in case we need to interact with it later
 
+	private String captureMetric = "mins";
+	private String expMetric = "mins";
+	private int expTime;
+	private CameraThread cameraThread; // Save as global for now in case we need
+										// to interact with it later
+
+	static final String SECS = "secs";
+	static final String MINS = "mins";
+	static final String HOURS = "hours";
+	static final String DAYS = "days";
 
 	public StatusPanel() {
 
@@ -92,12 +99,11 @@ public class StatusPanel implements ActionListener {
 		exp8 = new Dish("dish_8");
 		exp9 = new Dish("dish_9");
 
-		//Add dishes to an array for camera thread processing
-		Dish[] dishes = {exp1, exp2, exp3, exp4, exp5, exp6, exp7, exp8, exp9};
+		// Add dishes to an array for camera thread processing
+		Dish[] dishes = { exp1, exp2, exp3, exp4, exp5, exp6, exp7, exp8, exp9 };
 		cameraThread = new CameraThread(dishes);
 		new Thread(cameraThread).start();
-		
-		
+
 		// Add components
 		// 3x3 matrix
 		layout.setHorizontalGroup(layout
@@ -179,13 +185,13 @@ public class StatusPanel implements ActionListener {
 			// show image capture information
 			return fileName;
 		} else {
-			//don't select dish if they don't input a name
-			JCheckBox temp= whatCheckBox(dish);
+			// don't select dish if they don't input a name
+			JCheckBox temp = whatCheckBox(dish);
 			temp.setSelected(false);
 			return "";
 		}
 	}
-	
+
 	// Get image capture rate information
 	public int showImageDialogBox(String dish) {
 
@@ -193,34 +199,65 @@ public class StatusPanel implements ActionListener {
 		SpinnerNumberModel captureModel = new SpinnerNumberModel(1, 0, 60, 1);
 		JSpinner captureSpinner = new JSpinner(captureModel);
 
+		SpinnerNumberModel experimentModel = new SpinnerNumberModel(1, 0, 100,
+				1);
+		JSpinner experimentSpinner = new JSpinner(experimentModel);
+
 		// Create the combo box, select item at index 4.
 		JComboBox timeList = new JComboBox(times);
+		JComboBox expMetricList = new JComboBox(times);
 
 		JPanel myPanel = new JPanel();
-		myPanel.add(new JLabel("1 panel every"));
-		// input number
-		myPanel.add(captureSpinner);
-		myPanel.add(Box.createHorizontalStrut(15)); // a spacer
-		// input second/minute/hour
-		myPanel.add(timeList);
-		
-		// add in another input line for total duration and time
-		// do math that shows how many photos will be atken
+
+		GroupLayout layout = new GroupLayout(myPanel);
+		myPanel.setLayout(layout); // Add a layout manager to align elements
+		JLabel captureLabel = new JLabel("1 panel every");
+
+		JLabel expLabel = new JLabel("Total time of experiment: ");
+
+		layout.setHorizontalGroup(layout
+				.createSequentialGroup()
+				.addGroup(
+						layout.createParallelGroup().addComponent(captureLabel)
+								.addComponent(expLabel))
+				.addGroup(
+						layout.createParallelGroup()
+								.addComponent(captureSpinner)
+								.addComponent(experimentSpinner))
+				.addGroup(
+						layout.createParallelGroup().addComponent(timeList)
+								.addComponent(expMetricList)));
+		layout.setVerticalGroup(layout
+				.createParallelGroup()
+				.addGroup(
+						layout.createSequentialGroup()
+								.addComponent(captureLabel)
+								.addComponent(expLabel))
+				.addGroup(
+						layout.createSequentialGroup()
+								.addComponent(captureSpinner)
+								.addComponent(experimentSpinner))
+				.addGroup(
+						layout.createSequentialGroup().addComponent(timeList)
+								.addComponent(expMetricList)));
 
 		// Show Option Pop up
-		JOptionPane.showConfirmDialog(null, myPanel,
-				"Enter Capture Rate", JOptionPane.OK_CANCEL_OPTION);
+		JOptionPane.showConfirmDialog(null, myPanel, "Enter Capture Rate",
+				JOptionPane.OK_CANCEL_OPTION);
 
 		frame.dispose();
 
 		int captureRate = Integer.parseInt(captureModel.getValue().toString());
 		captureMetric = (String) timeList.getSelectedItem();
-		
+
+		expTime = Integer.parseInt(experimentModel.getValue().toString());
+		expMetric = (String) expMetricList.getSelectedItem();
+
 		return captureRate;
 	}
 
 	public void dishSelected(String dishName) {
-		//Show dialog boxes for dish name input and capture rate
+		// Show dialog boxes for dish name input and capture rate
 		String fileName = showNameDialogBox(dishName);
 
 		// Figure out which dish was chosen
@@ -228,13 +265,12 @@ public class StatusPanel implements ActionListener {
 			System.out.println("exit before enter name");
 			return;
 		} else {
-			//don't select the dish if they don't enter a name
-			Dish dish=whatDish(dishName);
-			
-			
+			// don't select the dish if they don't enter a name
+			Dish dish = whatDish(dishName);
+
 			// if don't enter a name, don't ask for capture rate
 			int captureRate = showImageDialogBox(dishName);
-			if (captureRate < 1){
+			if (captureRate < 1) {
 				captureRate = 1;
 			}
 			dish.setFileName(fileName);
@@ -242,7 +278,60 @@ public class StatusPanel implements ActionListener {
 
 			dish.setCaptureRate(captureRate);
 			dish.setCaptureMetric(captureMetric);
-			System.out.println("Capture Rate: 1 image every " + dish.getCaptureRate()+ " "+dish.getCaptureMetric());
+			dish.setExperimentTime(expTime);
+			dish.setExperimentMetric(expMetric);
+
+			System.out.println("Capture Rate: 1 image every "
+					+ dish.getCaptureRate() + " " + dish.getCaptureMetric());
+			System.out.println("Total exp time: " + dish.getExperimentTime()
+					+ " " + dish.getExperimentMetric());
+
+			// Figure out how many pictures total are needed for the experiment
+			// if same metric, easy
+			if (dish.getCaptureMetric() == dish.getExperimentMetric()) {
+				dish.setTotalImagesNeeded(dish.getExperimentTime()
+						/ dish.getCaptureRate());
+				System.out.println("Total # images taken: "
+						+ dish.getTotalImagesNeeded());
+			}
+			// if different metric, do math
+			//TODO: This math may or may not work- also may need to add a couple if we always want to guarantee a picture at the beginning and end of each experiment
+			else{
+				int capTimeSec=Integer.MAX_VALUE; //Fake value to override;
+				int expTimeSec=Integer.MAX_VALUE;//Fake value to override;
+				
+				switch (dish.getCaptureMetric()) { 
+					case SECS:
+						capTimeSec = dish.getCaptureRate() * 1000;
+						break;
+					case MINS:
+						capTimeSec = dish.getCaptureRate() * 60 * 1000;
+						break;
+					case HOURS:
+						capTimeSec = dish.getCaptureRate() * 60 * 60 * 1000;
+						break;
+					case DAYS:
+						capTimeSec = dish.getCaptureRate() * 24 * 60 * 60 * 1000;
+						break;
+				}
+				switch (dish.getExperimentMetric()) { 
+					case SECS:
+						expTimeSec = dish.getExperimentTime() * 1000;
+						break;
+					case MINS:
+						expTimeSec = dish.getExperimentTime() * 60 * 1000;
+						break;
+					case HOURS:
+						expTimeSec = dish.getExperimentTime() * 60 * 60 * 1000;
+						break;
+					case DAYS:
+						expTimeSec = dish.getExperimentTime() * 24 * 60 * 60 * 1000;
+						break;
+				}
+				dish.setTotalImagesNeeded(expTimeSec/ capTimeSec);
+				System.out.println("Total # images taken: " + dish.getTotalImagesNeeded());
+			}
+			
 
 			// start time after file name is input
 			timeStampString = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss")
@@ -251,28 +340,31 @@ public class StatusPanel implements ActionListener {
 			timeStamp = new Date();
 
 			System.out.println("Selected:" + " " + timeStampString);
-			dish.setTimeStart(timeStamp); //TODO: might want to move this into constructure to avoid NULL errors later. Fine for now.
+			dish.setTimeStart(timeStamp); // TODO: might want to move this into
+											// constructor to avoid NULL errors
+											// later. Fine for now.
 			dish.setTimeOfLastPic(timeStamp);
-			dish.setEnabled(true);//last thing to set to start taking photos
+			dish.setEnabled(true);// last thing to set to start taking photos
 			System.out.println("Time Start: " + dish.getTimeStart());
 		}
 	}
-	
-	public void showDishMenu(Dish dish){
-		//Preset values with what is already there
-		SpinnerNumberModel captureModel = new SpinnerNumberModel(dish.getCaptureRate(), 0, 60, 1);
+
+	public void showDishMenu(Dish dish) {
+		// Preset values with what is already there
+		SpinnerNumberModel captureModel = new SpinnerNumberModel(
+				dish.getCaptureRate(), 0, 60, 1);
 		JSpinner captureSpinner = new JSpinner(captureModel);
 
 		JComboBox timeList = new JComboBox(times);
-		
-		timeList.setSelectedIndex(Arrays.asList(times).indexOf(dish.getCaptureMetric()));
+
+		timeList.setSelectedIndex(Arrays.asList(times).indexOf(
+				dish.getCaptureMetric()));
 
 		JPanel myPanel = new JPanel();
-		//edit name
+		// edit name
 		myPanel.add(new JLabel("Edit Dish Name:"));
 
-		
-		//edit image capture rate
+		// edit image capture rate
 		myPanel.add(new JLabel("Edit image capture rate:"));
 		myPanel.add(new JLabel("1 panel every"));
 		// input number
@@ -282,38 +374,39 @@ public class StatusPanel implements ActionListener {
 		myPanel.add(timeList);
 
 		// Show Option Pop up
-		JOptionPane.showConfirmDialog(null, myPanel,
-				"Dish Menu", JOptionPane.OK_CANCEL_OPTION);
+		JOptionPane.showConfirmDialog(null, myPanel, "Dish Menu",
+				JOptionPane.OK_CANCEL_OPTION);
 
 		frame.dispose();
 
 		int captureRate = Integer.parseInt(captureModel.getValue().toString());
-		if (captureRate < 1){
+		if (captureRate < 1) {
 			captureRate = 1;
 		}
 		captureMetric = (String) timeList.getSelectedItem();
 		dish.setCaptureRate(captureRate);
 		dish.setCaptureMetric(captureMetric);
 		whatCheckBox(dish.getDishString()).setSelected(true);
-		
+
 	}
 
 	public void dishDeSelected(Dish dish) {
-		//if dish is already selected, pull up an options menu- edit name, image capture, exit experiment, download photos
+		// if dish is already selected, pull up an options menu- edit name,
+		// image capture, exit experiment, download photos
 		// don't uncheck the box unless they exit experiment
-		
+
 		showDishMenu(dish);
-		
+
 		timeStampString = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss")
 				.format(new Date());
 		timeStamp = new Date();
 
 		System.out.println("Deselected" + " " + timeStampString);
 		System.out.println("Dish Deselected: " + dish.getFileName());
-		
+
 		/*
-		 * TODO:
-		 * once "deslect" bug is fixed, just use: dish.isEnabled(false) to stop photos from being taken
+		 * TODO: once "deslect" bug is fixed, just use: dish.isEnabled(false) to
+		 * stop photos from being taken
 		 */
 	}
 
@@ -380,35 +473,36 @@ public class StatusPanel implements ActionListener {
 				dishDeSelected(exp9);
 		}
 	}
-	public JCheckBox whatCheckBox(String dish){
-		JCheckBox temp= new JCheckBox();
+
+	public JCheckBox whatCheckBox(String dish) {
+		JCheckBox temp = new JCheckBox();
 		if (dish == "dish_1") {
-			temp=dish_1;
+			temp = dish_1;
 		} else if (dish == "dish_2") {
-			temp=dish_2;
+			temp = dish_2;
 		} else if (dish == "dish_3") {
-			temp=dish_3;
+			temp = dish_3;
 		} else if (dish == "dish_4") {
-			temp=dish_4;
+			temp = dish_4;
 		} else if (dish == "dish_5") {
-			temp=dish_5;
+			temp = dish_5;
 		} else if (dish == "dish_6") {
-			temp=dish_6;
+			temp = dish_6;
 		} else if (dish == "dish_7") {
-			temp=dish_7;
+			temp = dish_7;
 		} else if (dish == "dish_8") {
-			temp=dish_8;
+			temp = dish_8;
 		} else if (dish == "dish_9") {
-			temp=dish_9;
+			temp = dish_9;
 		} else {
 			System.out.println("Invalid Dish");
 		}
 		return temp;
 	}
 
-	public Dish whatDish(String dishName){
-		Dish dish=new Dish();
-		//don't select the dish if they don't enter a name
+	public Dish whatDish(String dishName) {
+		Dish dish = new Dish();
+		// don't select the dish if they don't enter a name
 		if (dishName == "dish_1") {
 			dish = exp1;
 		} else if (dishName == "dish_2") {
@@ -427,12 +521,10 @@ public class StatusPanel implements ActionListener {
 			dish = exp8;
 		} else if (dishName == "dish_9") {
 			dish = exp9;
-		} 
-		else {
+		} else {
 			System.out.println("Invalid Dish");
 		}
 		return dish;
 	}
-
 
 }

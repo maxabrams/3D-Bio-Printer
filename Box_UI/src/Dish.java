@@ -10,6 +10,7 @@ public class Dish {
 	private boolean isEnabled;
 	private int experimentTime;
 	private String experimentMetric;
+	private int totalImagesNeeded;
 	
 	private String dishString;
 	// default picsPerMinute=1
@@ -107,6 +108,12 @@ public class Dish {
 	}
 	public void setExperimentMetric(String experimentMetric) {
 		this.experimentMetric = experimentMetric;
+	}
+	public int getTotalImagesNeeded() {
+		return totalImagesNeeded;
+	}
+	public void setTotalImagesNeeded(int totalImagesNeeded) {
+		this.totalImagesNeeded = totalImagesNeeded;
 	}
 
 }

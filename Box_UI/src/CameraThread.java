@@ -52,6 +52,10 @@ public class CameraThread implements Runnable {
 						}
 						
 					}
+					//Stop taking pictures for the dish once the experiment is over
+					if(expr.getPicsTaken()== expr.getTotalImagesNeeded()){
+						expr.setEnabled(false);
+					}
 				}//end of check for if dish is enabled
 			}//end of for loop for all dishes
 		
@@ -70,12 +74,14 @@ public class CameraThread implements Runnable {
 	private void takePhoto(Dish dish){
 		System.out.println("Photo taken! " + dish.getFileName()); //Simple message for now
 		dish.setTimeOfLastPic(new Date());
+		dish.incrPicsTaken();
 	}
 	
 	private void reusePhoto(Dish dish){
 		//This will just "copy" the photo previously taken to a file with this dish's name 
 		System.out.println("Photo resued! " + dish.getFileName());
 		dish.setTimeOfLastPic(new Date());
+		dish.incrPicsTaken();
 	}
 
 }
