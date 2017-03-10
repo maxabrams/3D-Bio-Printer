@@ -36,7 +36,7 @@ public class LightingPanel {
 	public LightingPanel() {
 		// Initialize components
 		lightPanel = new JPanel();
-		lightPanel.setLayout(new GridLayout(4, 1)); // Add a layout manager to align components
+		lightPanel.setLayout(new GridLayout(4, 1)); // Add a layout manager to align componenets
 		
 		lightName = "Lighting Control"; // Assign name
 
@@ -58,7 +58,7 @@ public class LightingPanel {
 		blueSlider.setMajorTickSpacing(10);
 		greenSlider.setMajorTickSpacing(10);
 		
-		// Setup spinners
+		
 		redBox = new JSpinner(new SpinnerNumberModel(redSlider.getValue(), 0, 255, 1)); //value, min, max, step
 		blueBox = new JSpinner(new SpinnerNumberModel(blueSlider.getValue(), 0, 255, 1)); //Stick to slider value to avoid API changes 
 		greenBox = new JSpinner(new SpinnerNumberModel(greenSlider.getValue(), 0, 255, 1));
