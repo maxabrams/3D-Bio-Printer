@@ -1,0 +1,80 @@
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.IOException;
+
+import javax.swing.JButton;
+import javax.swing.JPanel;
+import javax.swing.JSlider;
+import javax.swing.SpinnerNumberModel;
+
+public class LightingPanel {
+	private JPanel lightPanel; // Panel to make modifications to
+	private String lightName; // Name for panel
+	private JButton captureButton;
+	private final String LIGHTING_BUTTON_TEXT = "Toggle Lights";
+	private boolean isOn = false;
+	private static final String PATH_TO_RELAY_OFF = "/home/pi/py/relay_off.py"; //Should be old code
+	private static final String PATH_TO_RELAY_ON = "/home/pi/py/relay_on.py"; //Should be old code
+	private JSlider redSlider;
+	private JSlider blueSlider;
+	private JSlider greenSlider;
+	private SpinnerNumberModel redBox;
+	private SpinnerNumberModel blueBox;
+	private SpinnerNumberModel greenBox;
+	
+
+	public LightingPanel() {
+		// Initialize components
+		lightPanel = new JPanel();
+		lightPanel.setLayout(new GridLayout(1, 2)); // Add a layout manager to
+														// align buttons as we
+														// resize
+		lightName = "Lighting Control"; // Assign name
+
+		// Setup sliders
+		redSlider = new JSlider(0,255);
+		blueSlider = new JSlider(0,255);
+		greenSlider = new JSlider(0,255);
+		
+		captureButton = new JButton(LIGHTING_BUTTON_TEXT);
+		captureButton.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				try {
+					if (isOn) {
+						isOn = false;
+						Process lOn = Runtime.getRuntime().exec(
+								"sudo python " + PATH_TO_RELAY_OFF + " " + 21);
+					} else {
+						isOn = true;
+						Process lOn = Runtime.getRuntime().exec(
+								"sudo python " + PATH_TO_RELAY_ON + " " + 21);
+					}
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
+
+			} // Add action listener to respond to button
+
+		});
+		/*
+		 * new JSlider(0,100); captureButton.setPaintTicks(true);
+		 * captureButton.setMajorTickSpacing(10);
+		 * captureButton.setMinorTickSpacing(5);
+		 * captureButton.setPaintLabels(true);
+		 */
+
+		lightPanel.add(captureButton);
+	}
+
+	public JPanel getPanel() {
+		return this.lightPanel;
+	}
+
+	public String getPanelName() {
+		return lightName;
+	}
+}
