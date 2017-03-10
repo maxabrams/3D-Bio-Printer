@@ -23,6 +23,9 @@ public class LightingPanel {
 	private static final int GREEN_PIN = 21; //GPIO Pin
 	private static final int BLUE_PIN = 26; //GPIO Pin
 	private final String SET_BUTTON_TEXT = "Set Lights";
+	private boolean isOn = false;
+	private static final String PATH_TO_RELAY_OFF = "/home/pi/py/relay_off.py"; //Should be old code
+	private static final String PATH_TO_RELAY_ON = "/home/pi/py/relay_on.py"; //Should be old code
 	private JSlider redSlider;
 	private JSlider blueSlider;
 	private JSlider greenSlider;
