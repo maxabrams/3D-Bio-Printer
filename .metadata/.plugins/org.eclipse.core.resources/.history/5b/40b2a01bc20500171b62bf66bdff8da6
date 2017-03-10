@@ -17,11 +17,14 @@ public class GUI {
 		 * Can use this to load an Icon ImageIcon icon =
 		 * createImageIcon("images/icon.gif");
 		 */
-		StatusPanel statusPanel = new StatusPanel();
-		mainPane.addTab(statusPanel.getPanelName(), statusPanel.getPanel());
-		
+		HomePanel homePanel = new HomePanel(); // Create a new Home Panel
+		mainPane.addTab(homePanel.getPanelName(), homePanel.getPanel());
+
 		CameraPanel cameraPanel = new CameraPanel();
 		mainPane.addTab(cameraPanel.getPanelName(), cameraPanel.getPanel());
+
+		ImagePanel imagePanel = new ImagePanel(); // Create a new Image Panel
+		mainPane.addTab(imagePanel.getPanelName(), imagePanel.getPanel());
 
 		LightingPanel lightPanel = new LightingPanel();
 		mainPane.addTab(lightPanel.getPanelName(), lightPanel.getPanel());
@@ -29,7 +32,10 @@ public class GUI {
 		TemperaturePanel temperaturePanel = new TemperaturePanel();
 		mainPane.addTab(temperaturePanel.getPanelName(),
 				temperaturePanel.getPanel());
-		
+
+		StatusPanel statusPanel = new StatusPanel();
+		mainPane.addTab(statusPanel.getPanelName(), statusPanel.getPanel());
+
 		ExportImagesPanel eip = new ExportImagesPanel();
 		mainPane.addTab(eip.getPanelName(), eip.getPanel());
 

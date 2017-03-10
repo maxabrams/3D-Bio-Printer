@@ -29,7 +29,9 @@ public class GUI {
 		TemperaturePanel temperaturePanel = new TemperaturePanel();
 		mainPane.addTab(temperaturePanel.getPanelName(),
 				temperaturePanel.getPanel());
+
 		
+
 		ExportImagesPanel eip = new ExportImagesPanel();
 		mainPane.addTab(eip.getPanelName(), eip.getPanel());
 
