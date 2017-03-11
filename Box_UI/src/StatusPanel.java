@@ -3,6 +3,7 @@ import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 
@@ -41,8 +42,16 @@ public class StatusPanel implements ActionListener {
 	static final String MINS = "mins";
 	static final String HOURS = "hours";
 	static final String DAYS = "days";
+	
+	private ArrayList<String> dishNames= new ArrayList();
+	
+//	public ArrayList <String> getdishNames(){
+//		return dishNames;	
+//	}
+//	
 
-	public StatusPanel() {
+	public StatusPanel(ArrayList<String> dishList) {
+		dishNames=dishList;
 
 		// Initialize components
 		statusPanel = new JPanel();
@@ -265,6 +274,7 @@ public class StatusPanel implements ActionListener {
 			System.out.println("exit before enter name");
 			return;
 		} else {
+			dishNames.add(fileName);
 			// don't select the dish if they don't enter a name
 			Dish dish = whatDish(dishName);
 
