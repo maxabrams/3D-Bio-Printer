@@ -22,7 +22,7 @@ import javax.swing.SpinnerModel;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.text.MaskFormatter;
 
-public class ExportImagesPanel  {
+public class ExportImagesPanel implements ActionListener {
 	private JPanel exportImagesPanel; // Panel to make modifications to
 	private String panelName; // Name for panel
 	private Font checkboxFont = new Font("Arial", Font.BOLD, 20);
@@ -35,52 +35,42 @@ public class ExportImagesPanel  {
 
 	private ArrayList<String> dishNames;
 	JComboBox folderNames;
+	private static String[] times = { "secs", "mins", "hours", "days" };
+
+
 	
 	public ExportImagesPanel(ArrayList <String> dishes) {
 		dishNames=dishes;
+		dishes.add("hello");
 		// Initialize components
 		exportImagesPanel = new JPanel();
 		exportImagesPanel.setLayout(new GridLayout(1, 1)); // Add a layout manager to align components
 
 
 		// Initialize Group Layout object
-//		GroupLayout layout = new GroupLayout(exportImagesPanel);
-//		exportImagesPanel.setLayout(layout); // Add a layout manager to align
-//												// elements
-//		// specify automatic gap insertion
-//		layout.setAutoCreateGaps(true);
-//		layout.setAutoCreateContainerGaps(true);
+		GroupLayout layout = new GroupLayout(exportImagesPanel);
+		exportImagesPanel.setLayout(layout); // Add a layout manager to align
+												// elements
+		// specify automatic gap insertion
+		layout.setAutoCreateGaps(true);
+		layout.setAutoCreateContainerGaps(true);
 
 		panelName = "Export Images"; // Assign name
 		
-		JButton b= new JButton("Refresh");
-		b.addActionListener(new ActionListener(){
-
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				// TODO Auto-generated method stub
-				refreshFileNames();
-			}
-			
-			
-		});
+		JComboBox timeList = new JComboBox(times);
 		
 		folderNames=  new JComboBox(dishes.toArray());
 		exportImagesPanel.add(folderNames);
-		exportImagesPanel.add(b);
+		exportImagesPanel.add(new JButton());
+		exportImagesPanel.add(timeList);
 		System.out.println(folderNames.getSelectedIndex());
-		
 
 			
 	}
 	public void refreshFileNames(){
-		folderNames.removeAllItems();
-		for(String str: dishNames){
-			folderNames.addItem(str);
+		folderNames=  new JComboBox(dishNames.toArray());
+		System.out.println(dishNames.toArray()[0]);
 
-		}
-//		folderNames.addItem(dishNames.toArray());
-		System.out.println(dishNames.size());
 	}
 	/*
 	 * Accessor for Status Panel's JPanel
@@ -99,6 +89,13 @@ public class ExportImagesPanel  {
 	public String getPanelName() {
 		return this.panelName;
 	}
-}
+
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		// TODO Auto-generated method stub
+		
+	}
+
 
 	
+}

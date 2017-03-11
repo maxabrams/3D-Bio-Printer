@@ -74,12 +74,8 @@ public class ExportImagesPanel  {
 			
 	}
 	public void refreshFileNames(){
-		folderNames.removeAllItems();
-		for(String str: dishNames){
-			folderNames.addItem(str);
-
-		}
-//		folderNames.addItem(dishNames.toArray());
+		folderNames.removeAll();
+		folderNames.addItem(dishNames.toArray());
 		System.out.println(dishNames.size());
 	}
 	/*

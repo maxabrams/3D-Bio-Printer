@@ -38,49 +38,34 @@ public class ExportImagesPanel  {
 	
 	public ExportImagesPanel(ArrayList <String> dishes) {
 		dishNames=dishes;
+		dishes.add("hello");
 		// Initialize components
 		exportImagesPanel = new JPanel();
-		exportImagesPanel.setLayout(new GridLayout(1, 1)); // Add a layout manager to align components
+//		exportImagesPanel.setLayout(new GridLayout(1, 1)); // Add a layout manager to align components
 
 
 		// Initialize Group Layout object
-//		GroupLayout layout = new GroupLayout(exportImagesPanel);
-//		exportImagesPanel.setLayout(layout); // Add a layout manager to align
-//												// elements
+		GroupLayout layout = new GroupLayout(exportImagesPanel);
+		exportImagesPanel.setLayout(layout); // Add a layout manager to align
+												// elements
 //		// specify automatic gap insertion
 //		layout.setAutoCreateGaps(true);
 //		layout.setAutoCreateContainerGaps(true);
 
 		panelName = "Export Images"; // Assign name
 		
-		JButton b= new JButton("Refresh");
-		b.addActionListener(new ActionListener(){
-
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				// TODO Auto-generated method stub
-				refreshFileNames();
-			}
-			
-			
-		});
+		JComboBox timeList = new JComboBox(times);
 		
 		folderNames=  new JComboBox(dishes.toArray());
 		exportImagesPanel.add(folderNames);
-		exportImagesPanel.add(b);
+		exportImagesPanel.add(timeList);
 		System.out.println(folderNames.getSelectedIndex());
-		
 
 			
 	}
 	public void refreshFileNames(){
-		folderNames.removeAllItems();
-		for(String str: dishNames){
-			folderNames.addItem(str);
-
-		}
-//		folderNames.addItem(dishNames.toArray());
-		System.out.println(dishNames.size());
+		folderNames=  new JComboBox(dishNames.toArray());
+		System.out.println(dishNames.toArray()[0]);
 	}
 	/*
 	 * Accessor for Status Panel's JPanel

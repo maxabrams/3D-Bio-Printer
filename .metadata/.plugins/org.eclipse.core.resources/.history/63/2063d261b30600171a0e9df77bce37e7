@@ -39,13 +39,13 @@ public class GUI {
 		
 		 ExportImagesPanel eip = new ExportImagesPanel(dishList);
 		mainPane.addTab(eip.getPanelName(), eip.getPanel());
-//		mainPane.addChangeListener(new ChangeListener(){
-//			@Override
-//			public void stateChanged(ChangeEvent arg0) {
-//				
-//				eip.refreshFileNames();
-//			}			
-//		});
+		mainPane.addChangeListener(new ChangeListener(){
+			@Override
+			public void stateChanged(ChangeEvent arg0) {
+				
+				eip.refreshFileNames();
+			}			
+		});
 
 		
 

@@ -38,6 +38,7 @@ public class ExportImagesPanel  {
 	
 	public ExportImagesPanel(ArrayList <String> dishes) {
 		dishNames=dishes;
+		dishes.add("hello");
 		// Initialize components
 		exportImagesPanel = new JPanel();
 		exportImagesPanel.setLayout(new GridLayout(1, 1)); // Add a layout manager to align components
@@ -74,12 +75,7 @@ public class ExportImagesPanel  {
 			
 	}
 	public void refreshFileNames(){
-		folderNames.removeAllItems();
-		for(String str: dishNames){
-			folderNames.addItem(str);
-
-		}
-//		folderNames.addItem(dishNames.toArray());
+		folderNames=  new JComboBox(dishNames.toArray());
 		System.out.println(dishNames.size());
 	}
 	/*

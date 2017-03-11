@@ -74,7 +74,7 @@ public class ExportImagesPanel  {
 			
 	}
 	public void refreshFileNames(){
-		folderNames.removeAllItems();
+		folderNames.removeAllItems();;
 		for(String str: dishNames){
 			folderNames.addItem(str);
 
