@@ -2,6 +2,7 @@ import java.awt.Font;
 import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -43,7 +44,9 @@ public class StatusPanel implements ActionListener {
 	static final String HOURS = "hours";
 	static final String DAYS = "days";
 	
-	private ArrayList<String> dishNames= new ArrayList();
+	static final String PIC_PARENT_DIR = "/Users/maxwell/Desktop/";//"/home/pi/desktop/";
+	
+	private ArrayList<String> dishNames;
 	
 //	public ArrayList <String> getdishNames(){
 //		return dishNames;	
@@ -274,11 +277,15 @@ public class StatusPanel implements ActionListener {
 			System.out.println("exit before enter name");
 			return;
 		} else {
-			dishNames.add(fileName);
+			
+			if(createFolder(fileName) == false){ //Create folder if it has not been made before. Add to global array
+				System.out.println("Error! File name already used for folder: " + fileName);
+				JCheckBox temp = whatCheckBox(dishName);
+				temp.setSelected(false);
+				return;
+			}
 			// don't select the dish if they don't enter a name
 			Dish dish = whatDish(dishName);
-
-			// if don't enter a name, don't ask for capture rate
 			int captureRate = showImageDialogBox(dishName);
 			if (captureRate < 1) {
 				captureRate = 1;
@@ -357,6 +364,20 @@ public class StatusPanel implements ActionListener {
 			dish.setEnabled(true);// last thing to set to start taking photos
 			System.out.println("Time Start: " + dish.getTimeStart());
 		}
+	}
+
+	private boolean createFolder(String fileName) {
+		if(dishNames.contains(fileName)){
+			return false;
+		}
+		
+		File dir = new File(PIC_PARENT_DIR+fileName);
+		if(dir.exists()){//If it exists in OS and we don't have it saved in global, delete (can be modified later)
+			dir.delete();
+		}
+		dir.mkdir();
+		dishNames.add(fileName);
+		return true;
 	}
 
 	public void showDishMenu(Dish dish) {

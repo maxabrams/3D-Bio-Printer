@@ -37,17 +37,8 @@ public class GUI {
 		mainPane.addTab(temperaturePanel.getPanelName(),
 				temperaturePanel.getPanel());
 		
-		 ExportImagesPanel eip = new ExportImagesPanel(dishList);
+		ExportImagesPanel eip = new ExportImagesPanel(dishList);
 		mainPane.addTab(eip.getPanelName(), eip.getPanel());
-//		mainPane.addChangeListener(new ChangeListener(){
-//			@Override
-//			public void stateChanged(ChangeEvent arg0) {
-//				
-//				eip.refreshFileNames();
-//			}			
-//		});
-
-		
 
 		frame.add(mainPane); // Add the tabbed pane to the larger frame
 		frame.setSize(SCREEN_HEIGHT, SCREEN_WIDTH); // Set to screen resolution
