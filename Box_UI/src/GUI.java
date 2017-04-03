@@ -1,6 +1,8 @@
+import java.awt.*;
 import java.util.ArrayList;
 
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 import javax.swing.event.ChangeEvent;
@@ -25,26 +27,38 @@ public class GUI {
 		 * Can use this to load an Icon ImageIcon icon =
 		 * createImageIcon("images/icon.gif");
 		 */
+		
+		mainPane.setTabPlacement(JTabbedPane.LEFT);
+		
 		StatusPanel statusPanel = new StatusPanel(dishList);
 		mainPane.addTab(statusPanel.getPanelName(), statusPanel.getPanel());
+		mainPane.setTabComponentAt(0, changeTab(statusPanel.getPanelName()));  // tab index, jLabel
 		
 		CameraPanel cameraPanel = new CameraPanel();
 		mainPane.addTab(cameraPanel.getPanelName(), cameraPanel.getPanel());
+		mainPane.setTabComponentAt(1, changeTab(cameraPanel.getPanelName()));  // tab index, jLabel
 
 		LightingPanel lightPanel = new LightingPanel();
 		mainPane.addTab(lightPanel.getPanelName(), lightPanel.getPanel());
+		mainPane.setTabComponentAt(2, changeTab(lightPanel.getPanelName()));  // tab index, jLabel
 
 		TemperaturePanel temperaturePanel = new TemperaturePanel();
-		mainPane.addTab(temperaturePanel.getPanelName(),
-				temperaturePanel.getPanel());
+		mainPane.addTab(temperaturePanel.getPanelName(),temperaturePanel.getPanel());
+		mainPane.setTabComponentAt(3, changeTab(temperaturePanel.getPanelName()));  // tab index, jLabel
 		
 		ExportImagesPanel eip = new ExportImagesPanel(dishList);
 		mainPane.addTab(eip.getPanelName(), eip.getPanel());
+		mainPane.setTabComponentAt(4, changeTab(eip.getPanelName()));  // tab index, jLabel
 
 		frame.add(mainPane); // Add the tabbed pane to the larger frame
-		frame.setSize(SCREEN_HEIGHT, SCREEN_WIDTH); // Set to screen resolution
+		frame.setSize(new Dimension(SCREEN_HEIGHT, SCREEN_WIDTH)); // Set to screen resolution
 		frame.setVisible(true); // Set the frame to be visible
 
+	}
+	private static JLabel changeTab(String tabname){
+		 JLabel lab = new JLabel(tabname);
+		 lab.setPreferredSize(new Dimension(100, 70));
+		 return lab;		
 	}
 
 }

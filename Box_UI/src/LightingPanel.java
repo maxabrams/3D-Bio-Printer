@@ -1,11 +1,17 @@
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Component;
+import java.awt.Dimension;
+import java.awt.Graphics;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
 
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
@@ -14,7 +20,7 @@ import javax.swing.SpinnerNumberModel;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-public class LightingPanel {
+public class LightingPanel extends JPanel {
 	private JPanel lightPanel; // Panel to make modifications to
 	private String lightName; // Name for panel
 	private JButton setButton;
@@ -38,7 +44,7 @@ public class LightingPanel {
 		lightPanel = new JPanel();
 		lightPanel.setLayout(new GridLayout(4, 1)); // Add a layout manager to align components
 		
-		lightName = "Lighting Control"; // Assign name
+		lightName = "Lighting"; // Assign name
 
 		// Setup sliders
 		redSlider = new JSlider(0,255);
@@ -63,6 +69,35 @@ public class LightingPanel {
 		blueBox = new JSpinner(new SpinnerNumberModel(blueSlider.getValue(), 0, 255, 1)); //Stick to slider value to avoid API changes 
 		greenBox = new JSpinner(new SpinnerNumberModel(greenSlider.getValue(), 0, 255, 1));
 		
+		//box for color preview based on RGB values set with sliders
+		final JButton button = new JButton("Preview");
+		button.setPreferredSize(new Dimension(40,40));
+		button.setBackground(new Color(redSlider.getValue(),greenSlider.getValue(),blueSlider.getValue()));
+		button.setOpaque(true);
+		button.setEnabled(false);
+		lightPanel.add(button);
+		
+		// Preset colors
+		ArrayList<Color> colors= new ArrayList <Color>(Arrays.asList(new Color(255,0,0),new Color(0,255,0),new Color(0,0,255)   ));
+	
+		for(final Color col:colors){
+			final JButton Preset = new JButton("");
+			Preset.setPreferredSize(new Dimension(40,40));
+			Preset.setBackground(col);
+			Preset.setOpaque(true);
+			Preset.addActionListener(new ActionListener(){
+
+				@Override
+				public void actionPerformed(ActionEvent a) {
+					redSlider.setValue(col.getRed());
+					blueSlider.setValue(col.getBlue());
+					greenSlider.setValue(col.getGreen());
+					button.setBackground(new Color(redSlider.getValue(),greenSlider.getValue(),blueSlider.getValue()));
+				}
+				
+			});
+			lightPanel.add(Preset);
+		}
 		
 		//Add update listeners to sliders
 		redSlider.addChangeListener(new ChangeListener(){
@@ -70,7 +105,8 @@ public class LightingPanel {
 			@Override
 			public void stateChanged(ChangeEvent e) {
 				redBox.setValue(redSlider.getValue());
-				
+				button.setBackground(new Color(redSlider.getValue(),greenSlider.getValue(),blueSlider.getValue()));
+	
 			}
 			
 		});
@@ -80,7 +116,7 @@ public class LightingPanel {
 			@Override
 			public void stateChanged(ChangeEvent e) {
 				blueBox.setValue(blueSlider.getValue());
-				
+				button.setBackground(new Color(redSlider.getValue(),greenSlider.getValue(),blueSlider.getValue()));
 			}
 			
 		});
@@ -90,7 +126,7 @@ public class LightingPanel {
 			@Override
 			public void stateChanged(ChangeEvent e) {
 				greenBox.setValue(greenSlider.getValue());
-				
+				button.setBackground(new Color(redSlider.getValue(),greenSlider.getValue(),blueSlider.getValue()));				
 			}
 			
 		});
@@ -101,7 +137,7 @@ public class LightingPanel {
 			@Override
 			public void stateChanged(ChangeEvent e) {
 				redSlider.setValue((int) (redBox.getValue()));
-				
+				button.setBackground(new Color(redSlider.getValue(),greenSlider.getValue(),blueSlider.getValue()));
 			}
 			
 		});
@@ -111,7 +147,7 @@ public class LightingPanel {
 			@Override
 			public void stateChanged(ChangeEvent e) {
 				blueSlider.setValue((int) (blueBox.getValue()));
-				
+				button.setBackground(new Color(redSlider.getValue(),greenSlider.getValue(),blueSlider.getValue()));	
 			}
 			
 		});
@@ -121,7 +157,7 @@ public class LightingPanel {
 			@Override
 			public void stateChanged(ChangeEvent e) {
 				greenSlider.setValue((int) (greenBox.getValue()));
-				
+				button.setBackground(new Color(redSlider.getValue(),greenSlider.getValue(),blueSlider.getValue()));	
 			}
 			
 		});
@@ -137,8 +173,6 @@ public class LightingPanel {
 			        }catch(IOException error){
 			              System.out.println("Error! Could not set LED levels");
 			        }
-				
-
 			}
 
 		});
@@ -164,9 +198,16 @@ public class LightingPanel {
 		lightPanel.add(greenPanel);
 		lightPanel.add(bluePanel);
 		lightPanel.add(setButton);
-		
 	}
-
+//	public void paintComponent(Graphics g){
+//		System.out.println("hello");
+//		super.paintComponent(g);
+//		//Draw a Box to show color
+//		g.drawRect(100, 300, 50, 50);
+//		g.setColor(Color.BLACK);
+//		g.fillRect(25, 55, 200, 100);
+//		g.drawString("hello", 40, 40);
+//	}
 	public JPanel getPanel() {
 		return this.lightPanel;
 	}

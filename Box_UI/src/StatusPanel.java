@@ -1,5 +1,7 @@
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.Frame;
+import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -557,5 +559,6 @@ public class StatusPanel implements ActionListener {
 		}
 		return dish;
 	}
+	
 
 }

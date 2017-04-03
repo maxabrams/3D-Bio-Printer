@@ -1,6 +1,9 @@
+import java.awt.*;
 
 import java.awt.AWTException;
+import java.awt.Color;
 import java.awt.FlowLayout;
+import java.awt.Graphics;
 import java.awt.Robot;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -17,7 +20,7 @@ import javax.swing.JTextField;
 public class TemperaturePanel {
 	private final static String STOP_BUTTON_TEXT = "Stop"; 
 	private final static String START_BUTTON_TEXT = "Run"; 
-	private final static String TEMP_PANEL_NAME = "Temperature Control";
+	private final static String TEMP_PANEL_NAME = "Temperature";
 	private JButton startExperiment;
 	private JButton stopExperiment;
 	private JLabel statusLabel = new JLabel("Status: Initialized");
@@ -75,7 +78,7 @@ public class TemperaturePanel {
 			public void focusGained(FocusEvent e) {
 				if(targetFocus == false){ //TODO: improve click options
 					targetFocus = true;
-					new Keyboard("123456789", targetField, 3, 3);
+					new Keyboard("0123456789", targetField, 3, 3);
 				}else{
 					targetFocus = false;
 					
@@ -144,6 +147,10 @@ public class TemperaturePanel {
 		}
 	}
 	
-	
+	public void paint(Graphics g){
+		//Draw a Box to show color
+		g.drawRect(100, 100, 40, 40);
+		g.setColor(Color.BLACK);
+	}
 
 }
