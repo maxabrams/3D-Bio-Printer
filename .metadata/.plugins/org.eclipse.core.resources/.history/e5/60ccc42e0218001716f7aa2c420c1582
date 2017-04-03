@@ -1,0 +1,16 @@
+import javax.swing.JTextField;
+
+public class Keyboard {
+	String alphabet;
+	JTextField destination;
+	public Keyboard(String alphabet, JTextField destination){
+		this.alphabet = alphabet;
+		this.destination = destination;
+		createKeyboard();
+	}
+	
+	private void createKeyboard(){
+		
+	}
+	
+}

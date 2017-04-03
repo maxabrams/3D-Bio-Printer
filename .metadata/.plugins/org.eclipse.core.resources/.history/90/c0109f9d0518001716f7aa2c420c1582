@@ -1,0 +1,51 @@
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JTextField;
+
+public class Keyboard extends JFrame {
+	String alphabet;
+	JTextField destination;
+	
+	public Keyboard(String alphabet, JTextField destination){
+		super("Keyboard");
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		this.alphabet = alphabet;
+		this.destination = destination;
+		createKeyboard();
+		pack();
+		setVisible(true);
+	}
+	
+	private void createKeyboard(){
+		setLayout(new GridLayout(9, 9));
+		for (int i = 0; i < this.alphabet.length(); i++) {
+			JButton addButton = new JButton(this.alphabet.substring(i, i + 1));
+	        addButton.addActionListener(new ActionListener(){
+
+				@Override
+				public void actionPerformed(ActionEvent e) {
+					
+					String action = e.getActionCommand();
+					destination.setText(destination.getText() + action);
+							
+				}
+			});
+			add(addButton);
+	    }
+		
+		JButton doneButton = new JButton("Done");
+		doneButton.addActionListener(new ActionListener(){
+
+				@Override
+				public void actionPerformed(ActionEvent e) {	
+					dispose();
+				}
+			});
+		add(doneButton); //Always add a "done" button to exit
+	}
+	
+}

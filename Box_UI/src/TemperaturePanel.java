@@ -1,7 +1,12 @@
 
+import java.awt.AWTException;
 import java.awt.FlowLayout;
+import java.awt.Robot;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.FocusEvent;
+import java.awt.event.FocusListener;
+import java.awt.event.KeyEvent;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -23,6 +28,8 @@ public class TemperaturePanel {
 	private int threshold = 2;
 	private JPanel mainPanel;
 	private JLabel output;
+	private JLabel tmpLabel = new JLabel("Target Temp:");
+	private boolean targetFocus;
 	
 	public TemperaturePanel(){
 		mainPanel = new JPanel();
@@ -59,8 +66,35 @@ public class TemperaturePanel {
 		});
 		
 		//Temp Input
+		targetFocus = false;
 		targetField = new JTextField(3);
 		targetField.setText(""+target);
+		targetField.addFocusListener(new FocusListener(){
+
+			@Override
+			public void focusGained(FocusEvent e) {
+				if(targetFocus == false){ //TODO: improve click options
+					targetFocus = true;
+					new Keyboard("123456789", targetField, 3, 3);
+				}else{
+					targetFocus = false;
+					
+					//Send enter key for update
+					try { 
+					    Robot robot = new Robot(); 
+					    robot.keyPress(KeyEvent.VK_ENTER); 
+					} catch (AWTException ee) { 
+						ee.printStackTrace(); 
+					} 
+				}
+			}
+
+			@Override
+			public void focusLost(FocusEvent e) {
+
+				
+			}});
+		
 		targetField.addActionListener(new ActionListener() {
 		      public void actionPerformed(ActionEvent e) {
 		    	  if(controlThread!=null){
@@ -85,8 +119,9 @@ public class TemperaturePanel {
 		mainPanel.add(statusLabel);
 		mainPanel.add(startExperiment);
 		mainPanel.add(stopExperiment);
+		mainPanel.add(tmpLabel);
 		mainPanel.add(targetField);
-		mainPanel.add(thresholdField);
+		//mainPanel.add(thresholdField); DO NOT USE THRESHOLD FIELD AFTER BETA TESTING. Set to specified value
 		mainPanel.add(output);
 	}
 	
