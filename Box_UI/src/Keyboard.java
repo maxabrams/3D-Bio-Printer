@@ -19,7 +19,6 @@ public class Keyboard extends JFrame {
 	
 	public Keyboard(String alphabet, JTextField destination, int numRow, int numCol){
 		super("Keyboard");
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		this.alphabet = alphabet;
 		this.destination = destination;
 		this.numRow = numRow;
