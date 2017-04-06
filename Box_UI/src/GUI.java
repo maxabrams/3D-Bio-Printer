@@ -38,9 +38,6 @@ public class GUI {
 		}
 		
 		JFrame frame = new JFrame("The Box"); // Make a frame tabbed pane
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // Set exit by
-																// default when
-																// close
 		JTabbedPane mainPane = new JTabbedPane(JTabbedPane.LEFT, JTabbedPane.WRAP_TAB_LAYOUT);
 		/*
 		 * Can use this to load an Icon ImageIcon icon =
@@ -74,9 +71,9 @@ public class GUI {
 		frame.setSize(new Dimension(SCREEN_HEIGHT, SCREEN_WIDTH)); // Set to screen resolution
 		frame.setResizable(false);
 		frame.setVisible(true); // Set the frame to be visible
-		
 
 	}
+	
 	private static JLabel changeTab(String tabname){
 		 JLabel lab = new JLabel(tabname);
 		 lab.setPreferredSize(new Dimension(100, 100));

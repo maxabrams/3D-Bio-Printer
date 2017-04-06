@@ -13,16 +13,16 @@
 		<item value="false" key="casesensitive"/>
 		<item value="false" key="incremental"/>
 		<item value="false" key="wholeword"/>
-		<item value="" key="selection"/>
+		<item value="Metric" key="selection"/>
 		<list key="findhistory">
+			<item value="metric"/>
+			<item value="metrix"/>
+			<item value="DO_NOTHING"/>
+			<item value="done"/>
 			<item value="temp"/>
 			<item value="Error!"/>
 			<item value="false"/>
 			<item value="fileName != nul"/>
-			<item value="fileName"/>
-			<item value="createFol"/>
-			<item value="createFolde"/>
-			<item value="createFold"/>
 		</list>
 		<list key="replacehistory">
 		</list>

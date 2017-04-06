@@ -78,17 +78,18 @@ public class TemperaturePanel {
 			public void focusGained(FocusEvent e) {
 				if(targetFocus == false){ //TODO: improve click options
 					targetFocus = true;
-					new Keyboard("0123456789", targetField, 3, 3);
+					new Keyboard("0123456789", targetField, 4, 3, mainPanel);
 				}else{
 					targetFocus = false;
 					
 					//Send enter key for update
+					/*
 					try { 
 					    Robot robot = new Robot(); 
 					    robot.keyPress(KeyEvent.VK_ENTER); 
 					} catch (AWTException ee) { 
 						ee.printStackTrace(); 
-					} 
+					} */
 				}
 			}
 
@@ -101,7 +102,7 @@ public class TemperaturePanel {
 		targetField.addActionListener(new ActionListener() {
 		      public void actionPerformed(ActionEvent e) {
 		    	  if(controlThread!=null){
-		    		  controlThread.updateTarget(Double.parseDouble(targetField.getText()));
+		    		  controlThread.updateTarget(Double.parseDouble(targetField.getText())); //If enter key is required, can make this a function
 		    	  }
 		        }
 		      });
