@@ -355,7 +355,7 @@ public class StatusPanel implements ActionListener {
 		 */
 	}
 
-	public void showDishMenu(final Dish dish, final int dishNum) {
+	public void showDishMenu(final Dish dish, int dishNum) {
 		dishCheckBoxes[dishNum].setSelected(true);
 
 		JPanel myPanel = new JPanel();

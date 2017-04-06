@@ -340,7 +340,7 @@ public class StatusPanel implements ActionListener {
 		// image capture, exit experiment, download photos
 		// don't uncheck the box unless they exit experiment
 
-		showDishMenu(dishes[dishNum], dishNum);
+		showDishMenu(dishes[dishNum]);
 
 		timeStampString = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss")
 		.format(new Date());
@@ -355,7 +355,7 @@ public class StatusPanel implements ActionListener {
 		 */
 	}
 
-	public void showDishMenu(final Dish dish, final int dishNum) {
+	public void showDishMenu(final Dish dish) {
 		dishCheckBoxes[dishNum].setSelected(true);
 
 		JPanel myPanel = new JPanel();

@@ -202,6 +202,7 @@ public class StatusPanel implements ActionListener {
 			System.out.println(picMetric);
 			System.out.println(numTotal);
 			System.out.println(totalMetric);
+			if (isValid){
 				//figure out which dish is to be changed
 				Dish dish= dishes[dishNum];
 				
@@ -290,14 +291,13 @@ public class StatusPanel implements ActionListener {
 				dish.setTimeOfLastPic(timeStamp);
 				dish.setEnabled(true);// last thing to set to start taking photos
 				System.out.println("Time Start: " + dish.getTimeStart());
-		}
-			
+
+			}
 			else{
-				dishCheckBoxes[dishNum].setSelected(false);
 				System.out.println("Invalid Input");
 			}
 			System.out.println("Dish config end");
-		
+		}
 	}
 
 	@Override
@@ -340,7 +340,7 @@ public class StatusPanel implements ActionListener {
 		// image capture, exit experiment, download photos
 		// don't uncheck the box unless they exit experiment
 
-		showDishMenu(dishes[dishNum], dishNum);
+		showDishMenu(dishes[dishNum]);
 
 		timeStampString = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss")
 		.format(new Date());
@@ -355,9 +355,8 @@ public class StatusPanel implements ActionListener {
 		 */
 	}
 
-	public void showDishMenu(final Dish dish, final int dishNum) {
-		dishCheckBoxes[dishNum].setSelected(true);
-
+	public void showDishMenu(final Dish dish) {
+		
 		JPanel myPanel = new JPanel();
 		// edit name
 		JButton stop=new JButton ("Stop Experiment");
@@ -365,8 +364,6 @@ public class StatusPanel implements ActionListener {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				dish.setEnabled(false);
-				dishCheckBoxes[dishNum].setSelected(false);
-
 
 			}});
 		myPanel.add(stop);
