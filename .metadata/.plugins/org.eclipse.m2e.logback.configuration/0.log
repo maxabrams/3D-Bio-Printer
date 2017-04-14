@@ -94,3 +94,4 @@ org.apache.lucene.index.IndexNotFoundException: no segments* file found in org.a
 2017-04-05 17:46:49,629 [main] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache file is not out-of-date. No remote download required.
 2017-04-05 18:58:29,463 [main] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
 2017-04-05 19:19:28,162 [pool-6-thread-1] INFO  c.n.h.c.p.n.NettyAsyncHttpProvider - Number of application's worked threads is 8
+2017-04-06 00:24:00,889 [main] INFO  c.g.t.t.d.PublishedGradleVersions - Gradle version information cache file is not out-of-date. No remote download required.

@@ -11,11 +11,11 @@ public class TempControl implements Runnable {
     private double target = 20;
     private boolean isRelayOn = false;
     private static int RELAY_PIN = 26;
-    private static int TEMP_PIN = 20;
+  //  private static int TEMP_PIN = 20;
   //  private GPIO_Pin relay;
    // private GpioController gpio;
    // private GpioPinDigitalOutput pin;
-    private static final String PATH_TO_TEMP = "/home/pi/Adafruit_Python_DHT/examples/AdafruitDHT.py";
+    private static final String PATH_TO_TEMP = "/home/pi/py/temp_bridge.py";
     private static final String PATH_TO_RELAY_OFF = "/home/pi/py/relay_off.py";
     private static final String PATH_TO_RELAY_ON = "/home/pi/py/relay_on.py";
     JLabel output;
@@ -71,7 +71,7 @@ public class TempControl implements Runnable {
     
     private double getTemp(){
         try{
-        Process p = Runtime.getRuntime().exec("sudo python " + PATH_TO_TEMP + " 2302 " + TEMP_PIN);
+        Process p = Runtime.getRuntime().exec("sudo python " + PATH_TO_TEMP );//+ " 2302 " + TEMP_PIN);
         BufferedReader stdInput = new BufferedReader(new InputStreamReader(p.getInputStream()));
         
         String consoleOutput = stdInput.readLine();//For some reason only 15 works with library
