@@ -1,0 +1,154 @@
+<synth>
+
+	<style id="LabelStyle">
+		<font name="Arial" size="16" style="bold"/>
+
+	</style>
+	<bind style="LabelStyle" type="region" key="Label" />
+
+
+	<!-- SLIDER -->
+	<style id="SliderThumbStyle">
+		<imagePainter id="SliderThumb_Normal"      sourceInsets="1 1 1 1" paintcenter="false" path="images/arrowOrange.png" />
+		<property key="SliderThumb.icon" type="idref" value="SliderThumb_Normal"/>
+		<opaque value="TRUE"/>
+
+	</style>
+	<bind style="SliderThumbStyle" type="region" key="SliderThumb" />
+
+
+	<style id="SliderTrackStyle">
+		<opaque value="TRUE"/>
+		<state>
+			<color type="BACKGROUND" value="ORANGE"/>
+		</state>
+	</style>
+	<bind style="SliderTrackStyle" type="region" key="SliderTrack" />
+
+
+	<style id="Slider">
+		<font name="Arial" size="16"/>
+
+		<opaque value="TRUE"/>
+
+		<imagePainter method="sliderBackground" path="images/dishGreen.png"  sourceInsets="4 6 4 6" paintCenter="false"/>
+		   	<insets top="4" left="6" bottom="4" right="6"/>
+	</style>
+
+	<bind style="Slider" type="region" key="Slider" />
+
+
+
+	<!-- TAB -->
+	<style id="tabStyle">
+		<state>
+			<imagePainter id="Tab_Normal"      sourceInsets="0 0 0 0" paintcenter="false" path="images/tabOrange.png" />
+			<property key="Tab.icon" type="idref" value="Tab_Normal"/>
+
+			<opaque value="true"/>
+			<!-- 	<imagePainter id="Tab_Normal" sourceInsets="0 0 10 10" paintcenter="false" path="dishGreen.png"/> -->
+
+			<font name="Arial" size="16"  />
+			<color value="BLACK" type="TEXT_FOREGROUND" />
+			<insets top="43" bottom="43" right="6" left="20"/>
+		</state>
+		<state value="SELECTED">
+			<imagePainter id="Tab_Selected"      sourceInsets="0 0 0 0" paintcenter="false" path="images/tabWhite.png" />
+			<property key="Tab.icon" type="idref" value="Tab_Selected"/>
+
+			<font name="Arial" size="16" style="BOLD" />
+
+			<color value="#FFFFFF" type="BACKGROUND" />
+			<color value="#ea5a21" type="TEXT_FOREGROUND" />
+		</state>
+
+	</style>
+	<!-- Bind tabStyle to all tabs -->
+	<bind style="tabStyle" type="region" key="TabbedPaneTab" />
+
+
+
+	<style id="buttonStyle">
+		<!-- Shift the text one pixel when pressed -->
+		<!-- <property key="Button.textShiftOffset" type="integer" value="1"/> -->
+		<state>
+			<insets top="20" left="20" right="20" bottom="20"/>
+			
+		</state>
+		<state value="DISABLED">
+			<insets top="20" left="20" right="20" bottom="20"/>
+		</state>
+		
+		<state value="MOUSE_OVER">
+						<opaque value="true"/>
+
+		</state>
+
+	</style>
+	<!-- Bind buttonStyle to all JButtons -->
+	<bind style="buttonStyle" type="region" key="button"/> 
+
+
+
+
+	<!-- CHECKBOX -->
+	<style id="checkBoxStyle">
+		<!-- Shift the text one pixel when pressed -->
+		<font name="Arial" size="16"/>
+
+		<property key="Button.textShiftOffset" type="integer" value="30"/>
+		<insets top="15" left="20" right="20" bottom="15"/>
+
+		<state>
+			<!-- Provide default colors -->
+			<color value="#AAAAAA" type="BACKGROUND"/>
+			<color value="BLACK" type="FOREGROUND"/>
+		</state>
+
+		<state value="SELECTED">
+			<imagePainter id="Checkbox_Selected"    sourceInsets="10 10 10 10" paintcenter="false" path="images/dishRed.png" />
+			<property key="CheckBox.icon" type="idref" value="Checkbox_Selected"/>
+		</state>
+
+		<state value="ENABLED">
+			<imagePainter id="Checkbox_Normal"      sourceInsets="10 10 10 10" paintcenter="false" path="images/dishGreen.png" />
+			<property key="CheckBox.icon" type="idref" value="Checkbox_Normal"/>
+		</state>
+	</style>
+
+	<bind style="checkBoxStyle" type="region" key="CheckBox"/>
+
+
+
+
+<style id="ComboBoxStyle">
+	<opaque value="TRUE"/>
+
+		<imagePainter id="cb"      sourceInsets="50 50 50 50" paintcenter="false" path="images/clearBox.png" />
+		<property key="ComboBox.icon" type="idref" value="cb"/>
+	</style>
+
+  <bind style="ComboBoxStyle" key="ComboBox" type="region"/>
+
+<style id="arrowButton">
+		<imagePainter id="arrowButton_Normal"      sourceInsets="10 10 10 10" paintcenter="false" path="images/arrowOrange.png" />
+		<property key="arrowButton.icon" type="idref" value="arrowButton_Normal"/>
+
+	</style>
+
+  <bind style="arrowButton" key="ComboBox.arrowButton" type="name"/>
+
+
+	<!-- Style that all regions will use -->
+	<style id="backingStyle">
+		<!-- Make all the regions that use this skin opaque-->
+		<opaque value="TRUE"/>
+		<font name="Arial" size="16"/>
+		<state>
+			<!-- Provide default colors -->
+			<color value="#FFFFFF" type="BACKGROUND"/>
+			<color value="BLACK" type="FOREGROUND"/>
+		</state>
+	</style>
+	<bind style="backingStyle" type="region" key=".*"/>
+</synth>

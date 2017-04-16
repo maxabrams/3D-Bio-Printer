@@ -2,7 +2,10 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -35,14 +38,20 @@ public class LightingPanel extends JPanel {
 	private JSpinner redBox;
 	private JSpinner blueBox;
 	private JSpinner greenBox;
-	private final String RED_LABEL_TEXT = "Red:";
+	private final String RED_LABEL_TEXT = "Red:   ";
 	private final String GREEN_LABEL_TEXT = "Green:";
-	private final String BLUE_LABEL_TEXT = "Blue:";
+	private final String BLUE_LABEL_TEXT = "Blue:  ";
 
 	public LightingPanel() {
 		// Initialize components
 		lightPanel = new JPanel();
-		lightPanel.setLayout(new GridLayout(4, 1)); // Add a layout manager to align components
+//		lightPanel.setLayout(new GridLayout(4, 1)); // Add a layout manager to align components
+
+		// Initialize Grid bag layout		
+		lightPanel.setLayout(new GridBagLayout());
+		GridBagConstraints c = new GridBagConstraints();
+		c.fill = GridBagConstraints.HORIZONTAL;
+	
 		
 		lightName = "Lighting"; // Assign name
 
@@ -70,21 +79,24 @@ public class LightingPanel extends JPanel {
 		greenBox = new JSpinner(new SpinnerNumberModel(greenSlider.getValue(), 0, 255, 1));
 		
 		//box for color preview based on RGB values set with sliders
-		final JButton button = new JButton("Preview");
-		button.setPreferredSize(new Dimension(40,40));
-		button.setBackground(new Color(redSlider.getValue(),greenSlider.getValue(),blueSlider.getValue()));
-		button.setOpaque(true);
-		button.setEnabled(false);
-		lightPanel.add(button);
+		final JButton previewButton = new JButton("Preview");
+		previewButton.setPreferredSize(new Dimension(40,40));
+		previewButton.setBackground(new Color(redSlider.getValue(),greenSlider.getValue(),blueSlider.getValue()));
+		previewButton.setOpaque(true);
+//		previewButton.setEnabled(false);
+		
 		
 		// Preset colors
-		ArrayList<Color> colors= new ArrayList <Color>(Arrays.asList(new Color(255,0,0),new Color(0,255,0),new Color(0,0,255)   ));
-	
+		ArrayList<Color> colors= new ArrayList <Color>(Arrays.asList(new Color(255,0,0),new Color(0,255,0),new Color(0,0,255), new Color(255,255,0) , new Color(255,255,255) ,new Color(0,0,0) ));
+		int count=0;
 		for(final Color col:colors){
+			// label each color with word
 			final JButton Preset = new JButton();
 			Preset.setPreferredSize(new Dimension(40,40));
 			Preset.setOpaque(true);
 			Preset.setBackground(col);
+			Preset.setFocusable(false);
+			
 			
 			Preset.addActionListener(new ActionListener(){
 
@@ -93,11 +105,19 @@ public class LightingPanel extends JPanel {
 					redSlider.setValue(col.getRed());
 					blueSlider.setValue(col.getBlue());
 					greenSlider.setValue(col.getGreen());
-					button.setBackground(new Color(redSlider.getValue(),greenSlider.getValue(),blueSlider.getValue()));
+					previewButton.setBackground(new Color(redSlider.getValue(),greenSlider.getValue(),blueSlider.getValue()));
+					setLights();
 				}
 				
 			});
-			lightPanel.add(Preset);
+
+			c.gridx=count;
+			c.gridy=1;
+			c.ipady=30;
+			c.ipadx=70;
+			count++;
+
+			lightPanel.add(Preset,c);
 		}
 		
 		//Add update listeners to sliders
@@ -106,7 +126,8 @@ public class LightingPanel extends JPanel {
 			@Override
 			public void stateChanged(ChangeEvent e) {
 				redBox.setValue(redSlider.getValue());
-				button.setBackground(new Color(redSlider.getValue(),greenSlider.getValue(),blueSlider.getValue()));
+				previewButton.setBackground(new Color(redSlider.getValue(),greenSlider.getValue(),blueSlider.getValue()));
+				setLights();
 	
 			}
 			
@@ -117,7 +138,8 @@ public class LightingPanel extends JPanel {
 			@Override
 			public void stateChanged(ChangeEvent e) {
 				blueBox.setValue(blueSlider.getValue());
-				button.setBackground(new Color(redSlider.getValue(),greenSlider.getValue(),blueSlider.getValue()));
+				previewButton.setBackground(new Color(redSlider.getValue(),greenSlider.getValue(),blueSlider.getValue()));
+				setLights();
 			}
 			
 		});
@@ -127,18 +149,19 @@ public class LightingPanel extends JPanel {
 			@Override
 			public void stateChanged(ChangeEvent e) {
 				greenBox.setValue(greenSlider.getValue());
-				button.setBackground(new Color(redSlider.getValue(),greenSlider.getValue(),blueSlider.getValue()));				
+				previewButton.setBackground(new Color(redSlider.getValue(),greenSlider.getValue(),blueSlider.getValue()));	
+				setLights();
 			}
 			
 		});
 		
 		//Add listeners to box
 		redBox.addChangeListener(new ChangeListener(){
-
 			@Override
 			public void stateChanged(ChangeEvent e) {
 				redSlider.setValue((int) (redBox.getValue()));
-				button.setBackground(new Color(redSlider.getValue(),greenSlider.getValue(),blueSlider.getValue()));
+				previewButton.setBackground(new Color(redSlider.getValue(),greenSlider.getValue(),blueSlider.getValue()));
+				setLights();
 			}
 			
 		});
@@ -148,7 +171,8 @@ public class LightingPanel extends JPanel {
 			@Override
 			public void stateChanged(ChangeEvent e) {
 				blueSlider.setValue((int) (blueBox.getValue()));
-				button.setBackground(new Color(redSlider.getValue(),greenSlider.getValue(),blueSlider.getValue()));	
+				previewButton.setBackground(new Color(redSlider.getValue(),greenSlider.getValue(),blueSlider.getValue()));	
+				setLights();
 			}
 			
 		});
@@ -158,47 +182,80 @@ public class LightingPanel extends JPanel {
 			@Override
 			public void stateChanged(ChangeEvent e) {
 				greenSlider.setValue((int) (greenBox.getValue()));
-				button.setBackground(new Color(redSlider.getValue(),greenSlider.getValue(),blueSlider.getValue()));	
+				previewButton.setBackground(new Color(redSlider.getValue(),greenSlider.getValue(),blueSlider.getValue()));	
+				setLights();
 			}
 			
 		});
 		
-		//Add "set" button
-		setButton = new JButton(SET_BUTTON_TEXT);
-		setButton.addActionListener(new ActionListener() { // Add action listener to respond to button and SET LEDS
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				 try{
-			            Process ledSet = Runtime.getRuntime().exec("sudo python " + PATH_TO_LED_SCRIPT + " " + RED_PIN  + " " + GREEN_PIN  + " " + BLUE_PIN + " " + String.valueOf(redBox.getValue()) +  " " + String.valueOf(greenBox.getValue()) + " " + String.valueOf(blueBox.getValue()));
-			        }catch(IOException error){
-			              System.out.println("Error! Could not set LED levels");
-			        }
-			}
-
-		});
+//		//Add "set" button
+//		setButton = new JButton(SET_BUTTON_TEXT);
+//		setButton.addActionListener(new ActionListener() { // Add action listener to respond to button and SET LEDS
+//
+//			@Override
+//			public void actionPerformed(ActionEvent e) {
+//				 try{
+//			            Process ledSet = Runtime.getRuntime().exec("sudo python " + PATH_TO_LED_SCRIPT + " " + RED_PIN  + " " + GREEN_PIN  + " " + BLUE_PIN + " " + String.valueOf(redBox.getValue()) +  " " + String.valueOf(greenBox.getValue()) + " " + String.valueOf(blueBox.getValue()));
+//			        }catch(IOException error){
+//			              System.out.println("Error! Could not set LED levels");
+//			        }
+//			}
+//
+//		});
+//		
+		Font boldFont = new Font("Ariel", Font.BOLD, 16);
 
 		//Make separate panels for easily adding /arranging to main panel
 		JPanel redPanel = new JPanel(new BorderLayout());
-		redPanel.add(new JLabel(RED_LABEL_TEXT), BorderLayout.NORTH);
+		JLabel rl= new JLabel(RED_LABEL_TEXT);
+		rl.setForeground(new Color(255,0,0));
+		rl.setFont(boldFont);
+		redPanel.add(rl, BorderLayout.WEST);
 		redPanel.add(redSlider, BorderLayout.CENTER);
 		redPanel.add(redBox, BorderLayout.EAST);
 		
-		JPanel bluePanel = new JPanel(new BorderLayout());
-		bluePanel.add(new JLabel(BLUE_LABEL_TEXT), BorderLayout.NORTH);
-		bluePanel.add(blueSlider, BorderLayout.CENTER);
-		bluePanel.add(blueBox, BorderLayout.EAST);
-		
 		JPanel greenPanel = new JPanel(new BorderLayout());
-		greenPanel.add(new JLabel(GREEN_LABEL_TEXT), BorderLayout.NORTH);
+		JLabel gl= new JLabel(GREEN_LABEL_TEXT);
+		gl.setForeground(new Color(100,255,100));
+		gl.setFont(boldFont);
+		greenPanel.add(gl, BorderLayout.WEST);
 		greenPanel.add(greenSlider, BorderLayout.CENTER);
 		greenPanel.add(greenBox, BorderLayout.EAST);
+		
+		
+		JPanel bluePanel = new JPanel(new BorderLayout());
+		JLabel bl= new JLabel(BLUE_LABEL_TEXT);
+		bl.setForeground(new Color(0,0,255));
+		bl.setFont(boldFont);
+		bluePanel.add(bl, BorderLayout.WEST);
+		bluePanel.add(blueSlider, BorderLayout.CENTER);
+		bluePanel.add(blueBox, BorderLayout.EAST);
+	
 				
 		//Add individual panels to main panel 
-		lightPanel.add(redPanel);
-		lightPanel.add(greenPanel);
-		lightPanel.add(bluePanel);
-		lightPanel.add(setButton);
+		c.gridwidth = count;
+
+		c.gridx=0;
+		c.ipadx=500;
+		c.ipady=40;
+		c.gridy=2;
+		lightPanel.add(redPanel,c);
+
+		c.gridy=3;
+		lightPanel.add(greenPanel, c);
+		
+		c.gridy=4;
+		lightPanel.add(bluePanel, c);
+		
+//		c.gridy=5;
+//		c.ipady=20;
+//		lightPanel.add(setButton, c);
+		
+		//add preview Button
+		c.gridy=5;
+		c.ipady=10;
+		c.ipadx=100;
+		lightPanel.add(previewButton,c);
 	}
 //	public void paintComponent(Graphics g){
 //		System.out.println("hello");
@@ -215,5 +272,12 @@ public class LightingPanel extends JPanel {
 
 	public String getPanelName() {
 		return lightName;
+	}
+	public void setLights(){
+		 try{
+	            Process ledSet = Runtime.getRuntime().exec("sudo python " + PATH_TO_LED_SCRIPT + " " + RED_PIN  + " " + GREEN_PIN  + " " + BLUE_PIN + " " + String.valueOf(redBox.getValue()) +  " " + String.valueOf(greenBox.getValue()) + " " + String.valueOf(blueBox.getValue()));
+	        }catch(IOException error){
+	              System.out.println("Error! Could not set LED levels");
+	        }
 	}
 }

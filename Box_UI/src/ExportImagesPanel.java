@@ -1,6 +1,10 @@
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.Frame;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
@@ -17,6 +21,7 @@ import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JFileChooser;
 import javax.swing.JFormattedTextField;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSpinner;
@@ -45,48 +50,76 @@ public class ExportImagesPanel  {
 		dishNames=dishes;
 		// Initialize components
 		exportImagesPanel = new JPanel();
-		exportImagesPanel.setLayout(new GridLayout(4, 3)); // Add a layout manager to align components
-
+		
+		// Initialize Grid bag layout		
+		exportImagesPanel.setLayout(new GridBagLayout());
+		GridBagConstraints c = new GridBagConstraints();
+		c.fill = GridBagConstraints.HORIZONTAL;
+		
+		
 		panelName = "Export Images"; // Assign name
 		
 		UsbNames=new JComboBox();
+		UsbNames.setVisible(false);
 		
-		JButton UsbButton= new JButton("Choose USB");
-		UsbButton.addActionListener(new ActionListener(){
-
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				refreshFileNames();
-
-				
-				File[] paths;
-				FileSystemView fsv = FileSystemView.getFileSystemView();
-
-				// returns pathnames for files and directory
-				paths = File.listRoots();
-				UsbNames.removeAllItems();
-
-
-				// for each pathname in pathname array
-				for(File path:paths)
-				{
-					System.out.println(path.toString());
-					if(!path.toString().equals( "C:\\")){
-							UsbNames.addItem(path+ " " +fsv.getSystemTypeDescription(path));
-					}
-				    // prints file and directory paths
-				    System.out.println("Drive Name: "+path);
-				    System.out.println("Description: "+fsv.getSystemTypeDescription(path));
-				}
-				
-			}
-
-		});
+		JButton UsbButton= new JButton("Export");
+//		UsbButton.addActionListener(new ActionListener(){
+//
+//			@Override
+//			public void actionPerformed(ActionEvent arg0) {
+//				File[] paths;
+//				FileSystemView fsv = FileSystemView.getFileSystemView();
+//
+//				// returns pathnames for files and directory
+//				paths = File.listRoots();
+//				UsbNames.removeAllItems();
+//
+//				// for each pathname in pathname array
+//				for(File path:paths)
+//				{
+//					System.out.println(path.toString());
+//					if(!path.toString().equals( "C:\\")){
+//							UsbNames.addItem(path+ " " +fsv.getSystemTypeDescription(path));
+//					}
+//				    // prints file and directory paths
+//				    System.out.println("Drive Name: "+path);
+//				    System.out.println("Description: "+fsv.getSystemTypeDescription(path));
+//				}
+//				UsbNames.setVisible(true);
+//			}
+//		});
 		folderNames=  new JComboBox(dishes.toArray());
-		exportImagesPanel.add(folderNames);
-		exportImagesPanel.add(UsbButton);
-		exportImagesPanel.add(UsbNames);
+		JLabel  dishLabel= new JLabel("Select your dish");
+		JLabel USBLabel= new JLabel("Select your USB");
+
+		c.gridx=0;
+		c.gridy=0;
+		c.ipady=50;
+		c.ipadx=200;	
+		exportImagesPanel.add(dishLabel,c);
+		
+		c.gridx=1;
+		c.gridy=0;
+		exportImagesPanel.add(USBLabel,c);
+
+		c.gridx=0;
+		c.gridy=1;
+		c.ipady=50;
+		c.ipadx=200;		
+		exportImagesPanel.add(folderNames,c);
+		
 	
+		
+		c.gridy=1;
+		c.gridx=1;
+		exportImagesPanel.add(UsbNames,c);
+	
+		c.gridx=0;
+		c.gridy=3;
+		c.gridwidth=4;
+		exportImagesPanel.add(UsbButton,c);
+		UsbButton.setBackground(new Color(200,200,200));
+		
 		System.out.println(folderNames.getSelectedIndex());
 	}
 	public void refreshFileNames(){
@@ -95,6 +128,28 @@ public class ExportImagesPanel  {
 			folderNames.addItem(str);
 
 		}
+	}
+	
+	public void refreshUsbNames(){
+		File[] paths;
+		FileSystemView fsv = FileSystemView.getFileSystemView();
+
+		// returns pathnames for files and directory
+		paths = File.listRoots();
+		UsbNames.removeAllItems();
+
+		// for each pathname in pathname array
+		for(File path:paths)
+		{
+			System.out.println(path.toString());
+			if(!path.toString().equals( "C:\\")){
+					UsbNames.addItem(path+ " " +fsv.getSystemTypeDescription(path));
+			}
+		    // prints file and directory paths
+		    System.out.println("Drive Name: "+path);
+		    System.out.println("Description: "+fsv.getSystemTypeDescription(path));
+		}
+		UsbNames.setVisible(true);
 	}
 	/*
 	 * Accessor for Status Panel's JPanel

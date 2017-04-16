@@ -1,5 +1,7 @@
 import java.awt.Font;
 import java.awt.Frame;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -59,26 +61,23 @@ public class StatusPanel implements ActionListener {
 		// Initialize components
 		statusPanel = new JPanel();
 
-		// Initialize Group Layout object
-		GroupLayout layout = new GroupLayout(statusPanel);
-		statusPanel.setLayout(layout); // Add a layout manager to align elements
-
-		// specify automatic gap insertion
-		layout.setAutoCreateGaps(true);
-		layout.setAutoCreateContainerGaps(true);
-
+		// Initialize Grid bag layout		
+		statusPanel.setLayout(new GridBagLayout());
+		GridBagConstraints c = new GridBagConstraints();
+		c.fill = GridBagConstraints.HORIZONTAL;
+	
 		panelName = "Status"; // Assign name
 
 		// Setup checkboxes
-		dish_0 = new JCheckBox("Dish 9");
-		dish_1 = new JCheckBox("Dish 1");
-		dish_2 = new JCheckBox("Dish 2");
-		dish_3 = new JCheckBox("Dish 3");
-		dish_4 = new JCheckBox("Dish 4");
-		dish_5 = new JCheckBox("Dish 5");
-		dish_6 = new JCheckBox("Dish 6");
-		dish_7 = new JCheckBox("Dish 7");
-		dish_8 = new JCheckBox("Dish 8");
+		dish_0 = new JCheckBox("Dish 1");
+		dish_1 = new JCheckBox("Dish 2");
+		dish_2 = new JCheckBox("Dish 3");
+		dish_3 = new JCheckBox("Dish 4");
+		dish_4 = new JCheckBox("Dish 5");
+		dish_5 = new JCheckBox("Dish 6");
+		dish_6 = new JCheckBox("Dish 7");
+		dish_7 = new JCheckBox("Dish 8");
+		dish_8 = new JCheckBox("Dish 9");
 
 		dish_0.addActionListener(this);
 		dish_1.addActionListener(this);
@@ -121,53 +120,20 @@ public class StatusPanel implements ActionListener {
 
 		cameraThread = new CameraThread(dishes);
 		new Thread(cameraThread).start();
-
-		// Add components
-		// 3x3 matrix
-		layout.setHorizontalGroup(layout
-				.createSequentialGroup()
-				.addGroup(
-						layout.createParallelGroup(
-								GroupLayout.Alignment.LEADING)
-								.addComponent(dish_0, 100, 100, 100)
-								.addComponent(dish_1, 100, 100, 100)
-								.addComponent(dish_2, 100, 100, 100))
-								.addGroup(
-										layout.createParallelGroup(
-												GroupLayout.Alignment.LEADING)
-												.addComponent(dish_3, 100, 100, 100)
-												.addComponent(dish_4, 100, 100, 100)
-												.addComponent(dish_5, 100, 100, 100)
-										)
-										.addGroup(
-												layout.createParallelGroup(
-														GroupLayout.Alignment.LEADING)
-														.addComponent(dish_6, 100, 100, 100)
-														.addComponent(dish_7, 100, 100, 100)
-														.addComponent(dish_8, 100, 100, 100))
-				);
-
-		layout.setVerticalGroup(layout
-				.createSequentialGroup()
-				.addGroup(
-						layout.createParallelGroup(
-								GroupLayout.Alignment.LEADING)
-								.addComponent(dish_0, 100, 100, 100)
-								.addComponent(dish_3, 100, 100, 100)
-								.addComponent(dish_6, 100, 100, 100))
-								.addGroup(
-										layout.createParallelGroup(
-												GroupLayout.Alignment.LEADING)
-												.addComponent(dish_1, 100, 100, 100)
-												.addComponent(dish_4, 100, 100, 100)
-												.addComponent(dish_7, 100, 100, 100)
-										)
-										.addGroup(
-												layout.createParallelGroup(
-														GroupLayout.Alignment.LEADING)
-														.addComponent(dish_2, 100, 100, 100)
-														.addComponent(dish_5, 100, 100, 100)
-														.addComponent(dish_8, 100, 100, 100)));
+		
+		int dim=140;
+		
+		for (int i=0; i<3;i++){
+			for(int j=0;j<3;j++){
+				//i rows, j cols
+				c.gridx=j;
+				c.gridy=i;
+				c.ipady=80;
+				c.ipadx=60;
+				System.out.println((3*i)+j);
+				statusPanel.add(cb[(3*i)+j],c);
+			}
+		}		
 	}
 
 	/*
