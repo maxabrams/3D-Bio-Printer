@@ -46,6 +46,9 @@ public class GUI {
 		  
 		JFrame frame = new JFrame("The Box"); // Make a frame tabbed pane
 		JTabbedPane mainPane = new JTabbedPane(JTabbedPane.LEFT, JTabbedPane.WRAP_TAB_LAYOUT);
+		
+		
+		JTabbedPane settingPane=new JTabbedPane();
 		/*
 		 * Can use this to load an Icon ImageIcon icon =
 		 * createImageIcon("images/icon.gif");
@@ -61,21 +64,29 @@ public class GUI {
 		mainPane.setTabComponentAt(1, changeTab(cameraPanel.getPanelName()));  // tab index, jLabel*/
 
 		LightingPanel lightPanel = new LightingPanel();
-		mainPane.addTab(lightPanel.getPanelName(), lightPanel.getPanel());
+		settingPane.addTab(lightPanel.getPanelName(), lightPanel.getPanel());
 
 		TemperaturePanel temperaturePanel = new TemperaturePanel();
-		mainPane.addTab(temperaturePanel.getPanelName(),temperaturePanel.getPanel());
+		settingPane.addTab(temperaturePanel.getPanelName(),temperaturePanel.getPanel());
+		
 		
 		final ExportImagesPanel eip = new ExportImagesPanel(dishList);
 		mainPane.addTab(eip.getPanelName(), eip.getPanel());
 		
+		mainPane.addTab("Settings", settingPane);
+
+		
 		ChangeListener changeListener = new ChangeListener() {
 		      public void stateChanged(ChangeEvent changeEvent) {
+		    	 // every time tab changed, check for new file and usb names
 		        JTabbedPane sourceTabbedPane = (JTabbedPane) changeEvent.getSource();
 		        int index = sourceTabbedPane.getSelectedIndex();
 		        System.out.println("Tab changed to: " + sourceTabbedPane.getTitleAt(index));
 		        eip.refreshFileNames();
 		        eip.refreshUsbNames();
+		        
+		        
+		        //check if any values have updated so can use as dashboard
 		      }
 		    };
 		mainPane.addChangeListener(changeListener);

@@ -9,6 +9,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import javax.swing.Box;
 import javax.swing.GroupLayout;
@@ -48,7 +50,12 @@ public class StatusPanel implements ActionListener {
 
 	private ArrayList <String> dishNames;
 	Dish []dishes;
+	Dish []namedExp;
+
 	JCheckBox [] dishCheckBoxes;
+
+	// store of all experiments that have been created by users
+	ArrayList <Dish> namedExperiments;
 
 
 	//	public ArrayList <String> getdishNames(){
@@ -56,6 +63,8 @@ public class StatusPanel implements ActionListener {
 	//	}
 
 	public StatusPanel(ArrayList<String> dishList) {
+		namedExperiments=new ArrayList <Dish> ();
+		
 		dishNames=dishList;
 
 		// Initialize components
@@ -66,18 +75,18 @@ public class StatusPanel implements ActionListener {
 		GridBagConstraints c = new GridBagConstraints();
 		c.fill = GridBagConstraints.HORIZONTAL;
 	
-		panelName = "Status"; // Assign name
+		panelName = "Dashboard"; // Assign name
 
 		// Setup checkboxes
-		dish_0 = new JCheckBox("Dish 1");
-		dish_1 = new JCheckBox("Dish 2");
-		dish_2 = new JCheckBox("Dish 3");
-		dish_3 = new JCheckBox("Dish 4");
-		dish_4 = new JCheckBox("Dish 5");
-		dish_5 = new JCheckBox("Dish 6");
-		dish_6 = new JCheckBox("Dish 7");
-		dish_7 = new JCheckBox("Dish 8");
-		dish_8 = new JCheckBox("Dish 9");
+		dish_0 = new JCheckBox("      1");
+		dish_1 = new JCheckBox("      2");
+		dish_2 = new JCheckBox("      3");
+		dish_3 = new JCheckBox("      4");
+		dish_4 = new JCheckBox("      5");
+		dish_5 = new JCheckBox("      6");
+		dish_6 = new JCheckBox("      7");
+		dish_7 = new JCheckBox("      8");
+		dish_8 = new JCheckBox("      9");
 
 		dish_0.addActionListener(this);
 		dish_1.addActionListener(this);
@@ -134,6 +143,17 @@ public class StatusPanel implements ActionListener {
 				statusPanel.add(cb[(3*i)+j],c);
 			}
 		}		
+		
+		/// this is super janky... find better way
+		Timer t = new Timer();
+		t.schedule(new TimerTask() {
+		    @Override
+		    public void run() {
+		       checkPending();
+		    }
+		}, 0, 5000);
+		/// this is super janky... find better way
+
 	}
 
 	/*
@@ -171,6 +191,7 @@ public class StatusPanel implements ActionListener {
 				//figure out which dish is to be changed
 				Dish dish= dishes[dishNum];
 				
+				
 				if(createFolder(fileName) == false){ //Create folder if it has not been made before. Add to global array
 					System.out.println("Error! File name already used for folder: " + fileName);
 					JCheckBox temp = dishCheckBoxes[dishNum];
@@ -190,6 +211,7 @@ public class StatusPanel implements ActionListener {
 				dish.setCaptureMetric(picMetric);
 				dish.setExperimentTime(Integer.parseInt(numTotal));
 				dish.setExperimentMetric(totalMetric);
+				dish.setDishNum(dishNum);
 
 				System.out.println("Capture Rate: 1 image every "
 						+ dish.getCaptureRate() + " " + dish.getCaptureMetric());
@@ -256,6 +278,10 @@ public class StatusPanel implements ActionListener {
 				dish.setTimeOfLastPic(timeStamp);
 				dish.setEnabled(true);// last thing to set to start taking photos
 				System.out.println("Time Start: " + dish.getTimeStart());
+				
+				dishCheckBoxes[dishNum].setLabel(fileName);
+				namedExperiments.add(dish);
+	
 		}
 			
 			else{
@@ -325,25 +351,47 @@ public class StatusPanel implements ActionListener {
 		dishCheckBoxes[dishNum].setSelected(true);
 
 		JPanel myPanel = new JPanel();
-		// edit name
+		// Stop the experiment- use if want to stop image capture 
 		JButton stop=new JButton ("Stop Experiment");
 		stop.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				dish.setEnabled(false);
 				dishCheckBoxes[dishNum].setSelected(false);
-
+				dishPending(dish);
 
 			}});
 		myPanel.add(stop);
 		
+		//Use when after done and want to reset dish for next experiment
+		JButton finished=new JButton ("Experiment Finished");
+		finished.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				dish.reset();
+				dishCheckBoxes[dishNum].setLabel("      "+(dishNum+1) );
+				
+			}});
+		myPanel.add(finished);
+
 		JOptionPane.showConfirmDialog(null, myPanel, "Dish Menu",JOptionPane.PLAIN_MESSAGE);
 
 	}
-		
+	
+	public void checkPending(){
+		for (Dish d: dishes){
+			dishPending(d);
+		}
+	}
 
 
-
+	public void dishPending(Dish d){
+		if(namedExperiments.contains(d) && d.isFinished()==true){
+			dishCheckBoxes[d.getDishNum()].setLabel("Done");
+			System.out.println("Done" + d.getDishNum() );
+			
+		}
+	}
 		// Preset values with what is already there
 //		SpinnerNumberModel captureModel = new SpinnerNumberModel(
 //				dish.getCaptureRate(), 0, 60, 1);

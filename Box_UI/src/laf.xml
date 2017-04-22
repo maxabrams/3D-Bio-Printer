@@ -53,6 +53,8 @@
 			<insets top="43" bottom="43" right="6" left="20"/>
 		</state>
 		<state value="SELECTED">
+			<insets top="43" bottom="43" right="6" left="20"/>
+
 			<imagePainter id="Tab_Selected"      sourceInsets="0 0 0 0" paintcenter="false" path="images/tabWhite.png" />
 			<property key="Tab.icon" type="idref" value="Tab_Selected"/>
 
@@ -65,30 +67,6 @@
 	</style>
 	<!-- Bind tabStyle to all tabs -->
 	<bind style="tabStyle" type="region" key="TabbedPaneTab" />
-
-
-
-	<style id="buttonStyle">
-		<!-- Shift the text one pixel when pressed -->
-		<!-- <property key="Button.textShiftOffset" type="integer" value="1"/> -->
-		<state>
-			<insets top="20" left="20" right="20" bottom="20"/>
-			
-		</state>
-		<state value="DISABLED">
-			<insets top="20" left="20" right="20" bottom="20"/>
-		</state>
-		
-		<state value="MOUSE_OVER">
-						<opaque value="true"/>
-
-		</state>
-
-	</style>
-	<!-- Bind buttonStyle to all JButtons -->
-	<bind style="buttonStyle" type="region" key="button"/> 
-
-
 
 
 	<!-- CHECKBOX -->
@@ -105,10 +83,10 @@
 			<color value="BLACK" type="FOREGROUND"/>
 		</state>
 
-		<state value="SELECTED">
+	<!-- 	<state value="SELECTED">
 			<imagePainter id="Checkbox_Selected"    sourceInsets="10 10 10 10" paintcenter="false" path="images/dishRed.png" />
 			<property key="CheckBox.icon" type="idref" value="Checkbox_Selected"/>
-		</state>
+		</state> -->
 
 		<state value="ENABLED">
 			<imagePainter id="Checkbox_Normal"      sourceInsets="10 10 10 10" paintcenter="false" path="images/dishGreen.png" />
@@ -138,6 +116,58 @@
 
   <bind style="arrowButton" key="ComboBox.arrowButton" type="name"/>
 
+
+  	<style id="PVB">
+			<opaque value="TRUE"/>
+			<font name="Arial" size="16"/>
+
+			<color value="BLACK" type="TEXT_FOREGROUND" />
+		<state>
+			<insets top="20" left="20" right="20" bottom="20"/>
+		</state>
+		<state value="DISABLED">
+			<insets top="20" left="20" right="20" bottom="20"/>
+			<imagePainter id="previewButton"      sourceInsets="50 50 50 50" paintcenter="false" path="images/tabOrange.png" />
+			<property key="Button.icon" type="idref" value="previewButton"/>
+		</state>
+		
+	</style>
+	<!-- Bind buttonStyle to all JButtons -->
+	<bind style="PVB" type="name" key="Preview"/> 
+
+	<style id="buttonStyle">
+			<opaque value="TRUE"/>
+			<font name="Arial" size="16"/>
+
+			<color value="BLACK" type="TEXT_FOREGROUND" />
+
+
+		<!-- Shift the text one pixel when pressed -->
+		<!-- <property key="Button.textShiftOffset" type="integer" value="1"/> -->
+		<state>
+			<insets top="10" left="10" right="10" bottom="10"/>
+
+			<imagePainter id="buttonImage"      sourceInsets="10 10 10 10" paintcenter="false" path="images/clearBox.png" />
+			<property key="Button.icon" type="idref" value="buttonImage"/>
+			
+		</state>
+		<state value="DISABLED">
+			<insets top="20" left="20" right="20" bottom="20"/>
+			<imagePainter id="buttonImage_disabled"      sourceInsets="10 10 10 10" paintcenter="false" path="images/boxPurple.png" />
+			<property key="Button.icon" type="idref" value="buttonImage_disabled"/>
+		</state>
+		
+		<state value="PRESSED">
+				<opaque value="true"/>
+
+			<!-- <imagePainter id="buttonImage_mo"      sourceInsets="50 50 50 50" paintcenter="false" path="images/clearBox.png" />
+			<property key="Button.icon" type="idref" value="buttonImage_mo"/> -->
+
+		</state>
+
+	</style>
+	<!-- Bind buttonStyle to all JButtons -->
+	<bind style="buttonStyle" type="region" key="button"/> 
 
 	<!-- Style that all regions will use -->
 	<style id="backingStyle">

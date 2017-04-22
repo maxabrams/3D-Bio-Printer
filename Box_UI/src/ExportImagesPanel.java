@@ -89,7 +89,7 @@ public class ExportImagesPanel  {
 //			}
 //		});
 		folderNames=  new JComboBox(dishes.toArray());
-		JLabel  dishLabel= new JLabel("Select your dish");
+		JLabel  dishLabel= new JLabel("Select your experiment");
 		JLabel USBLabel= new JLabel("Select your USB");
 
 		c.gridx=0;

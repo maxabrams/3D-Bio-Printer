@@ -43,7 +43,7 @@ public class DishConfig extends JFrame {
 		filePanel.add(fileName);
 		
 		JPanel picPanel = new JPanel();
-		JLabel picLabel = new JLabel("Enter the unit number:");
+		JLabel picLabel = new JLabel("Enter the image frequency:");
 		numPics = new JTextField("1");
 		numPics.setPreferredSize(fieldDimension);
 		picMetrics = new JComboBox(times);
