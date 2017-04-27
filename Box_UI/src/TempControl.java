@@ -1,6 +1,15 @@
 
 //import com.pi4j.io.gpio.*;
+import java.awt.List;
 import java.io.*;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Calendar;
 
 import javax.swing.JLabel;
 
@@ -20,10 +29,14 @@ public class TempControl implements Runnable {
     private static final String PATH_TO_RELAY_ON = "/home/pi/py/relay_on.py";
     JLabel output;
     JLabel status;
+    ArrayList <String> lines=new ArrayList   <String> ();
+    Path file = Paths.get("tempLog.txt");
     
     public TempControl(JLabel status, JLabel label){
         this.status = status;
         output = label;
+        // Write temps to a file
+
         //relay = new GPIO_Pin(RELAY_PIN);
        /* gpio = GpioFactory.getInstance();
         pin = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_18, "Relay", PinState.LOW);
@@ -36,6 +49,9 @@ public class TempControl implements Runnable {
 
         while (running) {
             double currTemp = getTemp();
+            Timestamp currentTimestamp = new java.sql.Timestamp(Calendar.getInstance().getTime().getTime());
+//            System.out.println(currentTimestamp);
+            lines.add(currentTimestamp + ": "+ currTemp);
             System.out.println("curr Temp: "+ currTemp);
             
             if(currTemp==Integer.MIN_VALUE){   
@@ -62,6 +78,12 @@ public class TempControl implements Runnable {
         }
         heaterOff();
         System.out.println("done");
+        try {
+			Files.write(file, lines, Charset.forName("UTF-8"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
 
     public void shutdown() {

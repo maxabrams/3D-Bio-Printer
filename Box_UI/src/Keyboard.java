@@ -144,8 +144,7 @@ private JPanel createKeyboard(int row, int col){
 				}
 			});
 	        buttons.add(addButton);
-	        buttonPannel.add(addButton);
-	             
+	        buttonPannel.add(addButton);	             
 	    }
 
 		

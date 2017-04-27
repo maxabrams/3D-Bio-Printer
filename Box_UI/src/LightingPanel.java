@@ -14,8 +14,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
 import javax.swing.JSpinner;
@@ -26,12 +28,12 @@ import javax.swing.event.ChangeListener;
 public class LightingPanel extends JPanel {
 	private JPanel lightPanel; // Panel to make modifications to
 	private String lightName; // Name for panel
-	private JButton setButton;
+	private JButton advancedButton;
 	private static final String PATH_TO_LED_SCRIPT = "/home/pi/py/strip.py";
-	private static final int RED_PIN = 20; //GPIO Pin
-	private static final int GREEN_PIN = 21; //GPIO Pin
-	private static final int BLUE_PIN = 26; //GPIO Pin
-	private final String SET_BUTTON_TEXT = "Set Lights";
+	private static final int RED_PIN = 16; //GPIO Pin
+	private static final int GREEN_PIN = 20; //GPIO Pin
+	private static final int BLUE_PIN = 21; //GPIO Pin
+	private final String SET_BUTTON_TEXT = "Advanced Settings";
 	private JSlider redSlider;
 	private JSlider blueSlider;
 	private JSlider greenSlider;
@@ -86,7 +88,14 @@ public class LightingPanel extends JPanel {
 //		previewButton.setEnabled(false);
 		previewButton.setName("Preview");
 		
-		
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.ipady = 40;      //make this component tall
+		c.weightx = 0.0;
+		c.gridwidth = -4;
+		c.gridx = 0;
+		c.gridy = 0;
+		c.anchor = GridBagConstraints.PAGE_START;
+		lightPanel.add(new JLabel("Select desired lighting color"), c);
 		// Preset colors
 		ArrayList<Color> colors= new ArrayList <Color>(Arrays.asList(new Color(255,0,0),new Color(0,255,0),new Color(0,0,255), new Color(255,255,0) , new Color(255,255,255) ,new Color(0,0,0) ));
 		int count=0;
@@ -130,7 +139,6 @@ public class LightingPanel extends JPanel {
 				redBox.setValue(redSlider.getValue());
 				previewButton.setBackground(new Color(redSlider.getValue(),greenSlider.getValue(),blueSlider.getValue()));
 				setLights();
-	
 			}
 			
 		});
@@ -189,22 +197,31 @@ public class LightingPanel extends JPanel {
 			}
 			
 		});
+		///////////////////////////////////////
 		
-//		//Add "set" button
-//		setButton = new JButton(SET_BUTTON_TEXT);
-//		setButton.addActionListener(new ActionListener() { // Add action listener to respond to button and SET LEDS
-//
-//			@Override
-//			public void actionPerformed(ActionEvent e) {
-//				 try{
+		//Add "advanced" button
+		advancedButton = new JButton(SET_BUTTON_TEXT);
+		advancedButton.addActionListener(new ActionListener() { // Add action listener to respond to button and SET LEDS
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				JOptionPane.showConfirmDialog(
+					    null,
+					    "Would you like green eggs and ham?",
+					    "An Inane Question",
+					    JOptionPane.YES_NO_OPTION);				
 //			            Process ledSet = Runtime.getRuntime().exec("sudo python " + PATH_TO_LED_SCRIPT + " " + RED_PIN  + " " + GREEN_PIN  + " " + BLUE_PIN + " " + String.valueOf(redBox.getValue()) +  " " + String.valueOf(greenBox.getValue()) + " " + String.valueOf(blueBox.getValue()));
 //			        }catch(IOException error){
 //			              System.out.println("Error! Could not set LED levels");
 //			        }
-//			}
-//
-//		});
-//		
+								 
+				
+			}
+
+		});
+		
+		/////////////////////////////////////////////////
+		
 		Font boldFont = new Font("Ariel", Font.BOLD, 16);
 
 		//Make separate panels for easily adding /arranging to main panel
@@ -241,13 +258,14 @@ public class LightingPanel extends JPanel {
 		c.ipadx=500;
 		c.ipady=40;
 		c.gridy=2;
-		lightPanel.add(redPanel,c);
+//		lightPanel.add(advancedButton,c);
+//		lightPanel.add(redPanel,c);
 
 		c.gridy=3;
-		lightPanel.add(greenPanel, c);
+//		lightPanel.add(greenPanel, c);
 		
 		c.gridy=4;
-		lightPanel.add(bluePanel, c);
+//		lightPanel.add(bluePanel, c);
 		
 //		c.gridy=5;
 //		c.ipady=20;

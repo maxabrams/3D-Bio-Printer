@@ -49,6 +49,8 @@ public class GUI {
 		
 		
 		JTabbedPane settingPane=new JTabbedPane();
+		
+	
 		/*
 		 * Can use this to load an Icon ImageIcon icon =
 		 * createImageIcon("images/icon.gif");
@@ -73,8 +75,11 @@ public class GUI {
 		final ExportImagesPanel eip = new ExportImagesPanel(dishList);
 		mainPane.addTab(eip.getPanelName(), eip.getPanel());
 		
-		mainPane.addTab("Settings", settingPane);
-
+		mainPane.addTab("Settings \n\n\n\n\n", settingPane);
+//		settingPane.getComponentAt(0).setName("statusTab");
+		settingPane.setName("statusTab");
+		System.out.println("tab"+settingPane.getTabCount());
+//		settingPane.getTabComponentAt(0);
 		
 		ChangeListener changeListener = new ChangeListener() {
 		      public void stateChanged(ChangeEvent changeEvent) {

@@ -63,6 +63,7 @@ public class StatusPanel implements ActionListener {
 	//	}
 
 	public StatusPanel(ArrayList<String> dishList) {
+		
 		namedExperiments=new ArrayList <Dish> ();
 		
 		dishNames=dishList;

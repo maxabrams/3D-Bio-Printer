@@ -1,10 +1,15 @@
 <synth>
 
+	<!-- TAB -->
+	
 	<style id="LabelStyle">
 		<font name="Arial" size="16" style="bold"/>
 
 	</style>
 	<bind style="LabelStyle" type="region" key="Label" />
+
+
+
 
 
 	<!-- SLIDER -->
@@ -38,7 +43,6 @@
 	<bind style="Slider" type="region" key="Slider" />
 
 
-
 	<!-- TAB -->
 	<style id="tabStyle">
 		<state>
@@ -66,7 +70,10 @@
 
 	</style>
 	<!-- Bind tabStyle to all tabs -->
+
 	<bind style="tabStyle" type="region" key="TabbedPaneTab" />
+
+
 
 
 	<!-- CHECKBOX -->
@@ -99,29 +106,30 @@
 
 
 
-<style id="ComboBoxStyle">
-	<opaque value="TRUE"/>
+	<style id="ComboBoxStyle">
+		<opaque value="TRUE"/>
 
 		<imagePainter id="cb"      sourceInsets="50 50 50 50" paintcenter="false" path="images/clearBox.png" />
 		<property key="ComboBox.icon" type="idref" value="cb"/>
 	</style>
 
-  <bind style="ComboBoxStyle" key="ComboBox" type="region"/>
+	<bind style="ComboBoxStyle" key="ComboBox" type="region"/>
 
-<style id="arrowButton">
+	<style id="arrowButton">
 		<imagePainter id="arrowButton_Normal"      sourceInsets="10 10 10 10" paintcenter="false" path="images/arrowOrange.png" />
 		<property key="arrowButton.icon" type="idref" value="arrowButton_Normal"/>
 
 	</style>
 
-  <bind style="arrowButton" key="ComboBox.arrowButton" type="name"/>
+	<bind style="arrowButton" key="ComboBox.arrowButton" type="name"/>
 
 
-  	<style id="PVB">
-			<opaque value="TRUE"/>
-			<font name="Arial" size="16"/>
 
-			<color value="BLACK" type="TEXT_FOREGROUND" />
+	<style id="PVB">
+		<opaque value="TRUE"/>
+		<font name="Arial" size="16"/>
+
+		<color value="BLACK" type="TEXT_FOREGROUND" />
 		<state>
 			<insets top="20" left="20" right="20" bottom="20"/>
 		</state>
@@ -136,10 +144,10 @@
 	<bind style="PVB" type="name" key="Preview"/> 
 
 	<style id="buttonStyle">
-			<opaque value="TRUE"/>
-			<font name="Arial" size="16"/>
+		<opaque value="TRUE"/>
+		<font name="Arial" size="16"/>
 
-			<color value="BLACK" type="TEXT_FOREGROUND" />
+		<color value="BLACK" type="TEXT_FOREGROUND" />
 
 
 		<!-- Shift the text one pixel when pressed -->
@@ -158,7 +166,7 @@
 		</state>
 		
 		<state value="PRESSED">
-				<opaque value="true"/>
+			<opaque value="true"/>
 
 			<!-- <imagePainter id="buttonImage_mo"      sourceInsets="50 50 50 50" paintcenter="false" path="images/clearBox.png" />
 			<property key="Button.icon" type="idref" value="buttonImage_mo"/> -->
@@ -181,4 +189,6 @@
 		</state>
 	</style>
 	<bind style="backingStyle" type="region" key=".*"/>
+
+	
 </synth>
