@@ -19,7 +19,8 @@ public class TempControl implements Runnable {
     private double threshold = 2;
     private double target = 20;
     private boolean isRelayOn = false;
-    private static int RELAY_PIN = 26;
+    private static int FAN_PIN = 26;
+    private static int RELAY_PIN = 19;
   //  private static int TEMP_PIN = 20;
   //  private GPIO_Pin relay;
    // private GpioController gpio;
@@ -29,7 +30,7 @@ public class TempControl implements Runnable {
     private static final String PATH_TO_RELAY_ON = "/home/pi/py/relay_on.py";
     JLabel output;
     JLabel status;
-    ArrayList <String> lines=new ArrayList   <String> ();
+    ArrayList <String> lines = new ArrayList<String>();
     Path file = Paths.get("tempLog.txt");
     
     public TempControl(JLabel status, JLabel label){
@@ -57,7 +58,7 @@ public class TempControl implements Runnable {
             if(currTemp==Integer.MIN_VALUE){   
                 System.out.println("error temp sensor output!");
                 output.setText("Error");
-                status.setText("Status: Error! No temperature sensor!");
+                status.setText("Status: Error!");
                 heaterOff();
                 running = false; //THIS WILL KILL THE THREAD
             }else{
@@ -96,20 +97,42 @@ public class TempControl implements Runnable {
         Process p = Runtime.getRuntime().exec("sudo python " + PATH_TO_TEMP );//+ " 2302 " + TEMP_PIN);
         BufferedReader stdInput = new BufferedReader(new InputStreamReader(p.getInputStream()));
         
-        String consoleOutput = stdInput.readLine();//For some reason only 15 works with library
-        //System.out.println(consoleOutput);
+        String consoleOutput = stdInput.readLine();//--WHAAAAAATTT? For some reason only 15 works with library
+        System.out.println(consoleOutput);
         if(consoleOutput == null){
         	System.out.println("Invalid input from temp sensor");
             return Integer.MIN_VALUE;
         }
 	    
+        /*
         consoleOutput = consoleOutput.substring(5,9);
 	    if (consoleOutput.matches("\\d*\\.?\\d*")){
 	        return Double.parseDouble(consoleOutput);
 	    }else{//if invalid input
 	        System.out.println("Invalid input from temp sensor");
 	        return Integer.MIN_VALUE;
-	    }
+	    }*/
+        
+        String tempVals[] = consoleOutput.split(",");
+        double tempAvg = Integer.MIN_VALUE;
+        if(tempVals.length == 6){
+        	if(Double.parseDouble(tempVals[5]) > 100){ //Saftey check at 100c
+        		//Force off the thread
+        		System.out.println("FAILURE! Temperature is too hot!! Shutting down.");
+                heaterOff();
+                running = false;
+        		return Integer.MIN_VALUE;
+        	}
+        	for(int i = 0; i < 4; i++){
+        		tempAvg += Double.parseDouble(tempVals[i]);
+        	}
+        	tempAvg = tempAvg / 4.0;
+        	return tempAvg;
+        }else{
+        	System.out.println("Error could not read temp from bridge");
+        	return Integer.MIN_VALUE;
+        }
+        
        
     }catch(IOException e){
         System.out.println("Error could not read temp");
@@ -124,6 +147,7 @@ public class TempControl implements Runnable {
             //relay.setHIGH();
             //pin.high();
         try{
+        	Process fOn = Runtime.getRuntime().exec("sudo python " + PATH_TO_RELAY_ON + " " + FAN_PIN);
             Process pOn = Runtime.getRuntime().exec("sudo python " + PATH_TO_RELAY_ON + " " + RELAY_PIN);
         }catch(IOException e){
               System.out.println("Error could not turn on");
@@ -139,6 +163,7 @@ public class TempControl implements Runnable {
             //relay.setLOW();
             //pin.low();
             try{
+            	Process fOff = Runtime.getRuntime().exec("sudo python " + PATH_TO_RELAY_OFF + " " + FAN_PIN);
                 Process pOff = Runtime.getRuntime().exec("sudo python " + PATH_TO_RELAY_OFF + " " + RELAY_PIN);
              }catch(IOException e){
                  System.out.println("Error could not turn off");
