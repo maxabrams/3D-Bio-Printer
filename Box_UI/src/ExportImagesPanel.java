@@ -133,21 +133,13 @@ public class ExportImagesPanel  {
 	public void refreshUsbNames(){
 		File[] paths;
 		FileSystemView fsv = FileSystemView.getFileSystemView();
-
-		// returns pathnames for files and directory
-		paths = File.listRoots();
 		UsbNames.removeAllItems();
-
-		// for each pathname in pathname array
-		for(File path:paths)
-		{
-			System.out.println(path.toString());
-			if(!path.toString().equals( "C:\\")){
-					UsbNames.addItem(path+ " " +fsv.getSystemTypeDescription(path));
+		File dev = fsv.getChild(fsv.getRoots()[0], "dev/disk/by-label/");
+		for(String path: dev.list()){
+			if(!path.equals("boot")){
+				System.out.println(path);
+				UsbNames.addItem(path);
 			}
-		    // prints file and directory paths
-		    System.out.println("Drive Name: "+path);
-		    System.out.println("Description: "+fsv.getSystemTypeDescription(path));
 		}
 		UsbNames.setVisible(true);
 	}

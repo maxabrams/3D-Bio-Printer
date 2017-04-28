@@ -1,5 +1,4 @@
 
-
 //import com.pi4j.io.gpio.*;
 import java.awt.List;
 import java.io.*;
@@ -11,9 +10,7 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
-import java.io.*;
-import java.util.Date;
-import java.text.*;
+
 import javax.swing.JLabel;
 
 
@@ -33,20 +30,14 @@ public class TempControl implements Runnable {
     private static final String PATH_TO_RELAY_ON = "/home/pi/py/relay_on.py";
     JLabel output;
     JLabel status;
-    PrintWriter outFile;
-    DateFormat dateFormat;
+    ArrayList <String> lines = new ArrayList<String>();
+    Path file = Paths.get("tempLog.txt");
     
     public TempControl(JLabel status, JLabel label){
         this.status = status;
         output = label;
         // Write temps to a file
-        dateFormat = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
-        try{
-        outFile = new PrintWriter("temps.txt");
-    }catch(Exception io){
-        System.out.println("Temp file error");
-    }
-    
+
         //relay = new GPIO_Pin(RELAY_PIN);
        /* gpio = GpioFactory.getInstance();
         pin = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_18, "Relay", PinState.LOW);
@@ -87,14 +78,16 @@ public class TempControl implements Runnable {
             }
         }
         heaterOff();
-        outFile.close();
         System.out.println("done");
-       // try {
-            //Files.write(file, lines, Charset.forName("UTF-8"));
-        //} catch (IOException e) {
-            // TODO Auto-generated catch block
-            //e.printStackTrace();
-        //}
+      
+        /*
+        try {
+			Files.write(file, lines, Charset.forName("UTF-8"));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		*/
     }
 
     public void shutdown() {
@@ -110,47 +103,39 @@ public class TempControl implements Runnable {
         String consoleOutput = stdInput.readLine();//--WHAAAAAATTT? For some reason only 15 works with library
         System.out.println(consoleOutput);
         if(consoleOutput == null){
-            System.out.println("Invalid input from temp sensor");
+        	System.out.println("Invalid input from temp sensor");
             return Integer.MIN_VALUE;
         }
-        
+	    
         /*
         consoleOutput = consoleOutput.substring(5,9);
-        if (consoleOutput.matches("\\d*\\.?\\d*")){
-            return Double.parseDouble(consoleOutput);
-        }else{//if invalid input
-            System.out.println("Invalid input from temp sensor");
-            return Integer.MIN_VALUE;
-        }*/
+	    if (consoleOutput.matches("\\d*\\.?\\d*")){
+	        return Double.parseDouble(consoleOutput);
+	    }else{//if invalid input
+	        System.out.println("Invalid input from temp sensor");
+	        return Integer.MIN_VALUE;
+	    }*/
         
         String tempVals[] = consoleOutput.split(",");
         double tempAvg = 0;
-        try{
-        if(tempVals.length == 7){
-            if(Double.parseDouble(tempVals[5]) > 100){ //Saftey check at 100c
-                //Force off the thread
-                System.out.println("FAILURE! Temperature is too hot!! Shutting down.");
+        if(tempVals.length == 6){
+        	if(Double.parseDouble(tempVals[4]) > 100){ //Saftey check at 100c
+        		//Force off the thread
+        		System.out.println("FAILURE! Temperature is too hot!! Shutting down.");
                 heaterOff();
                 running = false;
-                return Integer.MIN_VALUE;
-            }
-            for(int i = 1; i < 5; i++){
-                tempAvg += Double.parseDouble(tempVals[i]);
-            }
-            tempAvg = tempAvg / 4.0;
-            try{
-                outFile.println(dateFormat.format(new Date())+","+tempAvg);
-            }catch(Exception ioE){
-                System.out.println("Could not write to file");
-            }
-            return tempAvg;
+        		return Integer.MIN_VALUE;
+        	}
+        	for(int i = 0; i < 4; i++){
+        		tempAvg += Double.parseDouble(tempVals[i]);
+        	}
+        	tempAvg = tempAvg / 4.0;
+        	return tempAvg;
         }else{
-            System.out.println("Error could not read temp from bridge");
-            return Integer.MIN_VALUE;
+        	System.out.println("Error could not read temp from bridge");
+        	return Integer.MIN_VALUE;
         }
-    }catch(Exception ex){
-        return getTemp();
-    }
+        
        
     }catch(IOException e){
         System.out.println("Error could not read temp");
@@ -165,7 +150,7 @@ public class TempControl implements Runnable {
             //relay.setHIGH();
             //pin.high();
         try{
-            Process fOn = Runtime.getRuntime().exec("sudo python " + PATH_TO_RELAY_ON + " " + FAN_PIN);
+        	Process fOn = Runtime.getRuntime().exec("sudo python " + PATH_TO_RELAY_ON + " " + FAN_PIN);
             Process pOn = Runtime.getRuntime().exec("sudo python " + PATH_TO_RELAY_ON + " " + RELAY_PIN);
         }catch(IOException e){
               System.out.println("Error could not turn on");
@@ -181,7 +166,7 @@ public class TempControl implements Runnable {
             //relay.setLOW();
             //pin.low();
             try{
-                Process fOff = Runtime.getRuntime().exec("sudo python " + PATH_TO_RELAY_OFF + " " + FAN_PIN);
+            	Process fOff = Runtime.getRuntime().exec("sudo python " + PATH_TO_RELAY_OFF + " " + FAN_PIN);
                 Process pOff = Runtime.getRuntime().exec("sudo python " + PATH_TO_RELAY_OFF + " " + RELAY_PIN);
              }catch(IOException e){
                  System.out.println("Error could not turn off");
