@@ -89,14 +89,16 @@ public class LightingPanel extends JPanel {
 		previewButton.setName("Preview");
 		
 		c.fill = GridBagConstraints.HORIZONTAL;
-		c.ipady = 40;      //make this component tall
-		c.weightx = 0.0;
-		c.gridwidth = -4;
+		c.weightx = .5;
+		c.gridwidth = 5;
 		c.gridx = 0;
 		c.gridy = 0;
-		c.anchor = GridBagConstraints.PAGE_START;
+		c.anchor = GridBagConstraints.NORTH;
 		lightPanel.add(new JLabel("Select desired lighting color"), c);
 		// Preset colors
+		JPanel colorPresets= new JPanel();
+		colorPresets.setLayout(new GridBagLayout());
+		
 		ArrayList<Color> colors= new ArrayList <Color>(Arrays.asList(new Color(255,0,0),new Color(0,255,0),new Color(0,0,255), new Color(255,255,0) , new Color(255,255,255) ,new Color(0,0,0) ));
 		int count=0;
 		for(final Color col:colors){
@@ -123,13 +125,20 @@ public class LightingPanel extends JPanel {
 			});
 
 			c.gridx=count;
-			c.gridy=1;
+			c.gridy=0;
 			c.ipady=30;
 			c.ipadx=70;
+			c.gridwidth=1;
 			count++;
-
-			lightPanel.add(Preset,c);
+			colorPresets.add(Preset,c);
 		}
+		
+		c.gridx=0;
+		c.gridy=1;
+		c.weighty=1.0;
+		c.fill= GridBagConstraints.VERTICAL;
+		c.anchor=GridBagConstraints.SOUTH;
+		lightPanel.add(colorPresets, c);
 		
 		//Add update listeners to sliders
 		redSlider.addChangeListener(new ChangeListener(){

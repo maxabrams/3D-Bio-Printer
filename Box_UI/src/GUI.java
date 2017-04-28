@@ -1,9 +1,15 @@
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.text.ParseException;
 import java.util.ArrayList;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 import javax.swing.UIManager;
@@ -48,15 +54,68 @@ public class GUI {
 		JTabbedPane mainPane = new JTabbedPane(JTabbedPane.LEFT, JTabbedPane.WRAP_TAB_LAYOUT);
 		
 		
-		JTabbedPane settingPane=new JTabbedPane();
+		JPanel settings= new JPanel();
+		settings.setLayout(new GridBagLayout());
+		GridBagConstraints c = new GridBagConstraints();
+		c.gridy=0;
+		c.weightx=.5;
+
+		c.fill= GridBagConstraints.HORIZONTAL;
+		final JButton lightingButton= new JButton("Light Settings");
+		final JButton tempButton= new JButton("Temperature Settings");
 		
-	
+		c.gridx=0;
+		c.anchor=GridBagConstraints.EAST;
+		settings.add(lightingButton, c);
+		c.gridx=1;
+		c.anchor=GridBagConstraints.WEST;
+		settings.add(tempButton , c);
+		
+		final JPanel setterPane= new JPanel();
+		final CardLayout cl= new CardLayout();
+		setterPane.setLayout(cl);
+		LightingPanel lightPanel= new LightingPanel();
+		TemperaturePanel tempPanel= new TemperaturePanel();
+		
+		setterPane.add(lightPanel.getPanel(), "Lights");
+		setterPane.add(tempPanel.getPanel(), "Temps");
+
+		c.anchor=GridBagConstraints.CENTER;
+		c.gridx=0;
+		c.gridy=1;
+		c.gridwidth=2;
+		c.weighty=1.0;
+		c.weightx=1.0;
+		settings.add(setterPane, c);
+		
+		
+		 lightingButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				System.out.println("hello");
+		      	cl.first(setterPane);
+//		      	lightingButton.setBackground(Color.ORANGE);
+//		      	tempButton.setBackground(Color.WHITE);
+			}
+		    });
+
+		 tempButton.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				System.out.println("bye");
+		      	cl.last(setterPane);
+//		    	lightingButton.setBackground(Color.WHITE);
+//		      	tempButton.setBackground(Color.ORANGE);
+			}
+		    });
+		
 		/*
 		 * Can use this to load an Icon ImageIcon icon =
 		 * createImageIcon("images/icon.gif");
 		 */
 		
-		//mainPane.setTabPlacement(, );
 		StatusPanel statusPanel = new StatusPanel(dishList);
 		mainPane.addTab(statusPanel.getPanelName(), statusPanel.getPanel());
 		
@@ -65,20 +124,19 @@ public class GUI {
 		mainPane.addTab(cameraPanel.getPanelName(), cameraPanel.getPanel());
 		mainPane.setTabComponentAt(1, changeTab(cameraPanel.getPanelName()));  // tab index, jLabel*/
 
-		LightingPanel lightPanel = new LightingPanel();
-		settingPane.addTab(lightPanel.getPanelName(), lightPanel.getPanel());
+//		LightingPanel lightPanel = new LightingPanel();
+//		settingPane.addTab(lightPanel.getPanelName(), lightPanel.getPanel());
 
-		TemperaturePanel temperaturePanel = new TemperaturePanel();
-		settingPane.addTab(temperaturePanel.getPanelName(),temperaturePanel.getPanel());
+//		TemperaturePanel temperaturePanel = new TemperaturePanel();
+//		settingPane.addTab(temperaturePanel.getPanelName(),temperaaturePanel.getPanel());
 		
 		
 		final ExportImagesPanel eip = new ExportImagesPanel(dishList);
 		mainPane.addTab(eip.getPanelName(), eip.getPanel());
 		
-		mainPane.addTab("Settings \n\n\n\n\n", settingPane);
+		mainPane.addTab("Settings \n\n\n\n\n", settings);
 //		settingPane.getComponentAt(0).setName("statusTab");
-		settingPane.setName("statusTab");
-		System.out.println("tab"+settingPane.getTabCount());
+//		System.out.println("tab"+settingPane.getTabCount());
 //		settingPane.getTabComponentAt(0);
 		
 		ChangeListener changeListener = new ChangeListener() {
