@@ -1,27 +1,25 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
-import java.awt.GridLayout;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
-import javax.swing.JDialog;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSlider;
 import javax.swing.JSpinner;
 import javax.swing.SpinnerNumberModel;
+import javax.swing.border.EtchedBorder;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
@@ -81,20 +79,30 @@ public class LightingPanel extends JPanel {
 		greenBox = new JSpinner(new SpinnerNumberModel(greenSlider.getValue(), 0, 255, 1));
 		
 		//box for color preview based on RGB values set with sliders
-		final JButton previewButton = new JButton("Preview");
+		final JButton previewButton = new JButton("Current Setting");
 		previewButton.setPreferredSize(new Dimension(40,40));
 		previewButton.setBackground(new Color(redSlider.getValue(),greenSlider.getValue(),blueSlider.getValue()));
 		previewButton.setOpaque(true);
 //		previewButton.setEnabled(false);
 		previewButton.setName("Preview");
 		
-		c.fill = GridBagConstraints.HORIZONTAL;
-		c.weightx = .5;
-		c.gridwidth = 5;
+		// blank space to center the instructions
+		JLabel blank= new JLabel("    ");
 		c.gridx = 0;
 		c.gridy = 0;
-		c.anchor = GridBagConstraints.NORTH;
-		lightPanel.add(new JLabel("Select desired lighting color"), c);
+		c.ipadx=170;
+		c.ipady=30;
+		lightPanel.add(blank, c);
+
+		JLabel inst= new JLabel("Select desired lighting color");
+		inst.setFont(new Font("Arial", Font.BOLD, 20));
+		c.weightx = 1.0;
+		c.gridwidth = 1;
+		c.gridx = 1;
+		c.gridy = 0;
+		c.anchor = GridBagConstraints.EAST;
+		c.insets= new Insets(5,5,5,100);
+		lightPanel.add(inst, c);
 		// Preset colors
 		JPanel colorPresets= new JPanel();
 		colorPresets.setLayout(new GridBagLayout());
@@ -104,15 +112,13 @@ public class LightingPanel extends JPanel {
 		for(final Color col:colors){
 			// label each color with word
 			final JButton Preset = new JButton();
-			Preset.setPreferredSize(new Dimension(40,40));
+			Preset.setPreferredSize(new Dimension(60,60));
 			Preset.setOpaque(true);
 			Preset.setBackground(col);
-
 			Preset.setFocusable(false);
-			
+			Preset.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.RAISED));
 			
 			Preset.addActionListener(new ActionListener(){
-
 				@Override
 				public void actionPerformed(ActionEvent a) {
 					redSlider.setValue(col.getRed());
@@ -121,23 +127,33 @@ public class LightingPanel extends JPanel {
 					previewButton.setBackground(new Color(redSlider.getValue(),greenSlider.getValue(),blueSlider.getValue()));
 					setLights();
 				}
-				
 			});
 
-			c.gridx=count;
-			c.gridy=0;
-			c.ipady=30;
+			if(count>2){
+				c.gridx=count%3;
+				c.gridy=1;
+			}
+			else{
+				c.gridx=count;
+				c.gridy=0;
+			}
+			c.ipady=70;
 			c.ipadx=70;
+			c.insets= new Insets(10,10,10,10);
 			c.gridwidth=1;
 			count++;
 			colorPresets.add(Preset,c);
 		}
-		
+		c.insets= new Insets(0,0,-10,0);
+
 		c.gridx=0;
 		c.gridy=1;
 		c.weighty=1.0;
+		c.gridwidth=2;
+		c.ipady=60;
 		c.fill= GridBagConstraints.VERTICAL;
 		c.anchor=GridBagConstraints.SOUTH;
+//		colorPresets.setBackground(Color.BLUE);
 		lightPanel.add(colorPresets, c);
 		
 		//Add update listeners to sliders
@@ -284,6 +300,7 @@ public class LightingPanel extends JPanel {
 		c.gridy=5;
 		c.ipady=10;
 		c.ipadx=100;
+		c.insets= new Insets(0,0,20,0 );
 		lightPanel.add(previewButton,c);
 	}
 //	public void paintComponent(Graphics g){

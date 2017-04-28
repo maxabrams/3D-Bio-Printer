@@ -1,10 +1,4 @@
 import java.awt.*;
-
-import java.awt.AWTException;
-import java.awt.Color;
-import java.awt.FlowLayout;
-import java.awt.Graphics;
-import java.awt.Robot;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
@@ -23,7 +17,8 @@ public class TemperaturePanel {
 	private final static String TEMP_PANEL_NAME = "Temperature";
 	private JButton startExperiment;
 	private JButton stopExperiment;
-	private JLabel statusLabel = new JLabel("Status: Initialized");
+	private JLabel statusLabel = new JLabel("Status: ");
+	private JLabel statusField = new JLabel("Initialized");
 	private TempControl controlThread;
 	private JTextField targetField;
 	private JTextField thresholdField;
@@ -35,8 +30,9 @@ public class TemperaturePanel {
 	private boolean targetFocus;
 	
 	public TemperaturePanel(){
+		
 		mainPanel = new JPanel();
-		mainPanel.setLayout(new FlowLayout()); //Add a layout manager to align buttons as we resize
+		mainPanel.setLayout(new GridBagLayout()); //Add a layout manager to align buttons as we resize
 		output = new JLabel();
 		//Start button
 		startExperiment = new JButton(START_BUTTON_TEXT);
@@ -50,9 +46,7 @@ public class TemperaturePanel {
 				controlThread.updateThreshold(Double.parseDouble(thresholdField.getText()));
 				controlThread.updateTarget(Double.parseDouble(targetField.getText()));
 				new Thread(controlThread).start();
-				
 			}
-			
 		});
 		
 		//Stop button
@@ -63,9 +57,7 @@ public class TemperaturePanel {
 			public void actionPerformed(ActionEvent e) { //Add Action listener to respond to button
 				updateStatus("Stopped");
 				stop();
-				
 			}
-			
 		});
 		
 		//Temp Input
@@ -118,15 +110,57 @@ public class TemperaturePanel {
 		      }
 		      });
 		
+		GridBagConstraints c = new GridBagConstraints();
+		c.gridx = 0;
+		c.gridy = 0;	
+		c.anchor= GridBagConstraints.EAST;
+		mainPanel.add(tmpLabel,c);
+		
+		c.gridy = 0;	
+		c.gridx = 1;		
+		c.anchor= GridBagConstraints.WEST;
+		mainPanel.add(targetField,c);
+		
+		JLabel blank= new JLabel("  ");
+		c.gridy = 0;	
+		c.gridx = 2;	
+		c.ipadx= 40;
+		mainPanel.add(blank,c);
 
 		
-		mainPanel.add(statusLabel);
-		mainPanel.add(startExperiment);
-		mainPanel.add(stopExperiment);
-		mainPanel.add(tmpLabel);
-		mainPanel.add(targetField);
+		c.gridy = 0;	
+		c.gridx = 3;
+		mainPanel.add(startExperiment,c);
+
+		
+		c.gridy = 1;	
+		c.gridx = 0;
+		c.anchor= GridBagConstraints.EAST;
+		//status: error, running?
+		mainPanel.add(statusLabel,c);
+		
+		c.gridy = 1;	
+		c.gridx = 1;		
+		c.anchor= GridBagConstraints.WEST;
+		//initialized, running, stop
+		mainPanel.add(statusField,c);
+		
+		
+		c.gridy = 1;	
+		c.gridx = 3;
+		mainPanel.add(stopExperiment,c);
+
+		c.gridy = 2;	
+		c.gridx = 0;
 		//mainPanel.add(thresholdField); DO NOT USE THRESHOLD FIELD AFTER BETA TESTING. Set to specified value
-		mainPanel.add(output);
+		JLabel outLabel= new JLabel("Current temperature: ");
+		c.anchor= GridBagConstraints.EAST;
+		mainPanel.add(outLabel,c);
+		
+		c.gridy = 2;	
+		c.gridx = 1;
+		c.anchor= GridBagConstraints.WEST;
+		mainPanel.add(output,c);
 	}
 	
 	public JPanel getPanel(){
@@ -138,7 +172,7 @@ public class TemperaturePanel {
 	}
 	
 	private void updateStatus(String newStatus){
-		statusLabel.setText("Status: " + newStatus);
+		statusField.setText(newStatus);
 	}
 	
 	private void stop(){

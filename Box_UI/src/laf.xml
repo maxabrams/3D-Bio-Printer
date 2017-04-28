@@ -122,7 +122,7 @@
 
 
 
-	<style id="PVB">
+	<!-- <style id="PVB">
 		<opaque value="TRUE"/>
 		<font name="Arial" size="16"/>
 
@@ -137,8 +137,7 @@
 		</state>
 		
 	</style>
-	<!-- Bind buttonStyle to all JButtons -->
-	<bind style="PVB" type="name" key="Preview"/> 
+	<bind style="PVB" type="name" key="Preview"/>  -->
 
 	<style id="buttonStyle">
 		<opaque value="TRUE"/>
@@ -170,7 +169,7 @@
 	<style id="backingStyle">
 		<!-- Make all the regions that use this skin opaque-->
 		<opaque value="TRUE"/>
-		<font name="Arial" size="16"/>
+		<font name="Arial" size="22"/>
 		<state>
 			<!-- Provide default colors -->
 			<color value="#FFFFFF" type="BACKGROUND"/>

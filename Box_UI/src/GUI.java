@@ -29,22 +29,7 @@ public class GUI {
 	
 	// Main runnable class to create GUI
 	public static void main(String[] args) throws ParseException, UnsupportedLookAndFeelException {
-//		try {
-//			UIManager.setLookAndFeel("javax.swing.plaf.metal.MetalLookAndFeel");
-//		} catch (ClassNotFoundException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		} catch (InstantiationException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		} catch (IllegalAccessException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		} catch (UnsupportedLookAndFeelException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
-		
+
 		  SynthLookAndFeel laf = new SynthLookAndFeel();
 		  laf.load(GUI.class.getResourceAsStream("laf.xml"), GUI.class);
 		  UIManager.setLookAndFeel(laf);
@@ -57,6 +42,8 @@ public class GUI {
 		JPanel settings= new JPanel();
 		settings.setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
+		c.insets= new Insets(0,10,0,10);
+
 		c.gridy=0;
 		c.weightx=.5;
 
