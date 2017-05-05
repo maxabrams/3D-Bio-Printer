@@ -61,8 +61,8 @@ public class GUI {
 		final JPanel setterPane= new JPanel();
 		final CardLayout cl= new CardLayout();
 		setterPane.setLayout(cl);
-		LightingPanel lightPanel= new LightingPanel();
-		TemperaturePanel tempPanel= new TemperaturePanel();
+		final LightingPanel lightPanel= new LightingPanel();
+		final TemperaturePanel tempPanel= new TemperaturePanel();
 		
 		setterPane.add(lightPanel.getPanel(), "Lights");
 		setterPane.add(tempPanel.getPanel(), "Temps");
@@ -73,6 +73,7 @@ public class GUI {
 		c.gridwidth=2;
 		c.weighty=1.0;
 		c.weightx=1.0;
+		c.insets=new Insets(0,20,0,20);
 		settings.add(setterPane, c);
 		
 		
@@ -126,22 +127,33 @@ public class GUI {
 //		System.out.println("tab"+settingPane.getTabCount());
 //		settingPane.getTabComponentAt(0);
 		
+		final JLabel tempPV= new JLabel(tempPanel.getTempOutput());
+		final JButton lightPV= new JButton(" ");
+		lightPV.setBackground(lightPanel.getLightColor());
+	
+		
+		//REMEMBER TO ADD THESE IN
+//		settings.add(lightPV);
+//		settings.add(tempPV);
 		ChangeListener changeListener = new ChangeListener() {
 		      public void stateChanged(ChangeEvent changeEvent) {
 		    	 // every time tab changed, check for new file and usb names
 		        JTabbedPane sourceTabbedPane = (JTabbedPane) changeEvent.getSource();
 		        int index = sourceTabbedPane.getSelectedIndex();
 		        System.out.println("Tab changed to: " + sourceTabbedPane.getTitleAt(index));
-		        eip.refreshFileNames();
-		        eip.refreshUsbNames();
-		        
 		        
 		        //check if any values have updated so can use as dashboard
+				lightPV.setBackground(lightPanel.getLightColor());
+//				System.out.println(lightPanel.getLightColor().getRGB());
+				tempPV.setText(tempPanel.getTempOutput());
+		        eip.refreshFileNames();
+		        eip.refreshUsbNames();        		           
+		     
+
 		      }
 		    };
 		mainPane.addChangeListener(changeListener);
-		
-	
+			
 		frame.add(mainPane); // Add the tabbed pane to the larger frame
 		frame.setDefaultCloseOperation(WindowConstants.DO_NOTHING_ON_CLOSE);
 		frame.setSize(new Dimension(SCREEN_HEIGHT, SCREEN_WIDTH)); // Set to screen resolution

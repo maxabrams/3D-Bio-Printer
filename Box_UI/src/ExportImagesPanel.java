@@ -91,32 +91,43 @@ public class ExportImagesPanel  {
 		folderNames=  new JComboBox(dishes.toArray());
 		JLabel  dishLabel= new JLabel("Select your experiment");
 		JLabel USBLabel= new JLabel("Select your USB");
-
+		
+		JLabel blank= new JLabel("hello ");
 		c.gridx=0;
+		c.gridy=0;
+		c.ipadx=50;
+		exportImagesPanel.add(blank,c);
+		
+		c.insets= new Insets(0,00,0,10);
+		c.anchor=GridBagConstraints.EAST;
+		c.gridx=1;
 		c.gridy=0;
 		c.ipady=50;
 		c.ipadx=200;	
 		exportImagesPanel.add(dishLabel,c);
 		
-		c.gridx=1;
+		c.insets= new Insets(0,00,0,10);
+		c.gridx=2;
 		c.gridy=0;
 		exportImagesPanel.add(USBLabel,c);
 
-		c.gridx=0;
+		c.gridx=1;
 		c.gridy=1;
 		c.ipady=50;
-		c.ipadx=200;		
+		c.ipadx=0;		
+		c.insets= new Insets(0,50,10,80);
+
 		exportImagesPanel.add(folderNames,c);
 		
-	
-		
-		c.gridy=1;
+		c.gridy=2;
 		c.gridx=1;
 		exportImagesPanel.add(UsbNames,c);
 	
-		c.gridx=0;
+		c.gridx=1;
 		c.gridy=3;
-		c.gridwidth=4;
+		c.ipadx=60;
+//		c.gridwidth=1;
+		c.insets= new Insets(50,50,50,50);
 		exportImagesPanel.add(UsbButton,c);
 		UsbButton.setBackground(new Color(200,200,200));
 		

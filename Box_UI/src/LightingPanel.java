@@ -319,6 +319,11 @@ public class LightingPanel extends JPanel {
 	public String getPanelName() {
 		return lightName;
 	}
+	
+	public Color getLightColor(){
+		return new Color(redSlider.getValue(),greenSlider.getValue(),blueSlider.getValue());
+
+	}
 	public void setLights(){
 		 try{
 	            Process ledSet = Runtime.getRuntime().exec("sudo python " + PATH_TO_LED_SCRIPT + " " + RED_PIN  + " " + GREEN_PIN  + " " + BLUE_PIN + " " + String.valueOf(redBox.getValue()) +  " " + String.valueOf(greenBox.getValue()) + " " + String.valueOf(blueBox.getValue()));

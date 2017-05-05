@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -13,6 +14,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
+import javax.swing.border.Border;
+import javax.swing.border.EtchedBorder;
 
 public class DishConfig extends JFrame {
 	private final static int SCREEN_WIDTH = 480;
@@ -33,11 +36,16 @@ public class DishConfig extends JFrame {
 		dishNum = dishNumber;
 		setLayout(new GridLayout(5,1));
 		callPanel = callingPanel;
+		
+		Border etched=BorderFactory.createEtchedBorder(EtchedBorder.RAISED);
+
 		//create smaller panels
-		Dimension fieldDimension = new Dimension(180,25);
+		Dimension fieldDimension = new Dimension(180,45);
 		JPanel filePanel = new JPanel();
 		JLabel fileLabel = new JLabel("Enter file name:");
 		fileName = new JTextField();
+		fileName.setBorder(etched);
+
 		fileName.setPreferredSize(fieldDimension);
 		filePanel.add(fileLabel);
 		filePanel.add(fileName);
@@ -46,6 +54,9 @@ public class DishConfig extends JFrame {
 		JLabel picLabel = new JLabel("Enter the image frequency:");
 		numPics = new JTextField("1");
 		numPics.setPreferredSize(fieldDimension);
+		numPics.setBorder(etched);
+		numPics.setHorizontalAlignment(JTextField.CENTER);
+		
 		picMetrics = new JComboBox(times);
 		picPanel.add(picLabel);
 		picPanel.add(numPics);
@@ -54,6 +65,8 @@ public class DishConfig extends JFrame {
 		JPanel totalPanel = new JPanel();
 		JLabel totalLabel = new JLabel("Enter the total time of the experiment:");
 		totalTime = new JTextField("1");
+		totalTime.setBorder(etched);
+		totalTime.setHorizontalAlignment(JTextField.CENTER);
 		totalTime.setPreferredSize(fieldDimension);
 		totalMetrics = new JComboBox(times);
 		totalPanel.add(totalLabel);

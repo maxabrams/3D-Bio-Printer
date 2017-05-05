@@ -5,20 +5,21 @@ import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.awt.event.KeyEvent;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.border.EtchedBorder;
 
 public class TemperaturePanel {
-	private final static String STOP_BUTTON_TEXT = "Stop"; 
-	private final static String START_BUTTON_TEXT = "Run"; 
+	private final static String STOP_BUTTON_TEXT = "Temp Control Off"; 
+	private final static String START_BUTTON_TEXT = "Temp Control On"; 
 	private final static String TEMP_PANEL_NAME = "Temperature";
 	private JButton startExperiment;
 	private JButton stopExperiment;
-	private JLabel statusLabel = new JLabel("Status: ");
-	private JLabel statusField = new JLabel("Initialized");
+	private JLabel statusLabel = new JLabel("Status: Initialized");
 	private TempControl controlThread;
 	private JTextField targetField;
 	private JTextField thresholdField;
@@ -111,58 +112,79 @@ public class TemperaturePanel {
 		      });
 		
 		GridBagConstraints c = new GridBagConstraints();
+		c.weightx=1;
+		c.fill= GridBagConstraints.BOTH;
 		c.gridx = 0;
-		c.gridy = 0;	
-		c.anchor= GridBagConstraints.EAST;
+		c.gridy = 1;
+		c.ipady=80;
+//		c.insets=new Insets(0,100,0,0);
+		c.anchor= GridBagConstraints.CENTER;
+		tmpLabel.setHorizontalAlignment(JLabel.CENTER);
 		mainPanel.add(tmpLabel,c);
 		
-		c.gridy = 0;	
-		c.gridx = 1;		
-		c.anchor= GridBagConstraints.WEST;
+		c.ipady=0;
+		c.ipadx=100;
+		c.gridy = 2;	
+		c.gridx = 0;		
+		c.anchor= GridBagConstraints.CENTER;
+		targetField.setFont(new Font("Ariel", Font.BOLD, 45 ));
+		targetField.setHorizontalAlignment(JTextField.CENTER);
+		targetField.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.RAISED));
 		mainPanel.add(targetField,c);
 		
-		JLabel blank= new JLabel("  ");
-		c.gridy = 0;	
-		c.gridx = 2;	
-		c.ipadx= 40;
+		JLabel blank= new JLabel("   ");
+		c.ipady=30;
+		c.anchor=GridBagConstraints.NORTH;
+		c.gridx=1;
+		c.gridy=3;
+		c.ipadx=40;
 		mainPanel.add(blank,c);
-
 		
-		c.gridy = 0;	
-		c.gridx = 3;
+		c.fill= GridBagConstraints.HORIZONTAL;
+
+		c.ipady=0;
+		c.gridy = 4;	
+		c.gridx = 0;
+		c.ipadx=12;
 		mainPanel.add(startExperiment,c);
 
-		
-		c.gridy = 1;	
+		c.ipadx=500;
+		c.gridy = 0;	
 		c.gridx = 0;
-		c.anchor= GridBagConstraints.EAST;
-		//status: error, running?
+		c.gridwidth=4;
+		statusLabel.setBackground(new Color(244,195,149));
+		statusLabel.setFont(new Font("Ariel", Font.PLAIN, 25));
+		statusLabel.setHorizontalAlignment(JLabel.CENTER);
+		c.anchor= GridBagConstraints.NORTH;
 		mainPanel.add(statusLabel,c);
 		
-		c.gridy = 1;	
-		c.gridx = 1;		
-		c.anchor= GridBagConstraints.WEST;
-		//initialized, running, stop
-		mainPanel.add(statusField,c);
-		
-		
-		c.gridy = 1;	
-		c.gridx = 3;
+		c.anchor=GridBagConstraints.CENTER;
+		c.gridwidth=1;
+		c.fill=GridBagConstraints.NONE;
+		c.gridy = 4;	
+		c.gridx = 2;
+		c.ipadx=10;
 		mainPanel.add(stopExperiment,c);
 
-		c.gridy = 2;	
-		c.gridx = 0;
+		c.gridy = 1;	
+		c.gridx = 2;
 		//mainPanel.add(thresholdField); DO NOT USE THRESHOLD FIELD AFTER BETA TESTING. Set to specified value
 		JLabel outLabel= new JLabel("Current temperature: ");
-		c.anchor= GridBagConstraints.EAST;
+		c.anchor= GridBagConstraints.CENTER;
 		mainPanel.add(outLabel,c);
 		
 		c.gridy = 2;	
-		c.gridx = 1;
-		c.anchor= GridBagConstraints.WEST;
+		c.gridx = 2;
+		c.anchor= GridBagConstraints.CENTER;
+		output.setFont(new Font("Ariel", Font.BOLD, 45 ));
+		output.setText("" );
 		mainPanel.add(output,c);
 	}
 	
+	public String getTempOutput(){
+		return output.getText();
+	}
+
 	public JPanel getPanel(){
 		return mainPanel;
 	}
@@ -172,7 +194,7 @@ public class TemperaturePanel {
 	}
 	
 	private void updateStatus(String newStatus){
-		statusField.setText(newStatus);
+		statusLabel.setText("Status: " + newStatus);
 	}
 	
 	private void stop(){

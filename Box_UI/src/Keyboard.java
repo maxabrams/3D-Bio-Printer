@@ -149,7 +149,7 @@ private JPanel createKeyboard(int row, int col){
 
 		
 		//Add a delete button
-		JButton deleteButton = new JButton("Del"); 
+		JButton deleteButton = new JButton("<-"); 
 		deleteButton.addActionListener(new ActionListener(){
 
 				@Override

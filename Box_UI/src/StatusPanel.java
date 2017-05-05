@@ -61,6 +61,7 @@ public class StatusPanel implements ActionListener {
 	//	public ArrayList <String> getdishNames(){
 	//		return dishNames;	
 	//	}
+	
 
 	public StatusPanel(ArrayList<String> dishList) {
 		
@@ -359,21 +360,22 @@ public class StatusPanel implements ActionListener {
 			public void actionPerformed(ActionEvent arg0) {
 				dish.setEnabled(false);
 				dishCheckBoxes[dishNum].setSelected(false);
+				dish.reset();
 				dishPending(dish);
-
+				dishCheckBoxes[dishNum].setLabel("      "+(dishNum+1) );
 			}});
 		myPanel.add(stop);
 		
 		//Use when after done and want to reset dish for next experiment
-		JButton finished=new JButton ("Experiment Finished");
-		finished.addActionListener(new ActionListener() {
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				dish.reset();
-				dishCheckBoxes[dishNum].setLabel("      "+(dishNum+1) );
-				
-			}});
-		myPanel.add(finished);
+//		JButton finished=new JButton ("Experiment Finished");
+//		finished.addActionListener(new ActionListener() {
+//			@Override
+//			public void actionPerformed(ActionEvent arg0) {
+//				dish.reset();
+//				dishCheckBoxes[dishNum].setLabel("      "+(dishNum+1) );
+//				
+//			}});
+//		myPanel.add(finished);
 
 		JOptionPane.showConfirmDialog(null, myPanel, "Dish Menu",JOptionPane.PLAIN_MESSAGE);
 
@@ -393,42 +395,5 @@ public class StatusPanel implements ActionListener {
 			
 		}
 	}
-		// Preset values with what is already there
-//		SpinnerNumberModel captureModel = new SpinnerNumberModel(
-//				dish.getCaptureRate(), 0, 60, 1);
-//		JSpinner captureSpinner = new JSpinner(captureModel);
-//
-//		JComboBox timeList = new JComboBox(times);
-//
-//		timeList.setSelectedIndex(Arrays.asList(times).indexOf(
-//				dish.getCaptureMetric()));
-//
-//		JPanel myPanel = new JPanel();
-//		// edit name
-//		myPanel.add(new JLabel("Edit Dish Name:"));
-//
-//		// edit image capture rate
-//		myPanel.add(new JLabel("Edit image capture rate:"));
-//		myPanel.add(new JLabel("1 panel every"));
-//		// input number
-//		myPanel.add(captureSpinner);
-//		myPanel.add(Box.createHorizontalStrut(15)); // a spacer
-//		// input second/minute/hour
-//		myPanel.add(timeList);
-//
-//		// Show Option Pop up
-//		JOptionPane.showConfirmDialog(null, myPanel, "Dish Menu",
-//				JOptionPane.OK_CANCEL_OPTION);
-//
-//		frame.dispose();
-//
-//		int captureRate = Integer.parseInt(captureModel.getValue().toString());
-//		if (captureRate < 1) {
-//			captureRate = 1;
-//		}
-//		captureMetric = (String) timeList.getSelectedItem();
-//		dish.setCaptureRate(captureRate);
-//		dish.setCaptureMetric(captureMetric);
-//		whatCheckBox(dish.getDishString()).setSelected(true);
-
+		
 	}
