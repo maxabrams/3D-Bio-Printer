@@ -9,9 +9,6 @@
 	<bind style="LabelStyle" type="region" key="Label" />
 
 
-
-
-
 	<!-- SLIDER -->
 	<style id="SliderThumbStyle">
 		<imagePainter id="SliderThumb_Normal"      sourceInsets="1 1 1 1" paintcenter="false" path="images/arrowOrange.png" />
@@ -52,7 +49,7 @@
 			<opaque value="true"/>
 			<!-- 	<imagePainter id="Tab_Normal" sourceInsets="0 0 10 10" paintcenter="false" path="dishGreen.png"/> -->
 
-			<font name="Arial" size="16"  />
+			<font name="Arial" size="20"  />
 			<color value="BLACK" type="TEXT_FOREGROUND" />
 			<insets top="43" bottom="43" right="6" left="20"/>
 		</state>
@@ -62,7 +59,7 @@
 			<imagePainter id="Tab_Selected"      sourceInsets="0 0 0 0" paintcenter="false" path="images/tabWhite.png" />
 			<property key="Tab.icon" type="idref" value="Tab_Selected"/>
 
-			<font name="Arial" size="16" style="BOLD" />
+			<font name="Arial" size="20" style="BOLD" />
 
 			<color value="#FFFFFF" type="BACKGROUND" />
 			<color value="#ea5a21" type="TEXT_FOREGROUND" />
@@ -72,8 +69,7 @@
 	<!-- Bind tabStyle to all tabs -->
 
 	<bind style="tabStyle" type="region" key="TabbedPaneTab" />
-
-
+<!--  -->
 
 
 	<!-- CHECKBOX -->
@@ -108,24 +104,31 @@
 
 	<style id="ComboBoxStyle">
 		<opaque value="TRUE"/>
-
-		<imagePainter id="cb"      sourceInsets="50 50 50 50" paintcenter="false" path="images/clearBox.png" />
+		<imagePainter id="cb" sourceInsets="50 50 50 50" paintcenter="false" path="images/clearBox.png" />
 		<property key="ComboBox.icon" type="idref" value="cb"/>
 	</style>
 
 	<bind style="ComboBoxStyle" key="ComboBox" type="region"/>
 
-	<style id="arrowButton">
-		<imagePainter id="arrowButton_Normal"      sourceInsets="10 10 10 10" paintcenter="false" path="images/arrowOrange.png" />
-		<property key="arrowButton.icon" type="idref" value="arrowButton_Normal"/>
 
+	<style id="TextFieldStyle">
+		<opaque value="TRUE"/>
+		<imagePainter id="TextFieldBox" sourceInsets="50 50 50 50" paintcenter="false" path="images/clearBox.png" />
+		<property key="TextField.icon" type="idref" value="TextFieldBox"/>
+	</style>
+
+	<bind style="TextFieldStyle" key="TextField" type="region"/>
+
+	<style id="arrowButton">
+		<imagePainter id="arrowButton_Normal" sourceInsets="3 3 3 3" paintcenter="false" path="images/arrowOrange.png" />
+		<property key="arrowButton.icon" type="idref" value="arrowButton_Normal"/>
 	</style>
 
 	<bind style="arrowButton" key="ComboBox.arrowButton" type="name"/>
 
 
 
-	<style id="PVB">
+	<!-- <style id="PVB">
 		<opaque value="TRUE"/>
 		<font name="Arial" size="16"/>
 
@@ -140,22 +143,17 @@
 		</state>
 		
 	</style>
-	<!-- Bind buttonStyle to all JButtons -->
-	<bind style="PVB" type="name" key="Preview"/> 
+	<bind style="PVB" type="name" key="Preview"/>  -->
 
 	<style id="buttonStyle">
 		<opaque value="TRUE"/>
-		<font name="Arial" size="16"/>
+		<font name="Arial" size="11"/>
 
 		<color value="BLACK" type="TEXT_FOREGROUND" />
-
-
-		<!-- Shift the text one pixel when pressed -->
-		<!-- <property key="Button.textShiftOffset" type="integer" value="1"/> -->
 		<state>
-			<insets top="10" left="10" right="10" bottom="10"/>
+			<!-- <insets top="10" left="10" right="10" bottom="10"/> -->
 
-			<imagePainter id="buttonImage"      sourceInsets="10 10 10 10" paintcenter="false" path="images/clearBox.png" />
+			<imagePainter id="buttonImage"      sourceInsets="2 2 2 2" paintcenter="false" path="images/clearBox.png" />
 			<property key="Button.icon" type="idref" value="buttonImage"/>
 			
 		</state>
@@ -167,13 +165,10 @@
 		
 		<state value="PRESSED">
 			<opaque value="true"/>
-
-			<!-- <imagePainter id="buttonImage_mo"      sourceInsets="50 50 50 50" paintcenter="false" path="images/clearBox.png" />
-			<property key="Button.icon" type="idref" value="buttonImage_mo"/> -->
-
 		</state>
 
 	</style>
+
 	<!-- Bind buttonStyle to all JButtons -->
 	<bind style="buttonStyle" type="region" key="button"/> 
 
@@ -181,7 +176,7 @@
 	<style id="backingStyle">
 		<!-- Make all the regions that use this skin opaque-->
 		<opaque value="TRUE"/>
-		<font name="Arial" size="16"/>
+		<font name="Arial" size="24"/>
 		<state>
 			<!-- Provide default colors -->
 			<color value="#FFFFFF" type="BACKGROUND"/>
