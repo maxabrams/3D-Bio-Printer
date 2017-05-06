@@ -20,7 +20,7 @@ public class TempControl implements Runnable {
     private double threshold = 2;
     private double target = 20;
     private boolean isRelayOn = false;
-    private static int RELAY_PIN = 19;
+    private static int RELAY_PIN = 26;
   //  private static int TEMP_PIN = 20;
   //  private GPIO_Pin relay;
    // private GpioController gpio;
