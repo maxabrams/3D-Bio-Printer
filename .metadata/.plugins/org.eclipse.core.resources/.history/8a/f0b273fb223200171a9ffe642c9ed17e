@@ -113,8 +113,8 @@ public class ExportImagesPanel  {
 	private void coppyFiles(){
 		statusLabel.setText("copying in progress... do not interrupt");
 		 try {
-			 System.out.println("cp -a ~/Desktop/"+folderNames.getSelectedItem() + " /media/pi/"+UsbNames.getSelectedItem()+"/");
-			Process p = Runtime.getRuntime().exec("cp -a ~/Desktop/"+folderNames.getSelectedItem() + " /media/pi/"+UsbNames.getSelectedItem()+"/");
+			 System.out.println("cp -a ~/Desktop/"+folderNames.getSelectedItem() + " /media/pi/"+UsbNames.getSelectedItem());
+			Process p = Runtime.getRuntime().exec("cp -a ~/Desktop/"+folderNames.getSelectedItem() + " /media/pi/"+UsbNames.getSelectedItem());
 		} catch (IOException e) {
 			System.out.println("Error! Could not copy!");
 			statusLabel.setText("Copy error!");

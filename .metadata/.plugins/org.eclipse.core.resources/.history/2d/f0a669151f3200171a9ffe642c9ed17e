@@ -46,7 +46,7 @@ public class StatusPanel implements ActionListener {
 	static final String HOURS = "hours"; 
 	static final String DAYS = "days";
 
-	static final String PIC_PARENT_DIR = "/home/pi/Desktop/";
+	static final String PIC_PARENT_DIR = "/home/pi/desktop/";
 
 	private ArrayList <String> dishNames;
 	Dish []dishes;
