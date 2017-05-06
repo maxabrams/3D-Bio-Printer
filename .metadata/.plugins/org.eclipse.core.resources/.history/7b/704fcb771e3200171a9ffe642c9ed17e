@@ -17,7 +17,7 @@ import javax.swing.JLabel;
 
 public class TempControl implements Runnable {
     private volatile boolean running = true;
-    private double threshold = .1;
+    private double threshold = 2;
     private double target = 20;
     private boolean isRelayOn = false;
     private static int RELAY_PIN = 26;
