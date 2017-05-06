@@ -3,6 +3,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.io.IOException;
 import java.text.ParseException;
 import java.util.ArrayList;
 
@@ -23,9 +24,9 @@ public class GUI {
 	// Screen size
 	private final static int SCREEN_WIDTH = 480;
 	private final static int SCREEN_HEIGHT = 800;
-	
 	private static ArrayList<String> dishList= new ArrayList <String>();
-
+	private static int FAN_PIN = 26;
+	private static final String PATH_TO_RELAY_ON = "/home/pi/py/relay_on.py"; //Path for fans script
 	
 	// Main runnable class to create GUI
 	public static void main(String[] args) throws ParseException, UnsupportedLookAndFeelException {
@@ -160,6 +161,12 @@ public class GUI {
 		frame.setResizable(false);
 		frame.setVisible(true); // Set the frame to be visible
 
+		//Start fans running
+		 try{
+	            Process fOn = Runtime.getRuntime().exec("sudo python " + PATH_TO_RELAY_ON + " " + FAN_PIN);
+	        }catch(IOException e){
+	              System.out.println("Error could not turn on");
+	        }
 	}
 	
 
