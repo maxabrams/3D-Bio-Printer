@@ -80,7 +80,7 @@ public class TempControl implements Runnable {
                 } catch (InterruptedException e) {
                     System.out.println("Could not sleep!");
                 }
-                output.setText("" + Math.round((currTemp*100.0)/100.0));
+                output.setText("Current Temp: " + currTemp);
             }
         }
         heaterOff();
