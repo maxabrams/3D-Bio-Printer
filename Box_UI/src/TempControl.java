@@ -1,5 +1,3 @@
-
-
 //import com.pi4j.io.gpio.*;
 import java.awt.List;
 import java.io.*;
@@ -134,12 +132,14 @@ public class TempControl implements Runnable {
                 running = false;
                 return Integer.MIN_VALUE;
             }
+            String tmps = "";
             for(int i = 1; i < 5; i++){
+                tmps += tempVals[i] + ",";
                 tempAvg += Double.parseDouble(tempVals[i]);
             }
             tempAvg = tempAvg / 4.0;
             try{
-                outFile.println(dateFormat.format(new Date())+","+tempAvg);
+                outFile.println(dateFormat.format(new Date())+","+tmps);
             }catch(Exception ioE){
                 System.out.println("Could not write to file");
             }

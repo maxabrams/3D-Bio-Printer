@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 import java.io.File;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -35,17 +36,15 @@ public class ExportImagesPanel  {
 	private JPanel exportImagesPanel; // Panel to make modifications to
 	private String panelName; // Name for panel
 	private Font checkboxFont = new Font("Arial", Font.BOLD, 20);
-
 	private JButton dish_1, dish_2, dish_3, dish_4, dish_5, dish_6, dish_7,
 			dish_8, dish_9;
 	private Dish exp1, exp2, exp3, exp4, exp5, exp6, exp7, exp8, exp9;
-
 	private Frame frame = new Frame();
-
 	private ArrayList<String> dishNames;
 	JComboBox folderNames;
-	
 	JComboBox UsbNames;
+	JLabel statusLabel = new JLabel();
+	
 	public ExportImagesPanel(ArrayList <String> dishes) {
 		dishNames=dishes;
 		// Initialize components
@@ -63,76 +62,67 @@ public class ExportImagesPanel  {
 		UsbNames.setVisible(false);
 		
 		JButton UsbButton= new JButton("Export");
-//		UsbButton.addActionListener(new ActionListener(){
-//
-//			@Override
-//			public void actionPerformed(ActionEvent arg0) {
-//				File[] paths;
-//				FileSystemView fsv = FileSystemView.getFileSystemView();
-//
-//				// returns pathnames for files and directory
-//				paths = File.listRoots();
-//				UsbNames.removeAllItems();
-//
-//				// for each pathname in pathname array
-//				for(File path:paths)
-//				{
-//					System.out.println(path.toString());
-//					if(!path.toString().equals( "C:\\")){
-//							UsbNames.addItem(path+ " " +fsv.getSystemTypeDescription(path));
-//					}
-//				    // prints file and directory paths
-//				    System.out.println("Drive Name: "+path);
-//				    System.out.println("Description: "+fsv.getSystemTypeDescription(path));
-//				}
-//				UsbNames.setVisible(true);
-//			}
-//		});
+		UsbButton.addActionListener(new ActionListener(){
+
+			@Override
+			public void actionPerformed(ActionEvent e) { //Add Action listener to respond to button
+				coppyFiles();
+			}
+			
+		});
+
 		folderNames=  new JComboBox(dishes.toArray());
 		JLabel  dishLabel= new JLabel("Select your experiment");
 		JLabel USBLabel= new JLabel("Select your USB");
-		
-		JLabel blank= new JLabel("hello ");
+		statusLabel.setText("Waiting to coppy...");
+
 		c.gridx=0;
-		c.gridy=0;
-		c.ipadx=50;
-		exportImagesPanel.add(blank,c);
-		
-		c.insets= new Insets(0,00,0,10);
-		c.anchor=GridBagConstraints.EAST;
-		c.gridx=1;
 		c.gridy=0;
 		c.ipady=50;
 		c.ipadx=200;	
 		exportImagesPanel.add(dishLabel,c);
 		
-		c.insets= new Insets(0,00,0,10);
-		c.gridx=2;
+		c.gridx=1;
 		c.gridy=0;
 		exportImagesPanel.add(USBLabel,c);
 
-		c.gridx=1;
+		c.gridx=0;
 		c.gridy=1;
 		c.ipady=50;
-		c.ipadx=0;		
-		c.insets= new Insets(0,50,10,80);
-
+		c.ipadx=200;		
 		exportImagesPanel.add(folderNames,c);
 		
-		c.gridy=2;
+	
+		
+		c.gridy=1;
 		c.gridx=1;
 		exportImagesPanel.add(UsbNames,c);
 	
-		c.gridx=1;
+		c.gridx=0;
 		c.gridy=3;
-		c.ipadx=60;
-//		c.gridwidth=1;
-		c.insets= new Insets(50,50,50,50);
+		c.gridwidth=4;
 		exportImagesPanel.add(UsbButton,c);
+		
+		//HELP WITH GRID CYN
+		exportImagesPanel.add(statusLabel, c);
 		UsbButton.setBackground(new Color(200,200,200));
 		
 		System.out.println(folderNames.getSelectedIndex());
 	}
+	
+	private void coppyFiles(){
+		statusLabel.setText("copying in progress... do not interrupt");
+		 try {
+			 System.out.println("cp -a ~/Desktop/"+folderNames.getSelectedItem() + " /media/pi/"+UsbNames.getSelectedItem());
+			Process p = Runtime.getRuntime().exec("cp -a ~/Desktop/"+folderNames.getSelectedItem() + " /media/pi/"+UsbNames.getSelectedItem());
+		} catch (IOException e) {
+			System.out.println("Error! Could not copy!");
+			statusLabel.setText("Copy error!");
+		}
+		
+	}
+	
+	
 	public void refreshFileNames(){
 		folderNames.removeAllItems();
 		for(String str: dishNames){

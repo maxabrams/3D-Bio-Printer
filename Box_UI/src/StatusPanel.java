@@ -46,7 +46,7 @@ public class StatusPanel implements ActionListener {
 	static final String HOURS = "hours"; 
 	static final String DAYS = "days";
 
-	static final String PIC_PARENT_DIR = "/Users/maxwell/Desktop/";//"/home/pi/desktop/";
+	static final String PIC_PARENT_DIR = "/home/pi/desktop/";
 
 	private ArrayList <String> dishNames;
 	Dish []dishes;
@@ -321,10 +321,10 @@ public class StatusPanel implements ActionListener {
 		}
 
 		File dir = new File(PIC_PARENT_DIR+fileName);
-		if(dir.exists()){//If it exists in OS and we don't have it saved in global, delete (can be modified later)
+		/*if(dir.exists()){//If it exists in OS and we don't have it saved in global, delete (can be modified later)
 			dir.delete();
-		}
-		dir.mkdir();
+		}*/
+		dir.mkdirs();
 		dishNames.add(fileName);
 		return true;
 	}
@@ -354,7 +354,7 @@ public class StatusPanel implements ActionListener {
 
 		JPanel myPanel = new JPanel();
 		// Stop the experiment- use if want to stop image capture 
-		JButton stop=new JButton ("Stop Experiment");
+		final JButton stop=new JButton ("Clear Experiment");
 		stop.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
@@ -376,8 +376,9 @@ public class StatusPanel implements ActionListener {
 //				
 //			}});
 //		myPanel.add(finished);
-
-		JOptionPane.showConfirmDialog(null, myPanel, "Dish Menu",JOptionPane.PLAIN_MESSAGE);
+		
+		// make this its own class
+		JOptionPane.showOptionDialog(null, myPanel, "Dish Menu",JOptionPane.DEFAULT_OPTION,JOptionPane.INFORMATION_MESSAGE, null, new Object[]{}, null);
 
 	}
 	

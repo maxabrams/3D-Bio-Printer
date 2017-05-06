@@ -43,6 +43,12 @@ public class LightingPanel extends JPanel {
 	private final String BLUE_LABEL_TEXT = "Blue:  ";
 
 	public LightingPanel() {
+		
+		try{
+			Process ledSet = Runtime.getRuntime().exec("sudo pigpiod");
+		}catch(IOException error){
+			System.out.println("Error! Could not start LED Service");
+		}
 		// Initialize components
 		lightPanel = new JPanel();
 //		lightPanel.setLayout(new GridLayout(4, 1)); // Add a layout manager to align components
@@ -87,17 +93,25 @@ public class LightingPanel extends JPanel {
 		previewButton.setName("Preview");
 		
 		// blank space to center the instructions
-		JLabel blank= new JLabel("    ");
-		c.gridx = 0;
-		c.gridy = 0;
-		c.ipadx=170;
-		c.ipady=30;
-		lightPanel.add(blank, c);
+//		JLabel blank= new JLabel("    ");
+//		c.gridx = 0;
+//		c.gridy = 2;
+//		c.ipadx=170;
+//		c.ipady=30;
+//		lightPanel.add(blank, c);
 
+		JLabel advancedOptions=new JLabel("Advanced");
+		c.gridx=0;
+		c.gridy=2;
+		advancedOptions.setFont(new Font("Arial", Font.PLAIN, 15));
+
+		lightPanel.add(advancedOptions,c);
+		
+		
 		JLabel inst= new JLabel("Select desired lighting color");
 		inst.setFont(new Font("Arial", Font.BOLD, 20));
-		c.weightx = 1.0;
-		c.gridwidth = 1;
+//		c.weightx = 1.0;
+//		c.gridwidth = 1;
 		c.gridx = 1;
 		c.gridy = 0;
 		c.anchor = GridBagConstraints.EAST;
@@ -146,7 +160,7 @@ public class LightingPanel extends JPanel {
 		}
 		c.insets= new Insets(0,0,-10,0);
 
-		c.gridx=0;
+		c.gridx=1;
 		c.gridy=1;
 		c.weighty=1.0;
 		c.gridwidth=2;
@@ -155,6 +169,8 @@ public class LightingPanel extends JPanel {
 		c.anchor=GridBagConstraints.SOUTH;
 //		colorPresets.setBackground(Color.BLUE);
 		lightPanel.add(colorPresets, c);
+		
+	
 		
 		//Add update listeners to sliders
 		redSlider.addChangeListener(new ChangeListener(){
