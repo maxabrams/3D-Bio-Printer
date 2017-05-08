@@ -401,7 +401,7 @@ public class StatusPanel implements ActionListener {
 				dishCheckBoxes[dishNum].setSelected(false);
 				dish.reset();
 				dishPending(dish);
-				dishCheckBoxes[dishNum].setLabel("      " + (dishNum + 1));
+				dishCheckBoxes[dishNum].setLabel("<html><pre>&nbsp;    "+(dishNum + 1)+"  <br/> </pre></html>");
 			}
 		});
 		myPanel.add(stop);
