@@ -1,4 +1,3 @@
-package src;
 
 //import com.pi4j.io.gpio.*;
 import java.awt.List;

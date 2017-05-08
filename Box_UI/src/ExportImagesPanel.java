@@ -1,5 +1,3 @@
-package src;
-
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Frame;
@@ -81,7 +79,7 @@ public class ExportImagesPanel  {
 		c.gridx=0;
 		c.gridy=0;
 		c.ipady=50;
-		c.ipadx=200;	
+		c.ipadx=60;	
 		exportImagesPanel.add(dishLabel,c);
 		
 		c.gridx=1;
@@ -89,20 +87,21 @@ public class ExportImagesPanel  {
 		exportImagesPanel.add(USBLabel,c);
 
 		c.gridx=0;
-		c.gridy=1;
-		c.ipady=50;
-		c.ipadx=200;		
+		c.gridy=1;	
+		c.insets= new Insets(0,0,0,30);
 		exportImagesPanel.add(folderNames,c);
 		
 	
 		
 		c.gridy=1;
 		c.gridx=1;
+		c.insets= new Insets(0,0,0,0);
 		exportImagesPanel.add(UsbNames,c);
 	
 		c.gridx=0;
 		c.gridy=3;
 		c.gridwidth=4;
+		c.insets= new Insets(40,0,0,0);
 		exportImagesPanel.add(UsbButton,c);
 		
 		//HELP WITH GRID CYN

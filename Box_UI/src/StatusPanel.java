@@ -1,5 +1,3 @@
-package src;
-
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -19,14 +17,19 @@ import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 public class StatusPanel implements ActionListener {
+	private static Color darkOrange= new Color(255,151,108);
+
 	private JPanel statusPanel; // Panel to make modifications to
 	private String panelName; // Name for panel
-	private Font checkboxFont = new Font("Arial", Font.BOLD, 20);
+	private Font checkboxFont = new Font("Arial", Font.BOLD, 24);
 	private String timeStampString = new SimpleDateFormat("yyyy.MM.dd.HH.mm.ss")
 			.format(new Date());
 	private Date timeStamp;
@@ -79,18 +82,24 @@ public class StatusPanel implements ActionListener {
 		panelName = "Dashboard"; // Assign name
 
 		// Setup checkboxes
-		dish_0 = new JCheckBox("      1");
-		dish_1 = new JCheckBox("      2");
-		dish_2 = new JCheckBox("      3");
-		dish_3 = new JCheckBox("      4");
-		dish_4 = new JCheckBox("      5");
-		dish_5 = new JCheckBox("      6");
-		dish_6 = new JCheckBox("      7");
-		dish_7 = new JCheckBox("      8");
-		dish_8 = new JCheckBox("      9");
+		dish_0 = new JCheckBox("<html><pre>&nbsp;    1  <br/> </pre></html>");
+		dish_1 = new JCheckBox("<html><pre>&nbsp;    2  <br/> </pre></html>");
+		dish_2 = new JCheckBox("<html><pre>&nbsp;    3  <br/> </pre></html>");
+		dish_3 = new JCheckBox("<html><pre>&nbsp;    4  <br/> </pre></html>");
+		dish_4 = new JCheckBox("<html><pre>&nbsp;    5  <br/> </pre></html>");
+		dish_5 = new JCheckBox("<html><pre>&nbsp;    6  <br/> </pre></html>");
+		dish_6 = new JCheckBox("<html><pre>&nbsp;    7  <br/> </pre></html>");
+		dish_7 = new JCheckBox("<html><pre>&nbsp;    8  <br/> </pre></html>");
+		dish_8 = new JCheckBox("<html><pre>&nbsp;    9  <br/> </pre></html>");
+//		dish_0.setFont(new Font("Ariel", Font.PLAIN, 6));
 		// dish_0.setPreferredSize(new Dimension(30,30));
-		dish_0.setMargin(new Insets(0, 0, 0, 0));
+//		dish_0.setBorder(BorderFactory.createSoftBevelBorder(15));
+//		dish_0.setBorderPainted(false);
+//		dish_0.setMargin(new Insets(0, 0, 0, 0));
+//		dish_0.setMaximumSize(new Dimension(30,30));
 		// dish_0.setBackground(Color.BLUE);
+		
+	
 
 		dish_0.addActionListener(this);
 		dish_1.addActionListener(this);
@@ -140,16 +149,20 @@ public class StatusPanel implements ActionListener {
 		new Thread(cameraThread).start();
 
 		int dim = 140;
-
+	
+		//print dishes on screen
 		for (int i = 0; i < 3; i++) {
 			for (int j = 0; j < 3; j++) {
 				// i rows, j cols
 				c.gridx = j;
 				c.gridy = i;
-				c.ipady = 80;
-				c.ipadx = 60;
+				c.ipady = 55;
+				c.ipadx = 55;
+				c.insets= new Insets(5,5,5,5);
+				
 				System.out.println((3 * i) + j);
 				statusPanel.add(cb[(3 * i) + j], c);
+		
 			}
 		}
 
@@ -295,7 +308,7 @@ public class StatusPanel implements ActionListener {
 			dish.setTimeOfLastPic(timeStamp);
 			dish.setEnabled(true);// last thing to set to start taking photos
 			System.out.println("Time Start: " + dish.getTimeStart());
-			dishCheckBoxes[dishNum].setForeground(Color.ORANGE);
+			dishCheckBoxes[dishNum].setForeground(darkOrange);
 			if (fileName.length() > 5) {
 				// to avoid resizing circle
 				dishCheckBoxes[dishNum].setLabel("<html>"
@@ -412,18 +425,19 @@ public class StatusPanel implements ActionListener {
 		if (namedExperiments.contains(d) && d.isFinished() && !d.isCleared()) {
 			d.setCleared(true);
 			dishes[d.getDishNum()] = new Dish();
-			dishCheckBoxes[d.getDishNum()].setForeground(Color.GREEN);
+			dishCheckBoxes[d.getDishNum()].setBorderPainted(false);
+			dishCheckBoxes[d.getDishNum()].setForeground(new Color(0,150,0));
 			if (d.getFileName().length() > 5) {
-				dishCheckBoxes[d.getDishNum()].setLabel("<html>" + "Done "
-						+ "<br/>" + d.getFileName().substring(0, 5) + "<br/>"
+				dishCheckBoxes[d.getDishNum()].setLabel("<html><pre>&nbsp;  "
+						 + d.getFileName().substring(0, 5) + "<br/>&nbsp;  "
 						+ d.getPicsTaken() + "/" + d.getTotalImagesNeeded()
-						+ "</html>");
+						+ "</pre></html>");
 
 			} else {
-				dishCheckBoxes[d.getDishNum()].setLabel("<html>" + "Done "
-						+ "<br/>" + d.getFileName() + "<br/>"
+				dishCheckBoxes[d.getDishNum()].setLabel("<html><pre>&nbsp;  "
+					+  d.getFileName() + "<br/>&nbsp;  "
 						+ d.getPicsTaken() + "/" + d.getTotalImagesNeeded()
-						+ "</html>");
+						+ "</pre></html>");
 			}
 			System.out.println("Done" + d.getDishNum());
 
@@ -434,14 +448,14 @@ public class StatusPanel implements ActionListener {
 			String fn = d.getFileName();
 			if (fn.length() > 5) {
 				// to avoid resizing circle
-				dishCheckBoxes[d.getDishNum()].setLabel("<html>"
-						+ fn.substring(0, 5) + "<br/>" + d.getPicsTaken() + "/"
-						+ d.getTotalImagesNeeded() + "</html>");
+				dishCheckBoxes[d.getDishNum()].setLabel("<html><pre>&nbsp;  "
+						+ fn.substring(0, 5) + "<br/>&nbsp;  " + d.getPicsTaken() + "/"
+						+ d.getTotalImagesNeeded() + "</pre></html>");
 
 			} else {
-				dishCheckBoxes[d.getDishNum()].setLabel("<html>" + fn + "<br/>"
+				dishCheckBoxes[d.getDishNum()].setLabel("<html><pre>&nbsp;  " + fn + "<br/>&nbsp;  "
 						+ d.getPicsTaken() + "/" + d.getTotalImagesNeeded()
-						+ "</html>");
+						+ "</pre></html>");
 
 			}
 		}

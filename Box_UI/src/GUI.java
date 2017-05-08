@@ -64,10 +64,10 @@ public class GUI {
 		final JButton tempButton = new JButton("Temperature Settings");
 		lightingButton.setFocusable(false);
 		tempButton.setFocusable(false);
-		tempButton.setBackground(orangeSorbet);
-		lightingButton.setBackground(Color.WHITE);
-		lightingButton.setForeground(darkOrange);
-		lightingButton.setFont(new Font("Ariel", Font.BOLD, 26));
+		lightingButton.setBackground(orangeSorbet);
+		tempButton.setBackground(Color.WHITE);
+		tempButton.setForeground(darkOrange);
+		tempButton.setFont(new Font("Ariel", Font.BOLD, 26));
 		
 		Border etched = BorderFactory.createEtchedBorder(EtchedBorder.RAISED);
 		lightingButton.setBorder(etched);
@@ -75,10 +75,10 @@ public class GUI {
 
 		c.gridx = 0;
 		c.anchor = GridBagConstraints.EAST;
-		settings.add(lightingButton, c);
+		settings.add(tempButton, c);
 		c.gridx = 1;
 		c.anchor = GridBagConstraints.WEST;
-		settings.add(tempButton, c);
+		settings.add(lightingButton, c);
 
 		final JPanel setterPane = new JPanel();
 		final CardLayout cl = new CardLayout();
@@ -86,8 +86,8 @@ public class GUI {
 		final LightingPanel lightPanel = new LightingPanel();
 		final TemperaturePanel tempPanel = new TemperaturePanel();
 
-		setterPane.add(lightPanel.getPanel(), "Lights");
 		setterPane.add(tempPanel.getPanel(), "Temps");
+		setterPane.add(lightPanel.getPanel(), "Lights");
 
 		c.anchor = GridBagConstraints.CENTER;
 		c.gridx = 0;
@@ -104,7 +104,7 @@ public class GUI {
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
 				System.out.println("hello");
-				cl.first(setterPane);
+				cl.last(setterPane);
 				tempButton.setBackground(orangeSorbet);
 				tempButton.setForeground(Color.BLACK);
 				tempButton.setFont(new Font("Ariel", Font.PLAIN, 24));
@@ -124,7 +124,7 @@ public class GUI {
 			public void actionPerformed(ActionEvent arg0) {
 				// TODO Auto-generated method stub
 				System.out.println("bye");
-				cl.last(setterPane);
+				cl.first(setterPane);
 				tempButton.setBackground(Color.WHITE);
 				lightingButton.setBackground(orangeSorbet);
 				
