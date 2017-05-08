@@ -1,3 +1,5 @@
+package src;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -37,6 +39,9 @@ public class TemperaturePanel {
 		output = new JLabel();
 		//Start button
 		startExperiment = new JButton(START_BUTTON_TEXT);
+		startExperiment.setName("ExpButton");
+		//startExperiment.setEnabled(true);
+		//startExperiment.setBorder( BorderFactory.createRaisedBevelBorder());
 		startExperiment.addActionListener(new ActionListener(){
 
 			@Override
@@ -47,17 +52,29 @@ public class TemperaturePanel {
 				controlThread.updateThreshold(Double.parseDouble(thresholdField.getText()));
 				controlThread.updateTarget(Double.parseDouble(targetField.getText()));
 				new Thread(controlThread).start();
+				//startExperiment.setEnabled(false);
+				//startExperiment.setBorder( BorderFactory.createLoweredBevelBorder());
+				//stopExperiment.setBorder( BorderFactory.createRaisedBevelBorder());
+				//stopExperiment.setEnabled(true);
 			}
 		});
 		
 		//Stop button
 		stopExperiment = new JButton(STOP_BUTTON_TEXT);
-		stopExperiment.addActionListener(new ActionListener(){
+		stopExperiment.setName("ExpButton");
+		//stopExperiment.setEnabled(false);
+		//stopExperiment.setBorder( BorderFactory.createLoweredBevelBorder());
 
+		stopExperiment.addActionListener(new ActionListener(){
 			@Override
 			public void actionPerformed(ActionEvent e) { //Add Action listener to respond to button
 				//updateStatus("Stopped");
 				stop();
+				//startExperiment.setEnabled(true);
+				//stopExperiment.setEnabled(false);
+				
+				//startExperiment.setBorder( BorderFactory.createRaisedBevelBorder());
+				//stopExperiment.setBorder( BorderFactory.createLoweredBevelBorder());
 			}
 		});
 		
@@ -142,17 +159,19 @@ public class TemperaturePanel {
 		
 		c.fill= GridBagConstraints.HORIZONTAL;
 
-		c.ipady=0;
 		c.gridy = 4;	
 		c.gridx = 0;
 		c.ipadx=12;
+		c.ipady=25;
+		startExperiment.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.RAISED));
 		mainPanel.add(startExperiment,c);
 
 		c.ipadx=500;
 		c.gridy = 0;	
 		c.gridx = 0;
+		c.ipady=0;
 		c.gridwidth=4;
-		statusLabel.setBackground(new Color(244,195,149));
+		statusLabel.setBackground(new Color(127,183,190));
 		statusLabel.setFont(new Font("Ariel", Font.PLAIN, 25));
 		statusLabel.setHorizontalAlignment(JLabel.CENTER);
 		c.anchor= GridBagConstraints.NORTH;
@@ -163,9 +182,13 @@ public class TemperaturePanel {
 		c.fill=GridBagConstraints.NONE;
 		c.gridy = 4;	
 		c.gridx = 2;
-		c.ipadx=10;
+		c.ipadx=30;
+		c.ipady=30;
+		stopExperiment.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.RAISED));
 		mainPanel.add(stopExperiment,c);
 
+		c.ipadx=0;
+		c.ipady=0;
 		c.gridy = 1;	
 		c.gridx = 2;
 		//mainPanel.add(thresholdField); DO NOT USE THRESHOLD FIELD AFTER BETA TESTING. Set to specified value
@@ -179,6 +202,8 @@ public class TemperaturePanel {
 		output.setFont(new Font("Ariel", Font.BOLD, 45 ));
 		output.setText("" );
 		mainPanel.add(output,c);
+		stopExperiment.setBorder( BorderFactory.createLoweredBevelBorder());
+
 	}
 	
 	public String getTempOutput(){

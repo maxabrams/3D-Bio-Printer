@@ -1,0 +1,33 @@
+import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+
+
+public class CloseDialog extends JDialog implements ActionListener {
+	
+	JButton button;
+	public CloseDialog(JButton closeButton){
+		JPanel buttonPane=new JPanel();
+		
+		button = closeButton;
+		
+	     button.addActionListener(this);
+	     buttonPane.add(button);
+	     add(buttonPane);
+//	     add(button);
+	     pack();
+	     setVisible(true);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		dispose();
+		
+	};
+}

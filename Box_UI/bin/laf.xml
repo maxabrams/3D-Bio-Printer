@@ -27,23 +27,10 @@
 	</style>
 	<bind style="SliderTrackStyle" type="region" key="SliderTrack" />
 
-
-	<style id="Slider">
-		<font name="Arial" size="16"/>
-
-		<opaque value="TRUE"/>
-
-		<imagePainter method="sliderBackground" path="images/dishGreen.png"  sourceInsets="4 6 4 6" paintCenter="false"/>
-		   	<insets top="4" left="6" bottom="4" right="6"/>
-	</style>
-
-	<bind style="Slider" type="region" key="Slider" />
-
-
 	<!-- TAB -->
 	<style id="tabStyle">
 		<state>
-			<imagePainter id="Tab_Normal"      sourceInsets="0 0 0 0" paintcenter="false" path="images/tabOrange.png" />
+			<imagePainter id="Tab_Normal"      sourceInsets="0 0 0 0" paintcenter="false" path="images/icon1.png" />
 			<property key="Tab.icon" type="idref" value="Tab_Normal"/>
 
 			<opaque value="true"/>
@@ -71,30 +58,27 @@
 	<bind style="tabStyle" type="region" key="TabbedPaneTab" />
 <!--  -->
 
-
 	<!-- CHECKBOX -->
 	<style id="checkBoxStyle">
 		<!-- Shift the text one pixel when pressed -->
 		<font name="Arial" size="16"/>
 
-		<property key="Button.textShiftOffset" type="integer" value="30"/>
-		<insets top="15" left="20" right="20" bottom="15"/>
+		<!-- <property key="Button.textShiftOffset" type="integer" value="30"/> -->
+		<!-- <insets top="15" left="20" right="20" bottom="15"/> -->
+		<imagePainter id="Checkbox_Normal"      sourceInsets="0 0 0 0" paintcenter="false" path="images/dishGreen.png" />
+		<property key="CheckBox.iconTextGap" type="integer" value="10"/>
+		<property key="CheckBox.textShiftOffset" type="integer" value="10"/>
 
-		<state>
-			<!-- Provide default colors -->
-			<color value="#AAAAAA" type="BACKGROUND"/>
-			<color value="BLACK" type="FOREGROUND"/>
-		</state>
+
 
 	<!-- 	<state value="SELECTED">
 			<imagePainter id="Checkbox_Selected"    sourceInsets="10 10 10 10" paintcenter="false" path="images/dishRed.png" />
 			<property key="CheckBox.icon" type="idref" value="Checkbox_Selected"/>
 		</state> -->
 
-		<state value="ENABLED">
-			<imagePainter id="Checkbox_Normal"      sourceInsets="10 10 10 10" paintcenter="false" path="images/dishGreen.png" />
+		<!-- <state value="ENABLED"> -->
 			<property key="CheckBox.icon" type="idref" value="Checkbox_Normal"/>
-		</state>
+		<!-- </state> -->
 	</style>
 
 	<bind style="checkBoxStyle" type="region" key="CheckBox"/>
@@ -127,6 +111,21 @@
 	<bind style="arrowButton" key="ComboBox.arrowButton" type="name"/>
 
 
+	<!-- arrow buttons on spinners -->
+	<style id="downArrow">
+		<imagePainter id="downArrow_norm" sourceInsets="3 3 3 3" paintcenter="false" path="images/downSpinArrow.png" />
+		<property key="arrowButton.icon" type="idref" value="downArrow_norm"/>
+	</style>
+
+	<bind style="downArrow" key ="Spinner.previousButton" type="name"/>
+
+	<style id="upArrow">
+		<imagePainter id="upArrow_norm" sourceInsets="3 3 3 3" paintcenter="false" path="images/upSpinArrow.png" />
+		<property key="arrowButton.icon" type="idref" value="upArrow_norm"/>
+	</style>
+	<bind style="upArrow" key ="Spinner.nextButton" type="name"/>
+
+
 
 	<!-- <style id="PVB">
 		<opaque value="TRUE"/>
@@ -157,20 +156,49 @@
 			<property key="Button.icon" type="idref" value="buttonImage"/>
 			
 		</state>
-		<state value="DISABLED">
+		<!-- <state value="DISABLED">
 			<insets top="20" left="20" right="20" bottom="20"/>
-			<imagePainter id="buttonImage_disabled"      sourceInsets="10 10 10 10" paintcenter="false" path="images/boxPurple.png" />
+			<imagePainter id="buttonImage_disabled"      sourceInsets="10 10 10 10" paintcenter="false" path="images/clearBoxNoBorder.png" />
 			<property key="Button.icon" type="idref" value="buttonImage_disabled"/>
 		</state>
-		
+		 -->
 		<state value="PRESSED">
 			<opaque value="true"/>
 		</state>
 
 	</style>
-
-	<!-- Bind buttonStyle to all JButtons -->
+	<!-- Bind  to all JButtons -->
 	<bind style="buttonStyle" type="region" key="button"/> 
+
+
+	<style id="startExpButtonStyle">
+		<opaque value="TRUE"/>
+		<state>
+			<imagePainter id="SEB_norm" sourceInsets="3 3 3 3" paintcenter="false" path="images/clearBox.png" />
+			<property key="Button.icon" type="idref" value="SEB_norm"/>
+		</state>
+		<state value = "DISABLED">
+			<imagePainter id="SEB_disabled" sourceInsets="3 3 3 3" paintcenter="false" path="images/clearBox.png" />
+			<property key="Button.icon" type="idref" value="SEB_disabled"/>
+		</state>
+	</style>
+	<bind style="startExpButtonStyle" type="name" key ="ExpButton"/>
+
+
+	<!-- no border for advanced button -->
+	<style id="advButtonStyle">
+		<opaque value="TRUE"/>
+		<font name="Arial" size="11"/>
+
+		<color value="BLACK" type="TEXT_FOREGROUND" />
+		<state>
+			<imagePainter id="advButtonImage"      sourceInsets="2 2 2 2" paintcenter="false" path="images/clearBoxNoBorder.png" />
+			<property key="Button.icon" type="idref" value="advButtonImage"/>	
+		</state>
+	</style>
+
+	<!-- Bind buttonStyle to advanced button -->
+	<bind style="advButtonStyle" type="name" key="AdvancedButton"/> 
 
 	<!-- Style that all regions will use -->
 	<style id="backingStyle">

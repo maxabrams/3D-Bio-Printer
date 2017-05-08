@@ -1,0 +1,34 @@
+import java.awt.BorderLayout;
+import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JDialog;
+import javax.swing.JPanel;
+
+
+public class CloseDialog extends JDialog implements ActionListener {
+	
+	JButton button;
+	public CloseDialog(JButton closeButton){
+		JPanel buttonPane=new JPanel( new BoxLayout());
+		this.setResizable(false);
+		button = closeButton;
+		
+	     button.addActionListener(this);
+	     button.setPreferredSize(new Dimension(200,100));
+	     buttonPane.add(button, BorderLayout.CENTER);
+	     add(buttonPane);
+//	     add(button);
+	     pack();
+	     setVisible(true);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		dispose();
+		
+	};
+}

@@ -1,3 +1,5 @@
+package src;
+
 import java.awt.AWTException;
 import java.awt.BorderLayout;
 import java.awt.Dimension;

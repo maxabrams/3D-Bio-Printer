@@ -1,3 +1,5 @@
+package src;
+
 import java.util.Date;
 
 public class Dish {
@@ -13,6 +15,7 @@ public class Dish {
 	private int totalImagesNeeded;
 	public boolean isFinished;
 	private int dishNum;
+	private boolean isCleared;
 	
 	private String dishString;
 	// default picsPerMinute=1
@@ -23,6 +26,7 @@ public class Dish {
 		captureMetric= "mins";
 		isEnabled = false;
 		isFinished=false;
+		setCleared(false);
 	}
 	public Dish(String string) {
 		dishString=string;
@@ -32,6 +36,7 @@ public class Dish {
 		captureMetric= "mins";
 		isEnabled = false;
 		isFinished=false;
+		setCleared(false);
 	}
 
 	public void reset(){
@@ -137,6 +142,12 @@ public class Dish {
 	}
 	public void setTotalImagesNeeded(int totalImagesNeeded) {
 		this.totalImagesNeeded = totalImagesNeeded;
+	}
+	public boolean isCleared() {
+		return isCleared;
+	}
+	public void setCleared(boolean isCleared) {
+		this.isCleared = isCleared;
 	}
 
 }
