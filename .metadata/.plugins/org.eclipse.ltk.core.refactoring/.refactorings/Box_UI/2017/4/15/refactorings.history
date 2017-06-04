@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Rename resource &apos;Box_UI/py/read_temp.py&apos; to &apos;temp_bridge.py&apos;" description="Rename resource &apos;read_temp.py&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="py/read_temp.py" name="temp_bridge.py" stamp="1492211917905" updateReferences="true"/>
-</session>
